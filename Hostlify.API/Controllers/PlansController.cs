@@ -29,30 +29,11 @@ namespace Hostlify.API.Controllers
             return await _planDomain.getAll();
         }
 
-        // GET: api/Plans/5
-        [HttpGet("{id}", Name = "Get")]
-        public Plan Get(int id)
-        {
-            return _planDomain.gePlanById(id);
-        }
-
-        // POST: api/Plans
-        [HttpPost]
-        public Boolean Post([FromBody] string value)
-        {
-            return true;
-        }
-
         // PUT: api/Plans/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
-
-        // DELETE: api/Plans/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        
     }
 }

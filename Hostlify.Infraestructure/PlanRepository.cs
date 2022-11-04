@@ -13,24 +13,35 @@ public class PlanRepository: IPlanRepository
     }
     public async Task<List<Plan>>  getAll()
     {
-        return _hostlifyDb.Plans.Where(plan=>plan.IsActive == true)
-            .ToList();//ESTO ES LINKQ
+        return await _hostlifyDb.Plans.Where(plan=>plan.IsActive == true)
+            .ToListAsync();
         
     }
 
-    public Plan gePlanById(int id)
+    public async Task<bool> update(int id,Plan plan)
     {
-        return _hostlifyDb.Plans.Find(id);
-    }
+        using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
+        {
+            try
+            {
+                var existingPlan = await _hostlifyDb.Plans.FindAsync(id);
+                existingPlan.Name = plan.Name;
+                existingPlan.Rooms = plan.Rooms;
+                existingPlan.Price = plan.Price;
 
-    public bool createPlan(string name, int rooms, int price)
-    {
-        Plan plan = new Plan();
-        plan.Name = name;
-        plan.Rooms = rooms;
-        plan.Price = price;
+                _hostlifyDb.Plans.Update(existingPlan);
+                await _hostlifyDb.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                await _hostlifyDb.Database.RollbackTransactionAsync();
+            }
+        }
 
-        _hostlifyDb.Plans.Add(plan);
         return true;
+
     }
+    
+    
+
 }

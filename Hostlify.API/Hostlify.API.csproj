@@ -34,7 +34,6 @@
 
     <ItemGroup>
       <Folder Include="Mapper" />
-      <Folder Include="Response" />
     </ItemGroup>
 
 </Project>
