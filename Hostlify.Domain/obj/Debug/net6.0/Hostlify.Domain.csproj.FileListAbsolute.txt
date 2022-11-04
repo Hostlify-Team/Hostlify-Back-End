@@ -1,0 +1,17 @@
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\bin\Debug\net6.0\Hostlify.Domain.deps.json
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\bin\Debug\net6.0\Hostlify.Domain.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\bin\Debug\net6.0\Hostlify.Domain.pdb
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\bin\Debug\net6.0\Hostlify.Infraestructure.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\bin\Debug\net6.0\Hostlify.Infraestructure.pdb
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\obj\Debug\net6.0\Hostlify.Domain.csproj.AssemblyReference.cache
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\obj\Debug\net6.0\Hostlify.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\obj\Debug\net6.0\Hostlify.Domain.AssemblyInfoInputs.cache
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\obj\Debug\net6.0\Hostlify.Domain.AssemblyInfo.cs
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\obj\Debug\net6.0\Hostlify.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\obj\Debug\net6.0\Hostlify.Domain.csproj.CopyComplete
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\obj\Debug\net6.0\Hostlify.Domain.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\obj\Debug\net6.0\refint\Hostlify.Domain.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\obj\Debug\net6.0\Hostlify.Domain.pdb
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\obj\Debug\net6.0\ref\Hostlify.Domain.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\bin\Debug\net6.0\Hostlify.Shared.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Domain\bin\Debug\net6.0\Hostlify.Shared.pdb

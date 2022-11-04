@@ -1,0 +1,17 @@
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Infraestructure.deps.json
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Infraestructure.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Infraestructure.pdb
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.csproj.AssemblyReference.cache
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.AssemblyInfoInputs.cache
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.AssemblyInfo.cs
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\obj\Debug\net6.0\refint\Hostlify.Infraestructure.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.pdb
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\obj\Debug\net6.0\ref\Hostlify.Infraestructure.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Shared.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Shared.pdb
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.csproj.CopyComplete
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Infraestructure.runtimeconfig.json
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.genruntimeconfig.cache
