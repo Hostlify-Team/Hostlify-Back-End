@@ -28,9 +28,10 @@ public class PlanRepository: IPlanRepository
                 existingPlan.Name = plan.Name;
                 existingPlan.Rooms = plan.Rooms;
                 existingPlan.Price = plan.Price;
-
+                
                 _hostlifyDb.Plans.Update(existingPlan);
-                await _hostlifyDb.SaveChangesAsync();
+                _hostlifyDb.SaveChangesAsync();
+                _hostlifyDb.Database.CommitTransactionAsync();
             }
             catch (Exception ex)
             {
@@ -41,7 +42,31 @@ public class PlanRepository: IPlanRepository
         return true;
 
     }
-    
-    
+
+    public async Task<bool> post(Plan plan)
+    {
+
+        using (var transaction=_hostlifyDb.Database.BeginTransactionAsync())//Empiezo la transaccion eñ using es para abrir y cerrar coneccion automaticamente
+        {
+            try
+            {
+                _hostlifyDb.Plans.AddAsync(plan); //Agregado a nivel de memoria Y CON AddAsync
+                _hostlifyDb.SaveChanges(); //Agregado a la base de datos y con SaveAsync
+                _hostlifyDb.Database.CommitTransactionAsync(); //termino la transaccion
+
+            }
+            catch (Exception ex)
+            {
+                _hostlifyDb.Database.RollbackTransactionAsync();
+            }
+            finally
+            {
+                _hostlifyDb.DisposeAsync();
+            }
+        }
+        return true;
+    }
+
+
 
 }

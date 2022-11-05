@@ -32,8 +32,4 @@
       <ProjectReference Include="..\Hostlify.Shared\Hostlify.Shared.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Mapper" />
-    </ItemGroup>
-
 </Project>
