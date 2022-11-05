@@ -11,18 +11,18 @@ public class PlanDomain : IPlanDomain
         _PlanRepository = PlanRepository;
     }
 
+    public async Task<bool> post(Plan plan)
+    {
+        return await _PlanRepository.post(plan);
+    }
+
     public async Task<List<Plan>> getAll()
     {
         return await _PlanRepository.getAll();
     }
 
-    public Plan gePlanById(int id)
+    public async Task<bool> update(int id,Plan plan)
     {
-        return _PlanRepository.gePlanById(id);
-    }
-
-    public bool createPlan(string name, int rooms, int price)
-    {
-        throw new NotImplementedException();
+        return await _PlanRepository.update(id, plan);
     }
 }

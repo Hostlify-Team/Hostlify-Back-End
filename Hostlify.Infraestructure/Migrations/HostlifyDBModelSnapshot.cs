@@ -28,7 +28,7 @@ namespace Hostlify.Infraestructure.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2022, 11, 2, 20, 5, 25, 614, DateTimeKind.Local).AddTicks(1753));
+                        .HasDefaultValue(new DateTime(2022, 11, 4, 22, 24, 48, 688, DateTimeKind.Local).AddTicks(6663));
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");
@@ -52,6 +52,38 @@ namespace Hostlify.Infraestructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Plans", (string)null);
+                });
+
+            modelBuilder.Entity("Hostlify.Infraestructure.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValue(new DateTime(2022, 11, 4, 22, 24, 48, 688, DateTimeKind.Local).AddTicks(7432));
+
+                    b.Property<DateTime?>("DateUpdated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users", (string)null);
                 });
 #pragma warning restore 612, 618
         }

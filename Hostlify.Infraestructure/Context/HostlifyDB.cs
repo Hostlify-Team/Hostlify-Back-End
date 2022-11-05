@@ -4,8 +4,11 @@ namespace Hostlify.Infraestructure.Context;
 
 public class HostlifyDB:DbContext
 {
-    public DbSet<Plan> Plans { get; set; }
     
+    public DbSet<Plan> Plans { get; set; }
+    public DbSet<User> Users { get; set; }
+
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured) //Aqui valido otra vez si mi BD esta configurado, sino lo vuelvo a configurar 5 Y HACEMOS LA MIGRACION 6 NUGET:Entity framework core tools
@@ -16,7 +19,6 @@ public class HostlifyDB:DbContext
     }
     public HostlifyDB() : base() //Entity Framework me dice que debo tener constructores
     {
-      
     }
     public HostlifyDB(DbContextOptions<HostlifyDB> options) : base(options) //Entity Framework me dice que debo tener constructores
     {
@@ -34,6 +36,13 @@ public class HostlifyDB:DbContext
         builder.Entity<Plan>().Property(p => p.Price).IsRequired();
         builder.Entity<Plan>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
         builder.Entity<Plan>().Property(p => p.IsActive).HasDefaultValue(true);
+        
+        builder.Entity<User>().ToTable("Users");
+        builder.Entity<User>().HasKey(p => p.Id);
+        builder.Entity<User>().Property(c => c.Username).IsRequired();
+        builder.Entity<User>().Property(c => c.Password).IsRequired();
+        builder.Entity<User>().Property(c => c.DateCreated).IsRequired().HasDefaultValue(DateTime.Now);
+        builder.Entity<User>().Property(c => c.IsActive).IsRequired().HasDefaultValue(true);
         
 
     }

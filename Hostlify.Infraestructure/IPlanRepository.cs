@@ -3,6 +3,8 @@
 public interface IPlanRepository
 {
     Task<List<Plan>> getAll();
-    Plan gePlanById(int id);
-    Boolean createPlan(string name,int rooms,int price);
+
+    Task<bool> update(int id,Plan plan);
+
+    Task<bool> post(Plan plan);
 }

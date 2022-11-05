@@ -1,5 +1,6 @@
 ﻿namespace Hostlify.Shared;
 
-public class Class1
+public class Constans
 {
+    
 }

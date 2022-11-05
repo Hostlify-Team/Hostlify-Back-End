@@ -1,6 +1,6 @@
 ﻿namespace Hostlify.API.Resource;
 
-public class PlanResource
+public class UserResource
 {
     
 }
