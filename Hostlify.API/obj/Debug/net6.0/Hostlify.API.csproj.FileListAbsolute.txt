@@ -258,3 +258,8 @@ C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug
 C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

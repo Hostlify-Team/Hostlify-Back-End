@@ -1,6 +1,10 @@
-﻿namespace Hostlify.Domain;
+﻿using Hostlify.Infraestructure;
+
+namespace Hostlify.Domain;
 
 public interface IUserDomain
 {
-    
+    Task<string> Login(User user);
+    Task<bool> Signup(User user);
+    Task<User> GetByUsername(string username);
 }

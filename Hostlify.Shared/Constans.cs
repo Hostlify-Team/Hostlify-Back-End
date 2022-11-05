@@ -1,6 +1,6 @@
 ﻿namespace Hostlify.Shared;
 
-public class Constans
+public static class Constans
 {
-    
+    public const string SecretKey = "hostlifySecret";
 }
