@@ -1320,7 +1320,7 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/6.0.10": {
+      "Microsoft.EntityFrameworkCore.Analyzers/7.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -5169,17 +5169,17 @@
         "microsoft.entityframeworkcore.abstractions.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/6.0.10": {
-      "sha512": "b4jKcjo6BLuBRjLTkZPjJCvZ7oa3a798Q1AXSMAknitpBEOEIDryyRd7XZ0cnEIVCvfSND+Trgb00Z4TiTqOvg==",
+    "Microsoft.EntityFrameworkCore.Analyzers/7.0.0": {
+      "sha512": "Qkd2H+jLe37o5ku+LjT6qf7kAHY75Yfn2bBDQgqr13DTOLYpEy1Mt93KPFjaZvIu/srEcbfGGMRL7urKm5zN8Q==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.analyzers/6.0.10",
+      "path": "microsoft.entityframeworkcore.analyzers/7.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll",
         "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.analyzers.6.0.10.nupkg.sha512",
+        "microsoft.entityframeworkcore.analyzers.7.0.0.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
@@ -10781,6 +10781,7 @@
       "Hostlify.Shared >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.DataAnnotations >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 6.0.10",
+      "Microsoft.EntityFrameworkCore.Analyzers >= 7.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.10",
       "Microsoft.EntityFrameworkCore.Relational >= 6.0.10",
       "Microsoft.EntityFrameworkCore.Relational.Design >= 1.1.6",
@@ -10791,19 +10792,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\josro\\.nuget\\packages\\": {}
+    "C:\\Users\\USER\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Aplicaciones Web\\Hostlify-Back-End\\Hostlify.API\\Hostlify.API.csproj",
+      "projectUniqueName": "C:\\Users\\USER\\Documents\\GitHub\\Hostlify-Back-End\\Hostlify.API\\Hostlify.API.csproj",
       "projectName": "Hostlify.API",
-      "projectPath": "D:\\Aplicaciones Web\\Hostlify-Back-End\\Hostlify.API\\Hostlify.API.csproj",
-      "packagesPath": "C:\\Users\\josro\\.nuget\\packages\\",
-      "outputPath": "D:\\Aplicaciones Web\\Hostlify-Back-End\\Hostlify.API\\obj\\",
+      "projectPath": "C:\\Users\\USER\\Documents\\GitHub\\Hostlify-Back-End\\Hostlify.API\\Hostlify.API.csproj",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\USER\\Documents\\GitHub\\Hostlify-Back-End\\Hostlify.API\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\josro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10817,14 +10823,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Aplicaciones Web\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj": {
-              "projectPath": "D:\\Aplicaciones Web\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj"
+            "C:\\Users\\USER\\Documents\\GitHub\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj": {
+              "projectPath": "C:\\Users\\USER\\Documents\\GitHub\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj"
             },
-            "D:\\Aplicaciones Web\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
-              "projectPath": "D:\\Aplicaciones Web\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj"
+            "C:\\Users\\USER\\Documents\\GitHub\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\USER\\Documents\\GitHub\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj"
             },
-            "D:\\Aplicaciones Web\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
-              "projectPath": "D:\\Aplicaciones Web\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj"
+            "C:\\Users\\USER\\Documents\\GitHub\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
+              "projectPath": "C:\\Users\\USER\\Documents\\GitHub\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj"
             }
           }
         }
@@ -10854,6 +10860,10 @@
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[6.0.10, )"
+          },
+          "Microsoft.EntityFrameworkCore.Analyzers": {
+            "target": "Package",
+            "version": "[7.0.0, )"
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -10907,7 +10917,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

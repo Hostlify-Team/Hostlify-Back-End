@@ -3,6 +3,8 @@
 public interface IFoodServicesRepository
 {
     Task<List<FoodServices>> getAll();
-    Plan geFoodServicesById(int id);
-    Boolean createFoodServices(string dish, int dishQuantity, string drink, int drinkQuantity, string cream, int creamQuantity, string instruction);
+    Task<bool> post(FoodServices foodServices);
+    FoodServices  getFoodServiceByRoomId(int RoomId);
+    Task<bool> DeletebyRoomID(int RoomId);
+    Task<bool> Delete(int id);
 }

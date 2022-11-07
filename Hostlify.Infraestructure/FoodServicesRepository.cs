@@ -3,34 +3,38 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hostlify.Infraestructure;
 
-public class FoodServicesRepository : IPlanRepository
+public class FoodServicesRepository : IFoodServicesRepository
 {
     private HostlifyDB _hostlifyDb;
 
-    public PlanRepository(HostlifyDB hostlifyDb)
+    public FoodServicesRepository(HostlifyDB hostlifyDb)
     {
         _hostlifyDb = hostlifyDb;
     }
-    public async Task<List<Plan>> getAll()
-    {
-        return _hostlifyDb.Plans.Where(plan => plan.IsActive == true)
-            .ToList();//ESTO ES LINKQ
 
+
+    public Task<List<FoodServices>> getAll()
+    {
+        throw new NotImplementedException();
     }
 
-    public Plan gePlanById(int id)
+    public Task<bool> post(FoodServices foodServices)
     {
-        return _hostlifyDb.Plans.Find(id);
+        throw new NotImplementedException();
     }
 
-    public bool createPlan(string name, int rooms, int price)
+    public FoodServices getFoodServiceByRoomId(int RoomId)
     {
-        Plan plan = new Plan();
-        plan.Name = name;
-        plan.Rooms = rooms;
-        plan.Price = price;
+        throw new NotImplementedException();
+    }
 
-        _hostlifyDb.Plans.Add(plan);
-        return true;
+    public Task<bool> DeletebyRoomID(int RoomId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> Delete(int id)
+    {
+        throw new NotImplementedException();
     }
 }
