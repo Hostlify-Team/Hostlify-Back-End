@@ -1,11 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Hostlify.Infraestructure.Context;
 
 public class HostlifyDB:DbContext
 {
     public DbSet<Plan> Plans { get; set; }
-    
+
+    public DbSet<History> History { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured) //Aqui valido otra vez si mi BD esta configurado, sino lo vuelvo a configurar 5 Y HACEMOS LA MIGRACION 6 NUGET:Entity framework core tools
@@ -34,7 +37,22 @@ public class HostlifyDB:DbContext
         builder.Entity<Plan>().Property(p => p.Price).IsRequired();
         builder.Entity<Plan>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
         builder.Entity<Plan>().Property(p => p.IsActive).HasDefaultValue(true);
-        
+
+        builder.Entity<History>().ToTable("History");
+        builder.Entity<History>().HasKey(p => p.id);
+        builder.Entity<History>().Property(p => p.id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<History>().Property(p => p.roomName).IsRequired().HasMaxLength(15);
+        builder.Entity<History>().Property(p => p.managerId).IsRequired();
+        builder.Entity<History>().Property(p => p.guestId).IsRequired();
+        builder.Entity<History>().Property(p => p.guestName).IsRequired();
+        builder.Entity<History>().Property(p => p.guestEmail).IsRequired();
+        builder.Entity<History>().Property(p => p.initialDate).IsRequired();
+        builder.Entity<History>().Property(p => p.endDate).IsRequired();
+        builder.Entity<History>().Property(p => p.price).IsRequired();
+        builder.Entity<History>().Property(p => p.description).IsRequired();
+        builder.Entity<History>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
+        builder.Entity<History>().Property(p => p.IsActive).HasDefaultValue(true);
+
 
     }
 }
