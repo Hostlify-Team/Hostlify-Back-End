@@ -35,6 +35,13 @@ public class HostlifyDB:DbContext
         builder.Entity<Plan>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
         builder.Entity<Plan>().Property(p => p.IsActive).HasDefaultValue(true);
         
+    
 
     }
+  
+    
+
+
+
+    
 }

@@ -14,7 +14,9 @@ builder.Services.AddSwaggerGen();
 
 //Dependency injection
 builder.Services.AddScoped<IPlanDomain, PlanDomain>();
+builder.Services.AddScoped<IRoomDomain, RoomDomain>();
 builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 
 var connectionString = builder.Configuration.GetConnectionString("HostlifyConnection");
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));//VARIA DEACUERDO A LA VERSION
