@@ -4,18 +4,30 @@ namespace Hostlify.Domain;
 
 public class RoomDomain : IRoomDomain
 {
-    public Task<List<Room>> getAll()
+    private IRoomRepository _RoomRepository;
+
+    public RoomDomain(IRoomRepository RoomRepository)
     {
-        throw new NotImplementedException();
+        _RoomRepository = RoomRepository;
     }
 
-    public Task<Room> getRoombyId(int id)
+    public async Task<List<Room>> getAll()
     {
-        throw new NotImplementedException();
+        return await _RoomRepository.getAll();
     }
 
-    public Task<bool> update(int id, Room room)
+    public async Task<bool> post(Room room)
     {
-        throw new NotImplementedException();
+        return await _RoomRepository.post(room);
+    }
+
+    public async Task<Room> getRoombyId(int id)
+    {
+        return await _RoomRepository.getRoombyId(id);
+    }
+
+    public async Task<bool> update(int id, Room room)
+    {
+        return await _RoomRepository.update(id, room);
     }
 }

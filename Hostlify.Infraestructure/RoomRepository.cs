@@ -1,4 +1,5 @@
 ﻿using Hostlify.Infraestructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hostlify.Infraestructure;
 
@@ -10,8 +11,10 @@ public class RoomRepository : IRoomRepository
     {
         _hostlifyDb = hostlifyDb;
     }
-    public Task<List<Room>> getAll()
+    public async Task<List<Room>>  getAll()
     {
+        //return await _hostlifyDb.Room.Where(room=>room.IsActive == true)
+        //   .ToListAsync();
         throw new NotImplementedException();
     }
 
@@ -21,6 +24,11 @@ public class RoomRepository : IRoomRepository
     }
 
     public Task<bool> update(int id, Room room) 
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<bool> post(Room room)
     {
         throw new NotImplementedException();
     }
