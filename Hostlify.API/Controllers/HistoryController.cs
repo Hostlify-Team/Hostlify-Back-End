@@ -28,30 +28,39 @@ namespace Hostlify.API.Controllers
         {
             return await _historyDomain.getAll();
         }
-
-        [HttpGet("{id}", Name = "Get")]
+        
+        /*[HttpGet("{id}", Name = "Get")]
         public History Get(int id)
         {
             return _historyDomain.getHistoryById(id);
+        }*/
+        
+        [HttpGet]
+        [Route("GetByManagerId")]
+        public async Task<History> GetByManagerId(int id)
+        {
+            return await _historyDomain.getHistoryForManager(id);
         }
 
         // POST
         [HttpPost]
-        public Boolean Post([FromBody] string value)
+        public async Task<bool> Post([FromBody] History historyinput)
         {
-            return true;
+            Console.WriteLine("Hello World");
+            return await _historyDomain.post(historyinput);
         }
 
         // PUT
-        [HttpPut("{id}")]
+        /*[HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
-        }
+        }*/
 
         // DELETE
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<bool> Delete(int id)
         {
+            return await _historyDomain.deleteHistory(id);
         }
     }
 }

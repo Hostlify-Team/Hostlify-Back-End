@@ -25,4 +25,19 @@ public class HistoryDomain : IHistoryDomain
     {
         throw new NotImplementedException();
     }
+
+    public async Task<History> getHistoryForManager(int id)
+    {
+        return await _HistoryRepository.getHistoryForManager(id);
+    }
+
+    public async Task<bool> deleteHistory(int id)
+    {
+        return await _HistoryRepository.deleteHistory(id);
+    }
+
+    public async Task<bool> post(History history)
+    {
+        return await _HistoryRepository.post(history);
+    }
 }

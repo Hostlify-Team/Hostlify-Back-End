@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.API\\Hostlify.API.csproj": {}
+    "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.API\\Hostlify.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.API\\Hostlify.API.csproj": {
+    "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.API\\Hostlify.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.API\\Hostlify.API.csproj",
+        "projectUniqueName": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.API\\Hostlify.API.csproj",
         "projectName": "Hostlify.API",
-        "projectPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.API\\Hostlify.API.csproj",
-        "packagesPath": "C:\\Users\\reyno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.API\\obj\\",
+        "projectPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.API\\Hostlify.API.csproj",
+        "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\reyno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,14 +32,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj": {
-                "projectPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj"
+              "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Domain\\Hostlify.Domain.csproj": {
+                "projectPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Domain\\Hostlify.Domain.csproj"
               },
-              "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
-                "projectPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj"
+              "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
+                "projectPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj"
               },
-              "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
-                "projectPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj"
+              "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Shared\\Hostlify.Shared.csproj": {
+                "projectPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Shared\\Hostlify.Shared.csproj"
               }
             }
           }
@@ -122,24 +122,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj": {
+    "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Domain\\Hostlify.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Domain\\Hostlify.Domain.csproj",
         "projectName": "Hostlify.Domain",
-        "projectPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj",
-        "packagesPath": "C:\\Users\\reyno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Domain\\Hostlify.Domain.csproj",
+        "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\reyno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -154,11 +154,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
-                "projectPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj"
+              "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
+                "projectPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj"
               },
-              "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
-                "projectPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj"
+              "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Shared\\Hostlify.Shared.csproj": {
+                "projectPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Shared\\Hostlify.Shared.csproj"
               }
             }
           }
@@ -198,24 +198,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
+    "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj",
+        "projectUniqueName": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj",
         "projectName": "Hostlify.Infraestructure",
-        "projectPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj",
-        "packagesPath": "C:\\Users\\reyno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Infraestructure\\obj\\",
+        "projectPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj",
+        "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Infraestructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\reyno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -230,8 +230,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
-                "projectPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj"
+              "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Shared\\Hostlify.Shared.csproj": {
+                "projectPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Shared\\Hostlify.Shared.csproj"
               }
             }
           }
@@ -253,10 +253,6 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -299,24 +295,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
+    "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Shared\\Hostlify.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Shared\\Hostlify.Shared.csproj",
         "projectName": "Hostlify.Shared",
-        "projectPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
-        "packagesPath": "C:\\Users\\reyno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\reyno\\OneDrive\\Escritorio\\Hostlify-Back-End\\Hostlify.Shared\\obj\\",
+        "projectPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Shared\\Hostlify.Shared.csproj",
+        "packagesPath": "C:\\Users\\Diego\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\reyno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -358,7 +354,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

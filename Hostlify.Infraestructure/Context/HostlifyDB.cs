@@ -43,9 +43,7 @@ public class HostlifyDB:DbContext
         builder.Entity<History>().Property(p => p.id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<History>().Property(p => p.roomName).IsRequired().HasMaxLength(15);
         builder.Entity<History>().Property(p => p.managerId).IsRequired();
-        builder.Entity<History>().Property(p => p.guestId).IsRequired();
         builder.Entity<History>().Property(p => p.guestName).IsRequired();
-        builder.Entity<History>().Property(p => p.guestEmail).IsRequired();
         builder.Entity<History>().Property(p => p.initialDate).IsRequired();
         builder.Entity<History>().Property(p => p.endDate).IsRequired();
         builder.Entity<History>().Property(p => p.price).IsRequired();

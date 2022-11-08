@@ -888,7 +888,6 @@
           "AutoMapper": "12.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
           "Hostlify.Shared": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.Relational": "6.0.10",
           "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.6",
           "Pomelo.EntityFrameworkCore.MySql": "6.0.2"

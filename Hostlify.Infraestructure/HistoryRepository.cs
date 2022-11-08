@@ -1,6 +1,6 @@
 ﻿using Hostlify.Infraestructure.Context;
-using Microsoft.EntityFrameworkCore;
 using System.Numerics;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hostlify.Infraestructure;
 
@@ -28,9 +28,7 @@ public class HistoryRepository : IHistoryRepository
                 var existingHistory = await _hostlifyDb.History.FindAsync(id);
                 existingHistory.roomName = history.roomName;
                 existingHistory.managerId = history.managerId;
-                existingHistory.guestId = history.guestId;
                 existingHistory.guestName = history.guestName;
-                existingHistory.guestEmail = history.guestEmail;
                 existingHistory.initialDate = history.initialDate;
                 existingHistory.endDate = history.endDate;
                 existingHistory.price = history.price;
@@ -79,8 +77,37 @@ public class HistoryRepository : IHistoryRepository
         throw new NotImplementedException();
     }
 
-    public bool createHistory(int roomName, string managerId, int guestId, string guestName, string guestEmail, DateTime initialDate, DateTime endDate, int price, string description)
+    public bool createHistory(int roomName, string managerId, int guestId, string guestName, string guestEmail,
+        DateTime initialDate, DateTime endDate, int price, string description)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<History> getHistoryForManager(int id)
+    {
+        return await _hostlifyDb.History
+            .SingleOrDefaultAsync(history => history.managerId == id); 
+    }
+
+    public async Task<bool> deleteHistory(int id)
+    {
+        using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
+        {
+            try
+            {
+                var historyRoom = await _hostlifyDb.History.FindAsync(id);
+                historyRoom.IsActive = false;
+                historyRoom.DateUpdated = DateTime.Now;
+                _hostlifyDb.History.Update(historyRoom);
+                await _hostlifyDb.SaveChangesAsync();
+                _hostlifyDb.Database.CommitTransactionAsync();
+            }
+            catch (Exception ex)
+            {
+                await _hostlifyDb.Database.RollbackTransactionAsync();
+            }
+        }
+
+        return true;
     }
 }
