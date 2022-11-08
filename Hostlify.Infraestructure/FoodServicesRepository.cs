@@ -53,10 +53,6 @@ public class FoodServicesRepository : IFoodServicesRepository
 
     public Task<bool> Delete(int id)
     {
-        var foodService = _hostlifyDb.FoodServices.FindAsync(id);
-        foodService.IsCanceled = true;
-        _hostlifyDb.FoodServices.Update(foodService);
-        await _hostlifyDb.SaveChangesAsync();
-        return true;
+        throw new NotImplementedException();
     }
 }
