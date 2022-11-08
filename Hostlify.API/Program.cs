@@ -1,3 +1,4 @@
+using Hostlify.API.Mapper;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
 using Hostlify.Infraestructure.Context;
@@ -14,7 +15,9 @@ builder.Services.AddSwaggerGen();
 
 //Dependency injection
 builder.Services.AddScoped<IPlanDomain, PlanDomain>();
+builder.Services.AddScoped<IRoomDomain, RoomDomain>();
 builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 
 var connectionString = builder.Configuration.GetConnectionString("HostlifyConnection");
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));//VARIA DEACUERDO A LA VERSION
@@ -23,6 +26,10 @@ var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));//VARIA DEACUE
 builder.Services.AddDbContext<HostlifyDB>(
         dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
 
+builder.Services.AddAutoMapper(
+    typeof(ModelToResource),
+    typeof(ResourceToModel)
+);
 var app = builder.Build();
 
 using (var scope= app.Services.CreateScope())

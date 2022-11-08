@@ -5,7 +5,8 @@ namespace Hostlify.Infraestructure.Context;
 public class HostlifyDB:DbContext
 {
     public DbSet<Plan> Plans { get; set; }
-    
+    public DbSet<Room> Rooms { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured) //Aqui valido otra vez si mi BD esta configurado, sino lo vuelvo a configurar 5 Y HACEMOS LA MIGRACION 6 NUGET:Entity framework core tools
@@ -35,6 +36,39 @@ public class HostlifyDB:DbContext
         builder.Entity<Plan>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
         builder.Entity<Plan>().Property(p => p.IsActive).HasDefaultValue(true);
         
+        //builder.Entity<Guest>().ToTable("Guest");
+        //builder.Entity<Guest>().HasKey(p => p.Id);
+        //builder.Entity<Guest>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        //builder.Entity<Guest>().Property(p => p.Name).IsRequired().HasMaxLength(15);
+        //builder.Entity<Guest>().Property(p => p.Password).IsRequired().HasMaxLength(15);
+        //builder.Entity<Guest>().Property(p => p.Lastname).IsRequired().HasMaxLength(15);
+        //builder.Entity<Guest>().Property(p => p.Phone).IsRequired();
+        //builder.Entity<Guest>().Property(p => p.Mail).IsRequired();
+
+
+        builder.Entity<Room>().ToTable("Rooms");
+        builder.Entity<Room>().HasKey(p => p.Id);
+        builder.Entity<Room>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Room>().Property(p => p.Name).IsRequired().HasMaxLength(15);
+        builder.Entity<Room>().Property(p => p.GuestId);
+        builder.Entity<Room>().Property(p => p.ManagerId).IsRequired();
+        builder.Entity<Room>().Property(p => p.Initialdate);
+        builder.Entity<Room>().Property(p => p.EndDate);
+        builder.Entity<Room>().Property(p => p.Status).IsRequired().HasDefaultValue(true);
+        builder.Entity<Room>().Property(p => p.GuestStayComplete);
+        builder.Entity<Room>().Property(p => p.Price);
+        builder.Entity<Room>().Property(p => p.Image);
+        builder.Entity<Room>().Property(p => p.Description).HasMaxLength(999);
+        builder.Entity<Room>().Property(p => p.Emergency).IsRequired().HasDefaultValue(false);
+        builder.Entity<Room>().Property(p => p.ServicePending).IsRequired().HasDefaultValue(false);
+        builder.Entity<Room>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
+        builder.Entity<Room>().Property(p => p.IsActive).HasDefaultValue(true);
 
     }
+  
+    
+
+
+
+    
 }
