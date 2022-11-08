@@ -32,3 +32,20 @@ C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Infraestructure\obj\De
 C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.csproj.CopyComplete
 C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.genruntimeconfig.cache
 C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\ref\Hostlify.Infraestructure.dll
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Infraestructure.deps.json
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Infraestructure.runtimeconfig.json
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Infraestructure.dll
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Infraestructure.pdb
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Shared.dll
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\bin\Debug\net6.0\Hostlify.Shared.pdb
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.csproj.AssemblyReference.cache
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.AssemblyInfoInputs.cache
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.AssemblyInfo.cs
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.csproj.CoreCompileInputs.cache
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.csproj.CopyComplete
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.dll
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\refint\Hostlify.Infraestructure.dll
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.pdb
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\Hostlify.Infraestructure.genruntimeconfig.cache
+D:\Aplicaciones Web\Hostlify-Back-End\Hostlify.Infraestructure\obj\Debug\net6.0\ref\Hostlify.Infraestructure.dll

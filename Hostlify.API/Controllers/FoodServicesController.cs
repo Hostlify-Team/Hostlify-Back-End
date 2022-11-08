@@ -26,10 +26,24 @@ namespace Hostlify.API.Controllers
         }
 
         // GET: api/FoodServices
-        [HttpGet]
-        public async Task<List<FoodServices>> Get()
+        [HttpGet("byALL")]
+        public async Task<IActionResult> Get()
         {
-            return await _foodServicesDomain.getAll();
+            try
+            {
+                var result = await _foodServicesDomain.getAll();
+                return Ok(_mapper.Map<List<FoodServices>, List<FoodServices>>(result));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+            finally
+            {
+            
+            }
+            
+            //return await _foodServicesDomain.getAll();
         }
 
         // GET: api/FoodServices/5
