@@ -5,6 +5,7 @@ namespace Hostlify.Domain;
 public class RoomDomain : IRoomDomain
 {
     private IRoomRepository _RoomRepository;
+    private IRoomDomain _roomDomainImplementation;
 
     public RoomDomain(IRoomRepository RoomRepository)
     {
@@ -16,18 +17,28 @@ public class RoomDomain : IRoomDomain
         return await _RoomRepository.getAll();
     }
 
-    public async Task<bool> post(Room room)
+    public async Task<Room> getRoomforManagerId(int managerId)
     {
-        return await _RoomRepository.post(room);
+        return await _roomDomainImplementation.getRoomforManagerId(managerId);
     }
 
-    public async Task<Room> getRoombyId(int id)
+    public async Task<Room> getRoomforGuestId(int guestId)
     {
-        return await _RoomRepository.getRoombyId(id);
+        return await _roomDomainImplementation.getRoomforGuestId(guestId);
     }
 
-    public async Task<bool> update(int id, Room room)
+    public async Task<bool> postroom(Room room)
     {
-        return await _RoomRepository.update(id, room);
+        return await _roomDomainImplementation.postroom(room);
+    }
+
+    public async Task<bool> updateroom(int id, Room room)
+    {
+        return await _roomDomainImplementation.updateroom(id, room);
+    }
+
+    public async Task<bool> deleteroom(int id)
+    {
+        return await _roomDomainImplementation.deleteroom(id);
     }
 }

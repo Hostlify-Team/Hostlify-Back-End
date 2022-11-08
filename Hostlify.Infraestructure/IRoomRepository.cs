@@ -3,7 +3,9 @@
 public interface IRoomRepository
 {
     Task<List<Room>> getAll();
-    Task<Room> getRoombyId(int id);
-    Task<bool> update(int id,Room room);
-    Task<bool> post(Room room);
+    Task<Room> getRoomforManagerId(int managerId);
+    Task<Room> getRoomforGuestId(int guestId);
+    Task<bool> postroom(Room room);
+    Task<bool> updateroom(int id,Room room);
+    Task<bool> deleteroom(int id);
 }

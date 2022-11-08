@@ -1,3 +1,4 @@
+using Hostlify.API.Mapper;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
 using Hostlify.Infraestructure.Context;
@@ -25,6 +26,10 @@ var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));//VARIA DEACUE
 builder.Services.AddDbContext<HostlifyDB>(
         dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
 
+builder.Services.AddAutoMapper(
+    typeof(ModelToResource),
+    typeof(ResourceToModel)
+);
 var app = builder.Build();
 
 using (var scope= app.Services.CreateScope())
