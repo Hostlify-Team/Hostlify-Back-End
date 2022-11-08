@@ -13,14 +13,32 @@ public class FoodServicesRepository : IFoodServicesRepository
     }
 
 
-    public Task<List<FoodServices>> getAll()
+    public async Task<List<FoodServices>> getAll()
     {
-        throw new NotImplementedException();
+        return await _hostlifyDb.FoodServices.ToListAsync();
     }
 
-    public Task<bool> post(FoodServices foodServices)
+    public async Task<bool> post(FoodServices foodServices)
     {
-        throw new NotImplementedException();
+        using (var transaction = await _hostlifyDb.Database.BeginTransactionAsync())
+        {
+            try
+            {
+                await _hostlifyDb.FoodServices.AddAsync(foodServices);
+                await _hostlifyDb.SaveChangesAsync();
+                await transaction.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+                transaction.RollbackAsync();
+            }
+            finally
+            {
+                await transaction.DisposeAsync();
+            }
+        }
+
+        return true;
     }
 
     public FoodServices getFoodServiceByRoomId(int RoomId)
@@ -35,6 +53,10 @@ public class FoodServicesRepository : IFoodServicesRepository
 
     public Task<bool> Delete(int id)
     {
-        throw new NotImplementedException();
+        var foodService = _hostlifyDb.FoodServices.FindAsync(id);
+        foodService.IsCanceled = true;
+        _hostlifyDb.FoodServices.Update(foodService);
+        await _hostlifyDb.SaveChangesAsync();
+        return true;
     }
 }
