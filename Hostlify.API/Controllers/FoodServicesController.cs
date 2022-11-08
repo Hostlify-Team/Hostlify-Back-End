@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using AutoMapper;
+using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
 using Microsoft.AspNetCore.Http;
@@ -55,20 +56,61 @@ namespace Hostlify.API.Controllers
 
         // POST: api/FoodServices
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] FoodServicesResource foodServicesResource)
         {
+            try
+            {
+                var foodServices = _mapper.Map<FoodServicesResource, FoodServices>(foodServicesResource);
+                var result = await _foodServicesDomain.addFoodService(foodServices);
+                return Ok(_mapper.Map<FoodServices, FoodServicesResource>(result));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+            finally
+            {
+            
+            }
         }
 
         // PUT: api/FoodServices/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id, [FromBody] FoodServicesResource foodServicesResource)
         {
+            try
+            {
+                var foodServices = _mapper.Map<FoodServicesResource, FoodServices>(foodServicesResource);
+                var result = await _foodServicesDomain.updateFoodService(id, foodServices);
+                return Ok(_mapper.Map<FoodServices, FoodServicesResource>(result));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+            finally
+            {
+            
+            }
         }
 
         // DELETE: api/FoodServices/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            try
+            {
+                var result = await _foodServicesDomain.deleteFoodService(id);
+                return Ok(_mapper.Map<FoodServices, FoodServicesResource>(result));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+            finally
+            {
+            
+            }
         }
     }
 }
