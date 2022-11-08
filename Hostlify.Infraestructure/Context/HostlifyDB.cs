@@ -5,6 +5,8 @@ namespace Hostlify.Infraestructure.Context;
 public class HostlifyDB:DbContext
 {
     public DbSet<Plan> Plans { get; set; }
+    public DbSet<FoodServices> FoodServices { get; set; }
+    
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -35,7 +37,18 @@ public class HostlifyDB:DbContext
         builder.Entity<Plan>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
         builder.Entity<Plan>().Property(p => p.IsActive).HasDefaultValue(true);
         
-        
+        builder.Entity<FoodServices>().ToTable("FoodServices");
+        builder.Entity<FoodServices>().HasKey(p => p.Id);
+        builder.Entity<FoodServices>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<FoodServices>().Property(p => p.RoomID).IsRequired().HasMaxLength(15);
+        builder.Entity<FoodServices>().Property(p => p.ManagerID);
+        builder.Entity<FoodServices>().Property(p => p.Dish);
+        builder.Entity<FoodServices>().Property(p => p.DishQuantity);
+        builder.Entity<FoodServices>().Property(p => p.Drink);
+        builder.Entity<FoodServices>().Property(p => p.DrinkQuantity);
+        builder.Entity<FoodServices>().Property(p => p.Cream);
+        builder.Entity<FoodServices>().Property(p => p.CreamQuantity);
+        builder.Entity<FoodServices>().Property(p => p.Instruction);
 
     }
 }

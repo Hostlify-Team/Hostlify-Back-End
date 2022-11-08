@@ -61,8 +61,8 @@ namespace Hostlify.API.Controllers
             try
             {
                 var foodServices = _mapper.Map<FoodServicesResource, FoodServices>(foodServicesResource);
-                var result = await _foodServicesDomain.addFoodService(foodServices);
-                return Ok(_mapper.Map<FoodServices, FoodServicesResource>(result));
+                var result = await _foodServicesDomain.post(foodServices);
+                return StatusCode(StatusCodes.Status201Created, "room created");
             }
             catch (Exception exception)
             {
@@ -75,33 +75,20 @@ namespace Hostlify.API.Controllers
         }
 
         // PUT: api/FoodServices/5
-        [HttpPut("{id}")]
+        /*[HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] FoodServicesResource foodServicesResource)
         {
-            try
-            {
-                var foodServices = _mapper.Map<FoodServicesResource, FoodServices>(foodServicesResource);
-                var result = await _foodServicesDomain.updateFoodService(id, foodServices);
-                return Ok(_mapper.Map<FoodServices, FoodServicesResource>(result));
-            }
-            catch (Exception exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
-            }
-            finally
-            {
-            
-            }
         }
-
+        */
+        
         // DELETE: api/FoodServices/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                var result = await _foodServicesDomain.deleteFoodService(id);
-                return Ok(_mapper.Map<FoodServices, FoodServicesResource>(result));
+                var result = await _foodServicesDomain.Delete(id);
+                return Ok(result);
             }
             catch (Exception exception)
             {
