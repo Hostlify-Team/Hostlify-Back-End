@@ -28,7 +28,7 @@ namespace Hostlify.Infraestructure.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2022, 11, 8, 15, 44, 16, 459, DateTimeKind.Local).AddTicks(199));
+                        .HasDefaultValue(new DateTime(2022, 11, 4, 22, 24, 48, 688, DateTimeKind.Local).AddTicks(6663));
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");
@@ -54,7 +54,7 @@ namespace Hostlify.Infraestructure.Migrations
                     b.ToTable("Plans", (string)null);
                 });
 
-            modelBuilder.Entity("Hostlify.Infraestructure.Room", b =>
+            modelBuilder.Entity("Hostlify.Infraestructure.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,64 +63,27 @@ namespace Hostlify.Infraestructure.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2022, 11, 8, 15, 44, 16, 459, DateTimeKind.Local).AddTicks(1872));
+                        .HasDefaultValue(new DateTime(2022, 11, 4, 22, 24, 48, 688, DateTimeKind.Local).AddTicks(7432));
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(999)
-                        .HasColumnType("varchar(999)");
-
-                    b.Property<bool>("Emergency")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
-                        .HasDefaultValue(false);
-
-                    b.Property<string>("EndDate")
-                        .HasColumnType("longtext");
-
-                    b.Property<int?>("GuestId")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("GuestStayComplete")
-                        .HasColumnType("tinyint(1)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Initialdate")
-                        .HasColumnType("longtext");
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint(1)")
                         .HasDefaultValue(true);
 
-                    b.Property<int>("ManagerId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
+                    b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("varchar(15)");
+                        .HasColumnType("longtext");
 
-                    b.Property<int?>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("ServicePending")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
-                        .HasDefaultValue(false);
-
-                    b.Property<bool>("Status")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
-                        .HasDefaultValue(true);
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Rooms", (string)null);
+                    b.ToTable("Users", (string)null);
                 });
 #pragma warning restore 612, 618
         }
