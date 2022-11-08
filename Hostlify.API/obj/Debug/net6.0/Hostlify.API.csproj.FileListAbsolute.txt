@@ -514,3 +514,7 @@ C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.API\obj\Debug\net6.0\r
 C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.API\obj\Debug\net6.0\Hostlify.API.pdb
 C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.API\obj\Debug\net6.0\Hostlify.API.genruntimeconfig.cache
 C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.API\obj\Debug\net6.0\ref\Hostlify.API.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.API\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll

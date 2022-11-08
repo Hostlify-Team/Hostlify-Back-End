@@ -3,6 +3,7 @@ using System;
 using Hostlify.Infraestructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hostlify.Infraestructure.Migrations
 {
     [DbContext(typeof(HostlifyDB))]
-    partial class HostlifyDBModelSnapshot : ModelSnapshot
+    [Migration("20221108204243_ChangePrice")]
+    partial class ChangePrice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,7 +30,7 @@ namespace Hostlify.Infraestructure.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2022, 11, 8, 15, 44, 16, 459, DateTimeKind.Local).AddTicks(199));
+                        .HasDefaultValue(new DateTime(2022, 11, 8, 15, 42, 43, 131, DateTimeKind.Local).AddTicks(4324));
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");
@@ -61,9 +63,7 @@ namespace Hostlify.Infraestructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateCreated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2022, 11, 8, 15, 44, 16, 459, DateTimeKind.Local).AddTicks(1872));
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");
@@ -93,9 +93,7 @@ namespace Hostlify.Infraestructure.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<bool>("IsActive")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint(1)")
-                        .HasDefaultValue(true);
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("ManagerId")
                         .HasColumnType("int");

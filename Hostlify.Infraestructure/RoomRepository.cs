@@ -62,13 +62,16 @@ public class RoomRepository : IRoomRepository
             try
             {
                 var existingRoom = await _hostlifyDb.Rooms.FindAsync(id);
+                //Console.WriteLine("ENCONTRE DATO: "+existingRoom.Name);
 
                existingRoom.Name = room.Name;
                existingRoom.Description = room.Description;
+               existingRoom.GuestId = room.GuestId;
                existingRoom.DateUpdated = DateTime.Now;
 
                _hostlifyDb.Rooms.Update(existingRoom);
                 await _hostlifyDb.SaveChangesAsync();
+                _hostlifyDb.Database.CommitTransactionAsync();
             }
             catch (Exception ex)
             {
@@ -82,11 +85,23 @@ public class RoomRepository : IRoomRepository
 
     public async Task<bool> deleteroom(int id)
     {
-        var room = await _hostlifyDb.Rooms.FindAsync(id);
-        room.IsActive = false;
-        room.DateUpdated = DateTime.Now;
-        _hostlifyDb.Rooms.Update(room);
-        await _hostlifyDb.SaveChangesAsync();
+        using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
+        {
+            try
+            {
+                var room = await _hostlifyDb.Rooms.FindAsync(id);
+                room.IsActive = false;
+                room.DateUpdated = DateTime.Now;
+                _hostlifyDb.Rooms.Update(room);
+                await _hostlifyDb.SaveChangesAsync();
+                _hostlifyDb.Database.CommitTransactionAsync();
+            }
+            catch (Exception ex)
+            {
+                await _hostlifyDb.Database.RollbackTransactionAsync();
+            }
+        }
+
         return true;
     }
 }

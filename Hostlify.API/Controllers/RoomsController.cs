@@ -28,10 +28,10 @@ namespace Hostlify.API.Controllers
             _roomDomain = roomDomain;
             _mapper = mapper;
         }
-        // GET: api/Rooms
+        
   
-    
-        [HttpGet("byALL")]
+        // GET: api/Rooms
+        [HttpGet("GetAll")]
         public async Task<IActionResult> Get() 
         {
             try
@@ -101,7 +101,6 @@ namespace Hostlify.API.Controllers
                 {
                     return BadRequest("error de formato");
                 }
-
                 var room = _mapper.Map<RoomResource, Room>(roomInput); //Aqui hago la conversion
                 var result = await _roomDomain.postroom(room); //Agrego await para que sea sincrona
                 return StatusCode(StatusCodes.Status201Created, "room created");

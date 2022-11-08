@@ -56,11 +56,13 @@ public class HostlifyDB:DbContext
         builder.Entity<Room>().Property(p => p.EndDate);
         builder.Entity<Room>().Property(p => p.Status).IsRequired().HasDefaultValue(true);
         builder.Entity<Room>().Property(p => p.GuestStayComplete);
-        builder.Entity<Room>().Property(p => p.Price).IsRequired();
+        builder.Entity<Room>().Property(p => p.Price);
         builder.Entity<Room>().Property(p => p.Image);
         builder.Entity<Room>().Property(p => p.Description).HasMaxLength(999);
         builder.Entity<Room>().Property(p => p.Emergency).IsRequired().HasDefaultValue(false);
         builder.Entity<Room>().Property(p => p.ServicePending).IsRequired().HasDefaultValue(false);
+        builder.Entity<Room>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
+        builder.Entity<Room>().Property(p => p.IsActive).HasDefaultValue(true);
 
     }
   
