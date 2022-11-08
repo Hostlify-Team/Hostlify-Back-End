@@ -15,10 +15,11 @@ public class FoodServicesRepository : IFoodServicesRepository
 
     public async Task<List<FoodServices>> getAll()
     {
-        return await _hostlifyDb.FoodServices.ToListAsync();
+        return await _hostlifyDb.FoodServices.Where(foodServices=>foodServices.IsActive == true)
+            .ToListAsync();
     }
 
-    public async Task<bool> post(FoodServices foodServices)
+    public async Task<bool> postfoodservice(FoodServices foodServices)
     {
         using (var transaction = await _hostlifyDb.Database.BeginTransactionAsync())
         {
@@ -41,18 +42,53 @@ public class FoodServicesRepository : IFoodServicesRepository
         return true;
     }
 
-    public FoodServices getFoodServiceByRoomId(int RoomId)
+    public async Task<FoodServices> getFoodServiceByRoomId(int roomId)
     {
-        throw new NotImplementedException();
+        return await _hostlifyDb.FoodServices
+            .SingleOrDefaultAsync(foodService => foodService.RoomID == roomId); 
     }
 
-    public Task<bool> DeletebyRoomID(int RoomId)
+    public async Task<bool> deletebyRoomID(int roomId)
     {
-        throw new NotImplementedException();
+        using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
+        {
+            try
+            {
+                var foodService = await _hostlifyDb.FoodServices.FindAsync(roomId);
+                foodService.IsActive = false;
+                foodService.DateUpdated = DateTime.Now;
+                _hostlifyDb.FoodServices.Update(foodService);
+                await _hostlifyDb.SaveChangesAsync();
+                _hostlifyDb.Database.CommitTransactionAsync();
+            }
+            catch (Exception ex)
+            {
+                await _hostlifyDb.Database.RollbackTransactionAsync();
+            }
+        }
+ 
+        return true;
     }
 
-    public Task<bool> Delete(int id)
+    public async Task<bool> deletebyid(int id)
     {
-        throw new NotImplementedException();
+        using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
+        {
+            try
+            {
+                var foodService = await _hostlifyDb.FoodServices.FindAsync(id);
+                foodService.IsActive = false;
+                foodService.DateUpdated = DateTime.Now;
+                _hostlifyDb.FoodServices.Update(foodService);
+                await _hostlifyDb.SaveChangesAsync();
+                _hostlifyDb.Database.CommitTransactionAsync();
+            }
+            catch (Exception ex)
+            {
+                await _hostlifyDb.Database.RollbackTransactionAsync();
+            }
+        }
+
+        return true;
     }
 }

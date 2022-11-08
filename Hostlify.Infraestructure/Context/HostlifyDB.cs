@@ -40,15 +40,17 @@ public class HostlifyDB:DbContext
         builder.Entity<FoodServices>().ToTable("FoodServices");
         builder.Entity<FoodServices>().HasKey(p => p.Id);
         builder.Entity<FoodServices>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<FoodServices>().Property(p => p.RoomID).IsRequired().HasMaxLength(15);
-        builder.Entity<FoodServices>().Property(p => p.ManagerID);
-        builder.Entity<FoodServices>().Property(p => p.Dish);
-        builder.Entity<FoodServices>().Property(p => p.DishQuantity);
-        builder.Entity<FoodServices>().Property(p => p.Drink);
-        builder.Entity<FoodServices>().Property(p => p.DrinkQuantity);
-        builder.Entity<FoodServices>().Property(p => p.Cream);
-        builder.Entity<FoodServices>().Property(p => p.CreamQuantity);
-        builder.Entity<FoodServices>().Property(p => p.Instruction);
+        builder.Entity<FoodServices>().Property(p => p.RoomID).IsRequired();
+        builder.Entity<FoodServices>().Property(p => p.ManagerID).IsRequired();
+        builder.Entity<FoodServices>().Property(p => p.Dish).IsRequired();                                                          
+        builder.Entity<FoodServices>().Property(p => p.DishQuantity).IsRequired();
+        builder.Entity<FoodServices>().Property(p => p.Drink).IsRequired();
+        builder.Entity<FoodServices>().Property(p => p.DrinkQuantity).IsRequired();
+        builder.Entity<FoodServices>().Property(p => p.Cream).IsRequired();
+        builder.Entity<FoodServices>().Property(p => p.CreamQuantity).IsRequired();
+        builder.Entity<FoodServices>().Property(p => p.Instruction).HasMaxLength(999);
+        builder.Entity<FoodServices>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
+        builder.Entity<FoodServices>().Property(p => p.IsActive).HasDefaultValue(true);
 
     }
 }

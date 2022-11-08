@@ -4,32 +4,38 @@ namespace Hostlify.Domain;
 
 public class FoodServicesDomain :  IFoodServicesDomain
 {
-    private IFoodServicesRepository _foodServicesRepositoryImplementation;
-    private IFoodServicesDomain _foodServicesDomainImplementation;
 
-    public Task<List<FoodServices>> getAll()
-    {
-        return _foodServicesRepositoryImplementation.getAll();
-    }
+    private IFoodServicesRepository _FoodServicesRepository;
+    
 
-    public Task<bool> post(FoodServices foodServices)
+    public FoodServicesDomain(IFoodServicesRepository FoodServicesRepository)
     {
-        return _foodServicesRepositoryImplementation.post(foodServices);
-    }
-
-    public Task<FoodServices> getFoodServiceByRoomId(int RoomId)
-    {
-        return _foodServicesDomainImplementation.getFoodServiceByRoomId(RoomId);
+        _FoodServicesRepository = FoodServicesRepository;
     }
 
 
-    public Task<bool> DeletebyRoomID(int RoomId)
+    public async Task<List<FoodServices>> getAll()
     {
-        return _foodServicesRepositoryImplementation.DeletebyRoomID(RoomId);
+        return await _FoodServicesRepository.getAll();
     }
 
-    public Task<bool> Delete(int id)
+    public async Task<bool> postfoodservice(FoodServices foodServices)
     {
-        return _foodServicesRepositoryImplementation.Delete(id);
+        return await _FoodServicesRepository.postfoodservice(foodServices);
+    }
+
+    public async Task<FoodServices> getFoodServiceByRoomId(int roomId)
+    {
+        return await _FoodServicesRepository.getFoodServiceByRoomId(roomId);
+    }
+
+    public async Task<bool> deletebyRoomID(int roomId)
+    {
+        return await _FoodServicesRepository.deletebyRoomID(roomId);
+    }
+
+    public async Task<bool> deletebyid(int id)
+    {
+        return await _FoodServicesRepository.deletebyid(id);
     }
 }
