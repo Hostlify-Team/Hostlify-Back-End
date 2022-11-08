@@ -45,10 +45,11 @@ namespace Hostlify.API.Controllers
         
         // GET: api/User
         [HttpGet]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
-        public IEnumerable<string> Get()
+        public async Task<List<User>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _userDomain.GetAllUsers();
         }
         
         // GET: api/User
@@ -62,26 +63,30 @@ namespace Hostlify.API.Controllers
         }
 
         // GET: api/User/5
+        [AllowAnonymous]
         [ProducesResponseType(typeof(string), 200)]
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public async Task<User> Get(int id)
         {
-            return "value";
+            return await _userDomain.GetByUserId(id);
         }
         
 
         // PUT: api/User/5
+        /*[AllowAnonymous]
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(void), 200)]
         public void Put(int id, [FromBody] string value)
         {
-        }
+        }*/
 
         // DELETE: api/User/5
+        [AllowAnonymous]
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(void), 200)]
-        public void Delete(int id)
+        public async Task<bool> Delete(int id)
         {
+            return await _userDomain.DeleteUser(id);
         }
     }
 }

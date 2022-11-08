@@ -34,5 +34,19 @@ public class UserDomain:IUserDomain
     {
         return  await _userRepository.GetByUsername(username);
     }
-    
+
+    public async Task<User> GetByUserId(int id)
+    {
+        return  await _userRepository.GetByUserId(id);
+    }
+
+    public async Task<bool> DeleteUser(int id)
+    {
+        return  await _userRepository.DeleteUser(id);
+    }
+
+    public async Task<List<User>> GetAllUsers()
+    {
+        return await _userRepository.GetAllUsers();
+    }
 }
