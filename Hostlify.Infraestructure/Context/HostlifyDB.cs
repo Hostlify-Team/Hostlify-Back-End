@@ -4,7 +4,7 @@ namespace Hostlify.Infraestructure.Context;
 
 public class HostlifyDB:DbContext
 {
-    public HostlifyDB() : base() //Entity Framework me dice que debo tener constructores
+    public HostlifyDB() //Entity Framework me dice que debo tener constructores
     {
     }
     public HostlifyDB(DbContextOptions<HostlifyDB> options) : base(options) //Entity Framework me dice que debo tener constructores

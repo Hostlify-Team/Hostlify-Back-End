@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Hostlify.API.Filter;
 
-public class AuthorizeAttribute: Attribute,IAuthorizationFilter
+public class AuthorizeAttribute : Attribute,IAuthorizationFilter
 {
+
     public void OnAuthorization(AuthorizationFilterContext context)
     {
         // If action is decorated with [AllowAnonymous] attribute
@@ -17,9 +18,10 @@ public class AuthorizeAttribute: Attribute,IAuthorizationFilter
         
         
         // Authorization process
-        var user = (User)context.HttpContext.Items["User"];
-        Console.WriteLine("RSULTADO: "+(User)context.HttpContext.Items["User"]);
-        
+        //(User)context.HttpContext.Items["User"];
+        var user = (User)context.HttpContext.Items["user"];
+        Console.WriteLine("USER: "+user);
+
         if (user == null)
         {
             context.Result = new JsonResult(new {message="Unathorized"}) {StatusCode = StatusCodes.Status401Unauthorized };
