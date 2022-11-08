@@ -6,7 +6,7 @@ namespace Hostlify.Infraestructure;
 public class UserRepository:IUserRepository
 {
     
-    private readonly HostlifyDB _hostlifyDb;
+    private HostlifyDB _hostlifyDb;
 
     public UserRepository(HostlifyDB hostlifyDb)
     {

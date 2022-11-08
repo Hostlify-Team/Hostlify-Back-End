@@ -4,6 +4,12 @@ namespace Hostlify.Infraestructure.Context;
 
 public class HostlifyDB:DbContext
 {
+    public HostlifyDB() : base() //Entity Framework me dice que debo tener constructores
+    {
+    }
+    public HostlifyDB(DbContextOptions<HostlifyDB> options) : base(options) //Entity Framework me dice que debo tener constructores
+    {
+    }
     
     public DbSet<Plan> Plans { get; set; }
     public DbSet<User> Users { get; set; }
@@ -17,12 +23,7 @@ public class HostlifyDB:DbContext
             optionsBuilder.UseMySql("server=localhost;user=root;password=123456;database=hostlifydb; ",serverVersion);
         }
     }
-    public HostlifyDB() : base() //Entity Framework me dice que debo tener constructores
-    {
-    }
-    public HostlifyDB(DbContextOptions<HostlifyDB> options) : base(options) //Entity Framework me dice que debo tener constructores
-    {
-    }
+    
     
     protected override void OnModelCreating(ModelBuilder builder)
     {
