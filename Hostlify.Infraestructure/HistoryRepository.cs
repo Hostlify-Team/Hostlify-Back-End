@@ -79,7 +79,7 @@ public class HistoryRepository : IHistoryRepository
         throw new NotImplementedException();
     }
 
-    public bool createHistory(int roomName, string managerId, int guestId, string guestName, string guestEmail, int initialDate, int endDate, int price, string description)
+    public bool createHistory(int roomName, string managerId, int guestId, string guestName, string guestEmail, DateTime initialDate, DateTime endDate, int price, string description)
     {
         throw new NotImplementedException();
     }

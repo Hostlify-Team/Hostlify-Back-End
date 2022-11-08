@@ -12,9 +12,9 @@ public class History : BaseModel
 
     public string guestEmail { get; set; }
 
-    public int initialDate { get; set; }
+    public DateTime? initialDate { get; set; }
 
-    public int endDate { get; set; }
+    public DateTime? endDate { get; set; }
 
     public int price { get; set; }
 
