@@ -9,5 +9,6 @@ public class ModelToResource:Profile
     public ModelToResource()
     {
         CreateMap<Plan, PlanResource>();
+        CreateMap<User, UserResource>();
     }
 }

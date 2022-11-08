@@ -1,5 +1,6 @@
 using System.Net.Mime;
 using AutoMapper;
+using Hostlify.API.Filter;
 using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hostlify.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]

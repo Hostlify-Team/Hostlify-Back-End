@@ -4,8 +4,8 @@ namespace Hostlify.Domain;
 
 public class UserDomain:IUserDomain
 {
-    private readonly IUserRepository _userRepository;
-    private readonly ITokenDomain _tokenDomain;
+    private IUserRepository _userRepository;
+    private ITokenDomain _tokenDomain;
     
     public UserDomain(IUserRepository userRepository,ITokenDomain tokenDomain)
     {
@@ -34,4 +34,5 @@ public class UserDomain:IUserDomain
     {
         return  await _userRepository.GetByUsername(username);
     }
+    
 }

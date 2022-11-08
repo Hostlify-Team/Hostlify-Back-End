@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hostlify.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -37,6 +38,7 @@ namespace Hostlify.API.Controllers
         
         // GET: api/User
         [HttpPost]
+        [AllowAnonymous]
         [Route("Signup")]
         [ProducesResponseType(typeof(bool), 200)]
         public async Task<IActionResult> Signup(UserResource userResource)
@@ -52,6 +54,16 @@ namespace Hostlify.API.Controllers
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
+        }
+        
+        // GET: api/User
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("GetByUsername")]
+        [ProducesResponseType(typeof(IEnumerable<string>), 200)]
+        public async Task<User> GetByUsername(string username)
+        {
+            return await _userDomain.GetByUsername(username);
         }
 
         // GET: api/User/5

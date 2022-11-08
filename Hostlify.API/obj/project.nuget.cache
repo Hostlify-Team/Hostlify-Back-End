@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9yiY+r738ayIwRU0c2dFPjdYDRPpjX95rYutFCdcioMp+uWc1bOTqI0Ak3bFnbJfZceu8Co994wBybKyFGBFmg==",
+  "dgSpecHash": "gns8z/FHdVzLmUCLCrDVWHpbRJGMHbvg20lmHyD+8DnCshN2nl/8+nCYlUh+jC396qzL3OdFjyTNPv53xSff7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.API\\Hostlify.API.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\Diego\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\Diego\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.11\\microsoft.aspnetcore.authentication.jwtbearer.6.0.11.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",
@@ -76,6 +77,8 @@
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.25.0\\microsoft.identitymodel.abstractions.6.25.0.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.25.0\\microsoft.identitymodel.jsonwebtokens.6.25.0.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.identitymodel.logging\\6.25.0\\microsoft.identitymodel.logging.6.25.0.nupkg.sha512",
+    "C:\\Users\\Diego\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.10.0\\microsoft.identitymodel.protocols.6.10.0.nupkg.sha512",
+    "C:\\Users\\Diego\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.10.0\\microsoft.identitymodel.protocols.openidconnect.6.10.0.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.25.0\\microsoft.identitymodel.tokens.6.25.0.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\Diego\\.nuget\\packages\\microsoft.net.stringtools\\1.0.0\\microsoft.net.stringtools.1.0.0.nupkg.sha512",
