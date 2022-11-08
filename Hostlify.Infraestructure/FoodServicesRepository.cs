@@ -41,17 +41,17 @@ public class FoodServicesRepository : IFoodServicesRepository
         return true;
     }
 
-    public FoodServices getFoodServiceByRoomId(int RoomId)
+    public FoodServices getFoodServiceByRoomId(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<bool> DeletebyRoomID(int RoomId)
+    public Task<bool> deleteFoodServiceByRoomId(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<bool> Delete(int id)
+    public Task<bool> deleteFoodServiceById(int id)
     {
         throw new NotImplementedException();
     }

@@ -13,7 +13,7 @@ public class HostlifyDB:DbContext
         if (!optionsBuilder.IsConfigured) //Aqui valido otra vez si mi BD esta configurado, sino lo vuelvo a configurar 5 Y HACEMOS LA MIGRACION 6 NUGET:Entity framework core tools
         {
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));
-            optionsBuilder.UseMySql("server=localhost;user=root;password=123456;database=hostlifydb; ",serverVersion);
+            optionsBuilder.UseMySql("server=localhost;user=root;password=%Schattig#14;database=hostlifydb; ",serverVersion);
         }
     }
     public HostlifyDB() : base() //Entity Framework me dice que debo tener constructores
@@ -40,7 +40,7 @@ public class HostlifyDB:DbContext
         builder.Entity<FoodServices>().ToTable("FoodServices");
         builder.Entity<FoodServices>().HasKey(p => p.Id);
         builder.Entity<FoodServices>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<FoodServices>().Property(p => p.RoomID).IsRequired().HasMaxLength(15);
+        builder.Entity<FoodServices>().Property(p => p.RoomID).HasMaxLength(15);
         builder.Entity<FoodServices>().Property(p => p.ManagerID);
         builder.Entity<FoodServices>().Property(p => p.Dish);
         builder.Entity<FoodServices>().Property(p => p.DishQuantity);
