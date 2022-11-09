@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hostlify.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]

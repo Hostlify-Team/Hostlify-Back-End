@@ -19,7 +19,7 @@ public class JwtMiddleware
 
         if (username != null)
         {
-            context.Items["User"] = await  userDomain.GetByUsername(username);
+            context.Items["user"] = await  userDomain.GetByUsername(username);
         }
         
         await _next(context);
