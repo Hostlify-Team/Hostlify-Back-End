@@ -28,7 +28,7 @@ namespace Hostlify.Infraestructure.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2022, 11, 8, 17, 6, 35, 864, DateTimeKind.Local).AddTicks(2001));
+                        .HasDefaultValue(new DateTime(2022, 11, 19, 14, 48, 21, 157, DateTimeKind.Local).AddTicks(6007));
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");
@@ -39,7 +39,6 @@ namespace Hostlify.Infraestructure.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<string>("description")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("endDate")
@@ -78,7 +77,7 @@ namespace Hostlify.Infraestructure.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2022, 11, 8, 17, 6, 35, 864, DateTimeKind.Local).AddTicks(841));
+                        .HasDefaultValue(new DateTime(2022, 11, 19, 14, 48, 21, 157, DateTimeKind.Local).AddTicks(4927));
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");

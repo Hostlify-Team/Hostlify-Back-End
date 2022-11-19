@@ -22,3 +22,15 @@ C:\Users\reyno\OneDrive\Escritorio\Hostlify-Back-End\Hostlify.Shared\obj\Debug\n
 C:\Users\reyno\OneDrive\Escritorio\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\refint\Hostlify.Shared.dll
 C:\Users\reyno\OneDrive\Escritorio\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.pdb
 C:\Users\reyno\OneDrive\Escritorio\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\ref\Hostlify.Shared.dll
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\bin\Debug\net6.0\Hostlify.Shared.deps.json
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\bin\Debug\net6.0\Hostlify.Shared.dll
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\bin\Debug\net6.0\Hostlify.Shared.pdb
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.csproj.AssemblyReference.cache
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.AssemblyInfoInputs.cache
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.AssemblyInfo.cs
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.csproj.CoreCompileInputs.cache
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.dll
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\refint\Hostlify.Shared.dll
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.pdb
+C:\Users\USER\Documents\GitHub\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\ref\Hostlify.Shared.dll

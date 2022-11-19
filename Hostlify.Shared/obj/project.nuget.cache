@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XSHS2jRDVXveJuHlZcZ+aeiOByL0BlU9o1bNUKXJQ6sDCMsmRRy08ddBJs7X4KOnmN4T1SYTXzqS2aUk0Lerdw==",
+  "dgSpecHash": "N8/mBsAW0xtLYTzm4ktcHWOYOQzzl8rUsto6U6FwACBdKyZWAisnfUOeKKBseJhgmP9CAdT78Y0j6SVgrPgSNg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Diego\\Documents\\Frameworks\\ASP.NET_Core\\Hostlify\\Hostlify.Shared\\Hostlify.Shared.csproj",
+  "projectFilePath": "C:\\Users\\USER\\Documents\\GitHub\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
