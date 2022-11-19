@@ -26,8 +26,9 @@ namespace Hostlify.API.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/FoodServices
-        [HttpGet("GetAll")]
+      
+        [HttpGet]
+          [Route ("GetAll")]
         public async Task<IActionResult> Get()
         {
             try
@@ -65,8 +66,9 @@ namespace Hostlify.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
         } 
-        // POST: api/FoodServices
-        [HttpPost]  
+   
+        [HttpPost] 
+        [Route("byResource")]
         public async Task<IActionResult> Post([FromBody] FoodServicesResource foodServicesInput)
         {
             try
@@ -85,7 +87,7 @@ namespace Hostlify.API.Controllers
             }
         }
 
-        // DELETE: api/FoodServices/5
+  
         [HttpDelete]
         [Route("byId")]
         public async Task<IActionResult> Deletebyid(int id)
