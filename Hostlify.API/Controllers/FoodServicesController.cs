@@ -75,7 +75,7 @@ namespace Hostlify.API.Controllers
             {
                 var foodServices = _mapper.Map<FoodServicesResource, FoodServices>(foodServicesInput);
                 var result = await _foodServicesDomain.postfoodservice(foodServices);
-                return StatusCode(StatusCodes.Status201Created, "room created");
+                return StatusCode(StatusCodes.Status201Created, "foodservices created");
             }
             catch (Exception ex)
             {
