@@ -8,7 +8,7 @@ public interface IFoodServicesDomain
     Task<bool> postfoodservice(FoodServices foodServices);
     Task<FoodServices>  getFoodServiceByRoomId(int roomId);
     
-    Task<bool> deletebyRoomID(int roomId);
+    Task<bool> deletebyroomid(int roomid);
     
     Task<bool> deletebyid(int id);
 }

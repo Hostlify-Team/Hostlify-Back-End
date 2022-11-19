@@ -36,7 +36,7 @@ namespace Hostlify.API.Controllers
                 var result = await _foodServicesDomain.getAll();
                 return Ok(_mapper.Map<List<FoodServices>, List<FoodServices>>(result));
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
@@ -86,10 +86,26 @@ namespace Hostlify.API.Controllers
             
             }
         }
-
-  
         [HttpDelete]
-        [Route("byId")]
+        [Route("byRoomId")]
+        public async Task<IActionResult> Deletebyroomid(int roomid)
+        {
+            try
+            {
+                var result = await _foodServicesDomain.deletebyroomid(roomid);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+            finally
+            {
+            
+            }
+        }
+        // DELETE: api/FoodServices/5                                                                                                                           
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Deletebyid(int id)
         {
             try
@@ -97,7 +113,7 @@ namespace Hostlify.API.Controllers
                 var result = await _foodServicesDomain.deletebyid(id);
                 return Ok(result);
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
@@ -106,23 +122,6 @@ namespace Hostlify.API.Controllers
             
             }
         }
-        [HttpDelete]
-        [Route("byRoomId")]
-        public async Task<IActionResult> DeletebyRoomID(int id)
-        {
-            try
-            {
-                var result = await _foodServicesDomain.deletebyRoomID(id);
-                return Ok(result);
-            }
-            catch (Exception exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
-            }
-            finally
-            {
-            
-            }
-        }
+
     }
 }
