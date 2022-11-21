@@ -13,24 +13,60 @@ public class PlanRepository: IPlanRepository
     }
     public async Task<List<Plan>>  getAll()
     {
-        return _hostlifyDb.Plans.Where(plan=>plan.IsActive == true)
-            .ToList();//ESTO ES LINKQ
+        return await _hostlifyDb.Plans.Where(plan=>plan.IsActive == true)
+            .ToListAsync();
         
     }
 
-    public Plan gePlanById(int id)
+    public async Task<bool> update(int id,Plan plan)
     {
-        return _hostlifyDb.Plans.Find(id);
+        using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
+        {
+            try
+            {
+                var existingPlan = await _hostlifyDb.Plans.FindAsync(id);
+                existingPlan.Name = plan.Name;
+                existingPlan.Rooms = plan.Rooms;
+                existingPlan.Price = plan.Price;
+                
+                _hostlifyDb.Plans.Update(existingPlan);
+                _hostlifyDb.SaveChangesAsync();
+                _hostlifyDb.Database.CommitTransactionAsync();
+            }
+            catch (Exception ex)
+            {
+                await _hostlifyDb.Database.RollbackTransactionAsync();
+            }
+        }
+
+        return true;
+
     }
 
-    public bool createPlan(string name, int rooms, int price)
+    public async Task<bool> post(Plan plan)
     {
-        Plan plan = new Plan();
-        plan.Name = name;
-        plan.Rooms = rooms;
-        plan.Price = price;
 
-        _hostlifyDb.Plans.Add(plan);
+        using (var transaction=_hostlifyDb.Database.BeginTransactionAsync())//Empiezo la transaccion eñ using es para abrir y cerrar coneccion automaticamente
+        {
+            try
+            {
+                _hostlifyDb.Plans.AddAsync(plan); //Agregado a nivel de memoria Y CON AddAsync
+                _hostlifyDb.SaveChanges(); //Agregado a la base de datos y con SaveAsync
+                _hostlifyDb.Database.CommitTransactionAsync(); //termino la transaccion
+
+            }
+            catch (Exception ex)
+            {
+                _hostlifyDb.Database.RollbackTransactionAsync();
+            }
+            finally
+            {
+                _hostlifyDb.DisposeAsync();
+            }
+        }
         return true;
     }
+
+
+
 }

@@ -3,7 +3,7 @@
 public class Room : BaseModel
 {
     public int Id { get; set; }
-    public string Name { get; set; }
+    public string RoomName { get; set; }
     public int? GuestId { get; set; }
     public int ManagerId { get; set; }
     public string? Initialdate { get; set; }

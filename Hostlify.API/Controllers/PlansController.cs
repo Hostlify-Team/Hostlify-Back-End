@@ -1,25 +1,51 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mime;
-using System.Threading.Tasks;
+using AutoMapper;
+using Hostlify.API.Filter;
+using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hostlify.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
     public class PlansController : ControllerBase
     {
-        private IPlanDomain _planDomain;//Inyeccion
+        private readonly IPlanDomain _planDomain;//Inyeccion
+        private readonly IMapper _mapper;
         
-        public PlansController(IPlanDomain planDomain)
+        public PlansController(IPlanDomain planDomain,IMapper mapper)
         {
             _planDomain = planDomain;
+            _mapper = mapper;
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] PlanResource planInput)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest("error de formato");
+                }
+
+                var category = _mapper.Map<PlanResource, Plan>(planInput); //Aqui hago la conversion
+                var result = await _planDomain.post(category); //Agrego await para que sea sincrona
+                return StatusCode(StatusCodes.Status201Created, "category created");
+            }
+
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar: "+ex);
+            }
+            finally
+            {
+                
+            }
         }
         
         // GET: api/Plans
@@ -29,30 +55,21 @@ namespace Hostlify.API.Controllers
             return await _planDomain.getAll();
         }
 
-        // GET: api/Plans/5
-        [HttpGet("{id}", Name = "Get")]
-        public Plan Get(int id)
-        {
-            return _planDomain.gePlanById(id);
-        }
-
-        // POST: api/Plans
-        [HttpPost]
-        public Boolean Post([FromBody] string value)
-        {
-            return true;
-        }
-
         // PUT: api/Plans/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id, [FromBody] PlanResource planInput)
         {
+            try
+            {
+                var plan = _mapper.Map<PlanResource, Plan>(planInput);
+                var result = await _planDomain.update(id, plan);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar: "+ex);
+            }
         }
-
-        // DELETE: api/Plans/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        
     }
 }
