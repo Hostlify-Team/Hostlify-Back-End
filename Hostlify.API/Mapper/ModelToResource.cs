@@ -10,6 +10,7 @@ public class ModelToResource:Profile
     {
         CreateMap<Plan, PlanResource>();
         CreateMap<User, UserResource>();
+        CreateMap<User, LoginResource>();
         CreateMap<Room, RoomResource>();
         CreateMap<FoodServices, FoodServicesResource>();
     }

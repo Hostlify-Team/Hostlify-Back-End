@@ -8,14 +8,14 @@ namespace Hostlify.Domain;
 
 public class TokenDomain: ITokenDomain
 {
-    public string GenerateJwt(string username)
+    public string GenerateJwt(string email)
     {
         
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(Constans.SecretKey);
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = new ClaimsIdentity(new[] { new Claim("username", username) }),
+            Subject = new ClaimsIdentity(new[] { new Claim("email", email) }),
             Expires = DateTime.UtcNow.AddDays(1),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
@@ -43,10 +43,10 @@ public class TokenDomain: ITokenDomain
             }, out SecurityToken validatedToken);
 
             var jwtToken = (JwtSecurityToken)validatedToken;
-            var username =jwtToken.Claims.First(x => x.Type == "username").Value;
+            var email =jwtToken.Claims.First(x => x.Type == "email").Value;
 
             // return user id from JWT token if validation successful
-            return username;
+            return email;
         }
         catch
         {

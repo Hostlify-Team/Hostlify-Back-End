@@ -10,3 +10,15 @@ C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Shared\obj\De
 C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Shared\obj\Debug\net6.0\refint\Hostlify.Shared.dll
 C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.pdb
 C:\Users\Diego\Documents\Frameworks\ASP.NET_Core\Hostlify\Hostlify.Shared\obj\Debug\net6.0\ref\Hostlify.Shared.dll
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\bin\Debug\net6.0\Hostlify.Shared.deps.json
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\bin\Debug\net6.0\Hostlify.Shared.dll
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\bin\Debug\net6.0\Hostlify.Shared.pdb
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.csproj.AssemblyReference.cache
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.AssemblyInfoInputs.cache
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.AssemblyInfo.cs
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.csproj.CoreCompileInputs.cache
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.dll
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\refint\Hostlify.Shared.dll
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\Hostlify.Shared.pdb
+D:\Desktop\Hostlify-Back-End\Hostlify.Shared\obj\Debug\net6.0\ref\Hostlify.Shared.dll

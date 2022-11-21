@@ -80,4 +80,9 @@ public class UserRepository:IUserRepository
         return await _hostlifyDb.Users.Where(user=>user.IsActive == true)
             .ToListAsync();
     }
+
+    public async Task<User> GetByEmail(string email)
+    {
+        return await _hostlifyDb.Users.SingleOrDefaultAsync(user => user.Email ==  email);
+    }
 }

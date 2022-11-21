@@ -9,4 +9,5 @@ public interface IUserRepository
     Task<bool> SingUp(User user);
     Task<bool> DeleteUser(int id);
     Task<List<User>> GetAllUsers();
+    Task<User> GetByEmail(string email);
 }

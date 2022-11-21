@@ -19,10 +19,10 @@ public class AuthorizeAttribute : Attribute,IAuthorizationFilter
         
         // Authorization process
         //(User)context.HttpContext.Items["User"];
-        var user = (User)context.HttpContext.Items["user"];
-        Console.WriteLine("USER: "+user);
+        var email = (User)context.HttpContext.Items["email"];
+        Console.WriteLine("EMAIL: "+email);
 
-        if (user == null)
+        if (email == null)
         {
             context.Result = new JsonResult(new {message="Unathorized"}) {StatusCode = StatusCodes.Status401Unauthorized };
         }

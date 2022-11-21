@@ -15,14 +15,14 @@ public class UserDomain:IUserDomain
 
     public async Task<string> Login(User user)
     {
-        var result = await _userRepository.GetByUsername(user.Username);
+        var result = await _userRepository.GetByEmail(user.Email);
 
         if (result.Password == user.Password)
         {
-            return _tokenDomain.GenerateJwt(user.Username);
+            return _tokenDomain.GenerateJwt(user.Email);
         }
 
-        throw new ArgumentException("Invalid username or password");
+        throw new ArgumentException("Invalid Email or password");
     }
 
     public async Task<bool> Signup(User user)
@@ -33,6 +33,10 @@ public class UserDomain:IUserDomain
     public async Task<User> GetByUsername(string username)
     {
         return  await _userRepository.GetByUsername(username);
+    }
+    public async Task<User> GetByEmail(string email)
+    {
+        return  await _userRepository.GetByEmail(email);
     }
 
     public async Task<User> GetByUserId(int id)

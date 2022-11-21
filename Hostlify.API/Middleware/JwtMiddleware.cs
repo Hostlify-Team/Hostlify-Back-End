@@ -15,11 +15,11 @@ public class JwtMiddleware
     {
 
         var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-        var username = tokenDomain.ValidateJwt(token);
+        var email = tokenDomain.ValidateJwt(token);
 
-        if (username != null)
+        if (email != null)
         {
-            context.Items["user"] = await  userDomain.GetByUsername(username);
+            context.Items["email"] = await  userDomain.GetByEmail(email);
         }
         
         await _next(context);

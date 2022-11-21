@@ -36,7 +36,7 @@ public class HostlifyDB:DbContext
         builder.Entity<Plan>().HasKey(p => p.Id);
         builder.Entity<Plan>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Plan>().Property(p => p.Name).IsRequired().HasMaxLength(15);
-        builder.Entity<Plan>().Property(p => p.Rooms);
+        builder.Entity<Plan>().Property(p => p.Rooms).HasDefaultValue(null);
         builder.Entity<Plan>().Property(p => p.Price).IsRequired();
         builder.Entity<Plan>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
         builder.Entity<Plan>().Property(p => p.IsActive).HasDefaultValue(true);
@@ -45,6 +45,9 @@ public class HostlifyDB:DbContext
         builder.Entity<User>().HasKey(p => p.Id);
         builder.Entity<User>().Property(c => c.Username).IsRequired();
         builder.Entity<User>().Property(c => c.Password).IsRequired();
+        builder.Entity<User>().Property(c => c.Email).IsRequired();
+        builder.Entity<User>().Property(c => c.Plan).HasDefaultValue(null);
+        builder.Entity<User>().Property(c => c.Type).IsRequired();
         builder.Entity<User>().Property(c => c.DateCreated).IsRequired().HasDefaultValue(DateTime.Now);
         builder.Entity<User>().Property(c => c.IsActive).IsRequired().HasDefaultValue(true);
         

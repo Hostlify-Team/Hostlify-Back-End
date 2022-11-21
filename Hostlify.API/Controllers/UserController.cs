@@ -24,9 +24,9 @@ namespace Hostlify.API.Controllers
         [HttpPost] 
         [AllowAnonymous]
         [Route("Login")]
-        public async Task<IActionResult> Login(UserResource userResource)
+        public async Task<IActionResult> Login(LoginResource LoginResource)
         { 
-            var user = _mapper.Map<UserResource,User>(userResource);
+            var user = _mapper.Map<LoginResource,User>(LoginResource);
             var result = await _userDomain.Login(user);
             return Ok(result);
         }   
