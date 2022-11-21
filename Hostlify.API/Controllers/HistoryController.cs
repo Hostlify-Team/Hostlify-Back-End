@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using AutoMapper;
+using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
 using Microsoft.AspNetCore.Http;
@@ -15,52 +17,89 @@ namespace Hostlify.API.Controllers
     [Produces(MediaTypeNames.Application.Json)]
     public class HistoryController : ControllerBase
     {
-        private IHistoryDomain _historyDomain;//Inyeccion
+        private readonly IHistoryDomain _historyDomain;//Inyeccion
+        private readonly IMapper _mapper;
 
-        public HistoryController(IHistoryDomain historyDomain)
+        public HistoryController(IHistoryDomain historyDomain ,IMapper mapper)
         {
             _historyDomain = historyDomain;
+            _mapper = mapper;
         }
 
-        // GET
-        [HttpGet]
-        public async Task<List<History>> Get()
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> Get() 
         {
-            return await _historyDomain.getAll();
+            try
+            {
+                var result = await _historyDomain.getAll();
+                return Ok(_mapper.Map<List<History>, List<HistoryResource>>(result));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+            finally
+            {
+            
+            }
         }
+
         
-        /*[HttpGet("{id}", Name = "Get")]
-        public History Get(int id)
-        {
-            return _historyDomain.getHistoryById(id);
-        }*/
-        
         [HttpGet]
-        [Route("GetByManagerId")]
-        public async Task<History> GetByManagerId(int id)
+        [Route("byManagerId")]
+        public  async Task<IActionResult> GetHistoryForManagerId(int managerId)
         {
-            return await _historyDomain.getHistoryForManager(id);
-        }
+            try
+            {
+                if (managerId == 0)
+                {
+                    return BadRequest("ManagerId");
+                }
 
-        // POST
-        [HttpPost]
-        public async Task<bool> Post([FromBody] History historyinput)
+                var result = await _historyDomain.getHistoryForManagerId(managerId);
+                return Ok(_mapper.Map<History, HistoryResource>(result));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+        } 
+        
+        [HttpPost] 
+        [Route("byResource")]
+        public async Task<IActionResult>  Post([FromBody] HistoryResource historyInput)
         {
-            Console.WriteLine("Hello World");
-            return await _historyDomain.post(historyinput);
+            try
+            {
+              
+               var history = _mapper.Map<HistoryResource, History>(historyInput); 
+                var result = await _historyDomain.postHistory(history); 
+                return StatusCode(StatusCodes.Status201Created, "history created");
+            }
+                                                                                                                
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar: "+ex);
+            }
+            finally
+            {
+                
+            }
         }
-
-        // PUT
-        /*[HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }*/
 
         // DELETE
         [HttpDelete("{id}")]
-        public async Task<bool> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return await _historyDomain.deleteHistory(id);
+            try
+            {
+                var result = await _historyDomain.deleteHistory(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
         }
     }
 }

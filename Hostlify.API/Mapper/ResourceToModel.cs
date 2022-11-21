@@ -13,5 +13,6 @@ public class ResourceToModel:Profile
         CreateMap<LoginResource, User>();
         CreateMap<RoomResource, Room>();
         CreateMap<FoodServicesResource, FoodServices>();
+        CreateMap<HistoryResource, History>();
     }
 }

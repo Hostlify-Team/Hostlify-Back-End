@@ -46,6 +46,9 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IFoodServicesDomain, FoodServicesDomain>();
 builder.Services.AddScoped<IFoodServicesRepository, FoodServicesRepository>();
+builder.Services.AddScoped<IHistoryDomain, HistoryDomain>();
+builder.Services.AddScoped<IHistoryRepository,HistoryRepository>();
+
 
 var connectionString = builder.Configuration.GetConnectionString("HostlifyConnection");
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));//VARIA DEACUERDO A LA VERSION

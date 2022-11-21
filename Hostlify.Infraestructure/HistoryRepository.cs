@@ -19,74 +19,37 @@ public class HistoryRepository : IHistoryRepository
 
     }
 
-    public async Task<bool> update(int id, History history)
-    {
+
+
+    public async Task<bool> postHistory(History history)
+    {   
+
         using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
         {
             try
             {
-                var existingHistory = await _hostlifyDb.History.FindAsync(id);
-                existingHistory.roomName = history.roomName;
-                existingHistory.managerId = history.managerId;
-                existingHistory.guestName = history.guestName;
-                existingHistory.initialDate = history.initialDate;
-                existingHistory.endDate = history.endDate;
-                existingHistory.price = history.price;
-                existingHistory.description = history.description;
-
-                _hostlifyDb.History.Update(existingHistory);
-                _hostlifyDb.SaveChangesAsync();
-                _hostlifyDb.Database.CommitTransactionAsync();
+                await _hostlifyDb.History.AddAsync(history);
+                await _hostlifyDb.SaveChangesAsync();
+                await transacction.CommitAsync();
             }
+
             catch (Exception ex)
             {
-                await _hostlifyDb.Database.RollbackTransactionAsync();
-            }
-        }
-
-        return true;
-
-    }
-
-    public async Task<bool> post(History history)
-    {
-
-        using (var transaction = _hostlifyDb.Database.BeginTransactionAsync())//Empiezo la transaccion eñ using es para abrir y cerrar coneccion automaticamente
-        {
-            try
-            {
-                _hostlifyDb.History.AddAsync(history); //Agregado a nivel de memoria Y CON AddAsync
-                _hostlifyDb.SaveChanges(); //Agregado a la base de datos y con SaveAsync
-                _hostlifyDb.Database.CommitTransactionAsync(); //termino la transaccion
-
-            }
-            catch (Exception ex)
-            {
-                _hostlifyDb.Database.RollbackTransactionAsync();
+                transacction.RollbackAsync();
             }
             finally
             {
-                _hostlifyDb.DisposeAsync();
+                await transacction.DisposeAsync();
             }
         }
         return true;
     }
 
-    public History getHistoryById(int id)
-    {
-        throw new NotImplementedException();
-    }
 
-    public bool createHistory(int roomName, string managerId, int guestId, string guestName, string guestEmail,
-        DateTime initialDate, DateTime endDate, int price, string description)
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<History> getHistoryForManager(int id)
+    public async Task<History> getHistoryForManagerId(int managerId)                
     {
         return await _hostlifyDb.History
-            .SingleOrDefaultAsync(history => history.managerId == id); 
+            .SingleOrDefaultAsync(history => history.managerId == managerId); 
     }
 
     public async Task<bool> deleteHistory(int id)

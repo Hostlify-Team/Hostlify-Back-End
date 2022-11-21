@@ -2,7 +2,7 @@
 
 namespace Hostlify.Domain;
 
-public class HistoryDomain : IHistoryDomain
+public class HistoryDomain : IHistoryDomain 
 {
     private IHistoryRepository _HistoryRepository;
 
@@ -15,20 +15,14 @@ public class HistoryDomain : IHistoryDomain
     {
         return await _HistoryRepository.getAll();
     }
-
-    public History getHistoryById(int id)
+    public async Task<bool> postHistory(History history)
     {
-        return _HistoryRepository.getHistoryById(id);
+        return await _HistoryRepository.postHistory(history);
     }
 
-    public bool createHistory(int roomName, string managerId, int guestId, string guestName, string guestEmail, DateTime initialDate, DateTime endDate, int price, string description)
+    public async Task<History> getHistoryForManagerId(int managerId)
     {
-        throw new NotImplementedException();
-    }
-
-    public async Task<History> getHistoryForManager(int id)
-    {
-        return await _HistoryRepository.getHistoryForManager(id);
+        return await _HistoryRepository.getHistoryForManagerId(managerId);
     }
 
     public async Task<bool> deleteHistory(int id)
@@ -36,8 +30,5 @@ public class HistoryDomain : IHistoryDomain
         return await _HistoryRepository.deleteHistory(id);
     }
 
-    public async Task<bool> post(History history)
-    {
-        return await _HistoryRepository.post(history);
-    }
+
 }

@@ -78,7 +78,7 @@ public class HostlifyDB:DbContext
         builder.Entity<History>().Property(p => p.initialDate).IsRequired();
         builder.Entity<History>().Property(p => p.endDate).IsRequired();
         builder.Entity<History>().Property(p => p.price).IsRequired();
-        builder.Entity<History>().Property(p => p.description).IsRequired();
+        builder.Entity<History>().Property(p => p.description);
         builder.Entity<History>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
         builder.Entity<History>().Property(p => p.IsActive).HasDefaultValue(true);
         
