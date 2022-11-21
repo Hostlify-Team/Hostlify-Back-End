@@ -4,7 +4,7 @@ public class History : BaseModel
 {
     public int id { get; set; }
 
-    public int roomName { get; set; }
+    public string roomName { get; set; }
     public int managerId { get; set; }
 
     public string guestName { get; set; }

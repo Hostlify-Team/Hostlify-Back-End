@@ -64,9 +64,17 @@ public class RoomRepository : IRoomRepository
                 var existingRoom = await _hostlifyDb.Rooms.FindAsync(id);
                 //Console.WriteLine("ENCONTRE DATO: "+existingRoom.Name);
 
-               existingRoom.Name = room.Name;
+               existingRoom.RoomName = room.RoomName;
                existingRoom.Description = room.Description;
                existingRoom.GuestId = room.GuestId;
+               existingRoom.ManagerId = room.ManagerId;
+               existingRoom.Initialdate = room.Initialdate;
+               existingRoom.EndDate = room.EndDate;
+               existingRoom.Status = room.Status;
+               existingRoom.GuestStayComplete = room.GuestStayComplete;
+               existingRoom.Price = room.Price;
+               existingRoom.Emergency = room.Emergency;
+               existingRoom.ServicePending = room.ServicePending;
                existingRoom.DateUpdated = DateTime.Now;
 
                _hostlifyDb.Rooms.Update(existingRoom);

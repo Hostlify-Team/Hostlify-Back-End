@@ -9,4 +9,6 @@ public class RoomResource
     public string Name { get; set; }
     [Microsoft.Build.Framework.Required]
     public int ManagerId { get; set; }
+    
+    public string Description { get; set; }
 }

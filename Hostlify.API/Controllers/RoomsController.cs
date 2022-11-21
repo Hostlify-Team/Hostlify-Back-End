@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hostlify.API.Controllers
 {
-
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
@@ -37,7 +37,7 @@ namespace Hostlify.API.Controllers
             try
             {
                 var result = await _roomDomain.getAll();
-                return Ok(_mapper.Map<List<Room>, List<RoomResource>>(result));
+                return Ok(result);
             }
             catch (Exception exception)
             {
@@ -62,7 +62,7 @@ namespace Hostlify.API.Controllers
                 }
 
                 var result = await _roomDomain.getRoomforManagerId(managerId);
-                return Ok(_mapper.Map<Room, RoomResource>(result));
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -81,7 +81,7 @@ namespace Hostlify.API.Controllers
                 }
 
                 var result = await _roomDomain.getRoomforGuestId(guestId);
-                return Ok(_mapper.Map<Room, RoomResource>(result));
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -125,9 +125,13 @@ namespace Hostlify.API.Controllers
                 var result = await _roomDomain.updateroom(id, roomInput);
                 return Ok(result);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+            finally
+            {
+            
             }
         }
 

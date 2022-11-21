@@ -12,7 +12,9 @@ public class ModelToResource:Profile
         CreateMap<User, UserResource>();
         CreateMap<User, LoginResource>();
         CreateMap<Room, RoomResource>();
+        CreateMap<Room, EditRoomResource>();
         CreateMap<History, HistoryResource>();
         CreateMap<FoodServices, FoodServicesResource>();
+        
     }
 }

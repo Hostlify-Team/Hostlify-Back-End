@@ -54,7 +54,7 @@ public class HostlifyDB:DbContext
         builder.Entity<Room>().ToTable("Rooms");
         builder.Entity<Room>().HasKey(p => p.Id);
         builder.Entity<Room>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
-        builder.Entity<Room>().Property(p => p.Name).IsRequired().HasMaxLength(15);
+        builder.Entity<Room>().Property(p => p.RoomName).IsRequired().HasMaxLength(15);
         builder.Entity<Room>().Property(p => p.GuestId);
         builder.Entity<Room>().Property(p => p.ManagerId).IsRequired();
         builder.Entity<Room>().Property(p => p.Initialdate);
@@ -96,6 +96,7 @@ public class HostlifyDB:DbContext
         builder.Entity<FoodServices>().Property(p => p.Instruction).HasMaxLength(999);
         builder.Entity<FoodServices>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
         builder.Entity<FoodServices>().Property(p => p.IsActive).HasDefaultValue(true);
+
 
     }
 }
