@@ -52,15 +52,6 @@ namespace Hostlify.API.Controllers
             return await _userDomain.GetAllUsers();
         }
         
-        // GET: api/User
-        [HttpGet]
-        [AllowAnonymous]
-        [Route("GetByUsername")]
-        [ProducesResponseType(typeof(IEnumerable<string>), 200)]
-        public async Task<User> GetByUsername(string username)
-        {
-            return await _userDomain.GetByUsername(username);
-        }
 
         // GET: api/User/5
         [AllowAnonymous]
