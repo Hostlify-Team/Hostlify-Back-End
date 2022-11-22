@@ -57,6 +57,11 @@ var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));//VARIA DEACUE
 builder.Services.AddDbContext<HostlifyDB>(
         dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
 
+builder.Services.AddCors(options => options.AddPolicy("AllowWepApp",
+    builder => builder.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod()));
+
 builder.Services.AddAutoMapper(
     typeof(ModelToResource),
     typeof(ResourceToModel)
@@ -84,6 +89,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("AllowWepApp");
 }
 
 app.UseMiddleware<JwtMiddleware>();
