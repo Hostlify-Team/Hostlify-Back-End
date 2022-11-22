@@ -13,10 +13,6 @@ public class UserRepository:IUserRepository
         _hostlifyDb = hostlifyDb;
     }
     
-    public async Task<User> GetByUsername(string username)
-    {
-        return await _hostlifyDb.Users.SingleOrDefaultAsync(user => user.Username ==  username);
-    }
 
     public async Task<User> GetByUserId(int id)
     {

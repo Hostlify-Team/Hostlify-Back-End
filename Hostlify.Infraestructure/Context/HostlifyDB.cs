@@ -43,7 +43,7 @@ public class HostlifyDB:DbContext
         
         builder.Entity<User>().ToTable("Users");
         builder.Entity<User>().HasKey(p => p.Id);
-        builder.Entity<User>().Property(c => c.Username).IsRequired();
+        builder.Entity<User>().Property(c => c.Name).IsRequired();
         builder.Entity<User>().Property(c => c.Password).IsRequired();
         builder.Entity<User>().Property(c => c.Email).IsRequired();
         builder.Entity<User>().Property(c => c.Plan).HasDefaultValue(null);

@@ -2,8 +2,6 @@
 
 public interface IUserRepository
 {
-    Task<User> GetByUsername(string username);
-    
     Task<User> GetByUserId(int id);
     Task<bool> Login(User user);
     Task<bool> SingUp(User user);
