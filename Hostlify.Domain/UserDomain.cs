@@ -29,11 +29,7 @@ public class UserDomain:IUserDomain
     {
         return await _userRepository.SingUp(user);
     }
-
-    public async Task<User> GetByUsername(string username)
-    {
-        return  await _userRepository.GetByUsername(username);
-    }
+    
     public async Task<User> GetByEmail(string email)
     {
         return  await _userRepository.GetByEmail(email);
