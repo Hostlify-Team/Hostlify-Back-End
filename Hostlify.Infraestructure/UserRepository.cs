@@ -16,7 +16,7 @@ public class UserRepository:IUserRepository
 
     public async Task<User> GetByUserId(int id)
     {
-        return await _hostlifyDb.Users.SingleOrDefaultAsync(user => user.Id ==  id);
+        return await _hostlifyDb.Users.SingleOrDefaultAsync(user => user.Id ==  id && user.IsActive==true);
     }
 
     public async Task<bool> Login(User user)
@@ -79,6 +79,6 @@ public class UserRepository:IUserRepository
 
     public async Task<User> GetByEmail(string email)
     {
-        return await _hostlifyDb.Users.SingleOrDefaultAsync(user => user.Email ==  email);
+        return await _hostlifyDb.Users.SingleOrDefaultAsync(user => user.Email ==  email && user.IsActive==true);
     }
 }

@@ -9,9 +9,7 @@ public class Room : BaseModel
     public string? Initialdate { get; set; }
     public string? EndDate { get; set; }
     public bool Status { get; set; }
-    public bool? GuestStayComplete { get; set; }
     public int? Price { get; set; }
-    public string? Image { get; set; }
     public string? Description { get; set; }
     public bool Emergency { get; set; }
     public bool ServicePending { get; set; }

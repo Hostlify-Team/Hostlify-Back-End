@@ -19,35 +19,35 @@ public class RoomRepository : IRoomRepository
    
     }
 
-    public async Task<Room> getRoomforManagerId(int managerId)
+    public async Task<List<Room>> getRoomforManagerId(int managerId)
     {
         return await _hostlifyDb.Rooms
-            .SingleOrDefaultAsync(room => room.ManagerId == managerId); 
+            .Where(room => room.ManagerId == managerId && room.IsActive==true).ToListAsync(); 
     }
 
     public async Task<Room> getRoomforGuestId(int guestId)
     {
         return await _hostlifyDb.Rooms
-            .SingleOrDefaultAsync(room => room.GuestId == guestId);
+            .SingleOrDefaultAsync(room => room.GuestId == guestId && room.IsActive==true);
     }
 
     public async Task<bool> postroom(Room room)
     {
-        using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
+        using (var transaction = await _hostlifyDb.Database.BeginTransactionAsync())
         {
             try
             {
                 await _hostlifyDb.Rooms.AddAsync(room);
                 await _hostlifyDb.SaveChangesAsync();
-                await transacction.CommitAsync();
+                await transaction.CommitAsync();
             }
             catch (Exception ex)
             {
-                await transacction.RollbackAsync();
+                transaction.RollbackAsync();
             }
             finally
             {
-                await transacction.DisposeAsync();
+                await transaction.DisposeAsync();
             }
         }
 
@@ -63,7 +63,7 @@ public class RoomRepository : IRoomRepository
             {
                 var existingRoom = await _hostlifyDb.Rooms.FindAsync(id);
                 //Console.WriteLine("ENCONTRE DATO: "+existingRoom.Name);
-
+                
                existingRoom.RoomName = room.RoomName;
                existingRoom.Description = room.Description;
                existingRoom.GuestId = room.GuestId;
@@ -71,7 +71,6 @@ public class RoomRepository : IRoomRepository
                existingRoom.Initialdate = room.Initialdate;
                existingRoom.EndDate = room.EndDate;
                existingRoom.Status = room.Status;
-               existingRoom.GuestStayComplete = room.GuestStayComplete;
                existingRoom.Price = room.Price;
                existingRoom.Emergency = room.Emergency;
                existingRoom.ServicePending = room.ServicePending;

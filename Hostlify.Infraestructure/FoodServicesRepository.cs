@@ -42,33 +42,12 @@ public class FoodServicesRepository : IFoodServicesRepository
         return true;
     }
 
-    public async Task<FoodServices> getFoodServiceByRoomId(int roomid)
+    public async Task<List<FoodServices>> getFoodServiceByRoomId(int roomid)
     {
         return await _hostlifyDb.FoodServices
-            .SingleOrDefaultAsync(foodService => foodService.RoomID == roomid); 
+            .Where(foodService => foodService.RoomID == roomid && foodService.IsActive==true).ToListAsync(); 
     }
-
-    public async Task<bool> deletebyroomid(int roomid)
-    {
-        using (var transacction  = await _hostlifyDb.Database.BeginTransactionAsync())
-        { 
-            try
-            {
-                var foodService = await _hostlifyDb.FoodServices.SingleOrDefaultAsync(foodService => foodService.RoomID == roomid);
-                foodService.IsActive = false;
-                foodService.DateUpdated = DateTime.Now;
-                _hostlifyDb.FoodServices.Update(foodService);
-                await _hostlifyDb.SaveChangesAsync();
-                _hostlifyDb.Database.CommitTransactionAsync();
-            }
-            catch (Exception ex)
-            {
-                await _hostlifyDb.Database.RollbackTransactionAsync();
-            }
-        }
- 
-        return true;
-    }
+    
 
     public async Task<bool> deletebyid(int id)
     {
