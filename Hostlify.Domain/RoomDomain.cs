@@ -17,7 +17,7 @@ public class RoomDomain : IRoomDomain
         return await _RoomRepository.getAll();
     }
 
-    public async Task<Room> getRoomforManagerId(int managerId)
+    public async Task<List<Room>> getRoomforManagerId(int managerId)
     {
         return await _RoomRepository.getRoomforManagerId(managerId);
     }

@@ -37,11 +37,9 @@ builder.Services.AddSwaggerGen(options=>{
 });
 
 //Dependency injection
-builder.Services.AddScoped<IPlanDomain, PlanDomain>();
 builder.Services.AddScoped<IUserDomain, UserDomain>();
 builder.Services.AddScoped<IRoomDomain, RoomDomain>();
 builder.Services.AddScoped<ITokenDomain, TokenDomain>();
-builder.Services.AddScoped<IPlanRepository, PlanRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IFoodServicesDomain, FoodServicesDomain>();

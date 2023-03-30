@@ -4,16 +4,16 @@ using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using AutoMapper;
-using Hostlify.API.Filter;
 using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hostlify.API.Controllers
 {
-    [Authorize]
+    [Filter.Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
@@ -31,12 +31,13 @@ namespace Hostlify.API.Controllers
       
         [HttpGet]
           [Route ("GetAll")]
+        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
             try
             {
                 var result = await _foodServicesDomain.getAll();
-                return Ok(_mapper.Map<List<FoodServices>, List<FoodServices>>(result));
+                return Ok(_mapper.Map<List<FoodServices>, List<GetFoodServiceResponse>>(result));
             }
             catch (Exception ex)
             {
@@ -51,6 +52,7 @@ namespace Hostlify.API.Controllers
 
         [HttpGet]
         [Route("byRoomId")]
+        [AllowAnonymous]
         public  async Task<IActionResult> GetFoodServiceByRoomId(int roomId)
         {
             try
@@ -61,7 +63,7 @@ namespace Hostlify.API.Controllers
                 }
 
                 var result = await _foodServicesDomain.getFoodServiceByRoomId(roomId);
-                return Ok(_mapper.Map<FoodServices, FoodServicesResource>(result));
+                return Ok(_mapper.Map<List<FoodServices>, List<GetFoodServiceResponse>>(result));
             }
             catch (Exception ex)
             {
@@ -71,10 +73,12 @@ namespace Hostlify.API.Controllers
    
         [HttpPost] 
         [Route("byResource")]
+        [AllowAnonymous]
         public async Task<IActionResult> Post([FromBody] FoodServicesResource foodServicesInput)
         {
             try
             {
+                if (foodServicesInput.Instruction=="none"){foodServicesInput.Instruction = null;}
                 var foodServices = _mapper.Map<FoodServicesResource, FoodServices>(foodServicesInput);
                 var result = await _foodServicesDomain.postfoodservice(foodServices);
                 return StatusCode(StatusCodes.Status201Created, "foodservices created");
@@ -88,26 +92,11 @@ namespace Hostlify.API.Controllers
             
             }
         }
-        [HttpDelete]
-        [Route("byRoomId")]
-        public async Task<IActionResult> Deletebyroomid(int roomid)
-        {
-            try
-            {
-                var result = await _foodServicesDomain.deletebyroomid(roomid);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
-            }
-            finally
-            {
-            
-            }
-        }
+        
+        
         // DELETE: api/FoodServices/5                                                                                                                           
         [HttpDelete("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Deletebyid(int id)
         {
             try

@@ -13,4 +13,6 @@ public class FoodServicesResource
     public int DrinkQuantity { get; set; }
     public string Cream { get; set; }
     public int CreamQuantity { get; set; }
+    public string Instruction { get; set; }
+
 }

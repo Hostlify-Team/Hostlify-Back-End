@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj": {}
+    "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj": {}
   },
   "projects": {
-    "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj": {
+    "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj",
         "projectName": "Hostlify.Domain",
-        "projectPath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj",
+        "projectPath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Domain\\Hostlify.Domain.csproj",
         "packagesPath": "C:\\Users\\DIEGO\\.nuget\\packages\\",
-        "outputPath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Domain\\obj\\",
+        "outputPath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DIEGO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
-                "projectPath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj"
+              "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
+                "projectPath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj"
               },
-              "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
-                "projectPath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj"
+              "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
+                "projectPath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj"
               }
             }
           }
@@ -80,14 +80,14 @@
         }
       }
     },
-    "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
+    "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj",
+        "projectUniqueName": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj",
         "projectName": "Hostlify.Infraestructure",
-        "projectPath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj",
+        "projectPath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\Hostlify.Infraestructure.csproj",
         "packagesPath": "C:\\Users\\DIEGO\\.nuget\\packages\\",
-        "outputPath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\obj\\",
+        "outputPath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Infraestructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DIEGO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -104,8 +104,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
-                "projectPath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj"
+              "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
+                "projectPath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj"
               }
             }
           }
@@ -177,14 +177,14 @@
         }
       }
     },
-    "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
+    "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
         "projectName": "Hostlify.Shared",
-        "projectPath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
+        "projectPath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
         "packagesPath": "C:\\Users\\DIEGO\\.nuget\\packages\\",
-        "outputPath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\obj\\",
+        "outputPath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DIEGO\\AppData\\Roaming\\NuGet\\NuGet.Config",

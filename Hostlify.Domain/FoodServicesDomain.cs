@@ -24,14 +24,9 @@ public class FoodServicesDomain :  IFoodServicesDomain
         return await _FoodServicesRepository.postfoodservice(foodServices);
     }
 
-    public async Task<FoodServices> getFoodServiceByRoomId(int roomId)
+    public async Task<List<FoodServices>> getFoodServiceByRoomId(int roomId)
     {
         return await _FoodServicesRepository.getFoodServiceByRoomId(roomId);
-    }
-
-    public async Task<bool> deletebyroomid(int roomid)
-    {
-        return await _FoodServicesRepository.deletebyroomid(roomid);
     }
 
     public async Task<bool> deletebyid(int id)

@@ -6,9 +6,7 @@ public interface IFoodServicesDomain
 {
     Task<List<FoodServices>> getAll();
     Task<bool> postfoodservice(FoodServices foodServices);
-    Task<FoodServices>  getFoodServiceByRoomId(int roomId);
-    
-    Task<bool> deletebyroomid(int roomid);
+    Task<List<FoodServices>>  getFoodServiceByRoomId(int roomId);
     
     Task<bool> deletebyid(int id);
 }

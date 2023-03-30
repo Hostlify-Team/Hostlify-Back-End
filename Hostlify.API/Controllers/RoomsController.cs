@@ -31,12 +31,13 @@ namespace Hostlify.API.Controllers
   
         // GET: api/Rooms
         [HttpGet("GetAll")]
+        [AllowAnonymous]
         public async Task<IActionResult> Get() 
         {
             try
             {
                 var result = await _roomDomain.getAll();
-                return Ok(result);
+                return Ok(_mapper.Map<List<Room>,List<GetRoomResponse>>(result));
             }
             catch (Exception exception)
             {
@@ -51,6 +52,7 @@ namespace Hostlify.API.Controllers
         // GET: api/Rooms/5
         [HttpGet]
         [Route("byManagerId")]
+        [AllowAnonymous]
         public  async Task<IActionResult> GetRoomforManagerId(int managerId)
         {
             try
@@ -61,15 +63,17 @@ namespace Hostlify.API.Controllers
                 }
 
                 var result = await _roomDomain.getRoomforManagerId(managerId);
-                return Ok(result);
+                return Ok(_mapper.Map<List<Room>,List<GetRoomResponse>>(result));
             }
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
         } 
+        
         [HttpGet]
         [Route("byGuestId")]
+        [AllowAnonymous]
         public  async Task<IActionResult> GetRoomforGuestId(int guestId)
         {
             try
@@ -80,7 +84,7 @@ namespace Hostlify.API.Controllers
                 }
 
                 var result = await _roomDomain.getRoomforGuestId(guestId);
-                return Ok(result);
+                return Ok(_mapper.Map<Room,GetRoomResponse>(result));
             }
             catch (Exception ex)
             {
@@ -91,7 +95,7 @@ namespace Hostlify.API.Controllers
 
         // POST: api/Rooms
         [HttpPost]
-
+        [AllowAnonymous]
         public async Task<IActionResult>  Post([FromBody] RoomResource roomInput)
         {
             try
@@ -117,25 +121,43 @@ namespace Hostlify.API.Controllers
 
         // PUT: api/Rooms/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Room roomInput)
+        [AllowAnonymous]
+        public async Task<IActionResult> PutEmptyRoom(int id, [FromBody] UpdateRoomRegisteredResource roomInput,String cast)
         {
-            try
+            if (cast == "empty")
             {
-                var result = await _roomDomain.updateroom(id, roomInput);
-                return Ok(result);
+                try
+                {
+                    RoomResource roomResource = new RoomResource();
+                    roomResource.RoomName = roomInput.RoomName;
+                    roomResource.ManagerId = roomInput.ManagerId;
+                    roomResource.Description = roomInput.Description;
+                    var result = await _roomDomain.updateroom(id, _mapper.Map<RoomResource,Room>(roomResource));
+                    return Ok(result);
+                }
+                catch (Exception exception)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                }
             }
-            catch (Exception exception)
+            else
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
-            }
-            finally
-            {
-            
+                try
+                {
+                    var result = await _roomDomain.updateroom(id, _mapper.Map<UpdateRoomRegisteredResource,Room>(roomInput));
+                    return Ok(result);
+                }
+                catch (Exception exception)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                }
             }
         }
+        
 
         // DELETE: api/Rooms/5
         [HttpDelete("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Delete(int id)
         {
             try

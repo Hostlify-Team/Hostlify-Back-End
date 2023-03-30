@@ -24,9 +24,9 @@ namespace Hostlify.API.Controllers
         [HttpPost] 
         [AllowAnonymous]
         [Route("Login")]
-        public async Task<IActionResult> Login(LoginResource LoginResource)
-        { 
-            var user = _mapper.Map<LoginResource,User>(LoginResource);
+        public async Task<IActionResult> Login(LoginResource loginResource)
+        {
+            var user = _mapper.Map<LoginResource, User>(loginResource);
             var result = await _userDomain.Login(user);
             return Ok(result);
         }   
@@ -36,9 +36,23 @@ namespace Hostlify.API.Controllers
         [AllowAnonymous]
         [Route("Signup")]
         [ProducesResponseType(typeof(bool), 200)]
-        public async Task<IActionResult> Signup(UserResource userResource)
+        public async Task<IActionResult> UserSignup(UserResource userResource)
         {
             var user = _mapper.Map<UserResource,User>(userResource);
+            user.Type = "manager";
+            var result = await _userDomain.Signup(user);
+            return Ok();
+        }
+        
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("GuestSignup")]
+        [ProducesResponseType(typeof(bool), 200)]
+        public async Task<IActionResult> GuestSignup(GuestUserResource guestUserResource)
+        {
+            var user = _mapper.Map<GuestUserResource,User>(guestUserResource);
+            user.Type = "guest";
+            user.Plan = null;
             var result = await _userDomain.Signup(user);
             return Ok();
         }
@@ -47,9 +61,17 @@ namespace Hostlify.API.Controllers
         [HttpGet]
         [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
-        public async Task<List<User>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await _userDomain.GetAllUsers();
+            try
+            {
+                var result = await _userDomain.GetAllUsers();
+                return Ok(_mapper.Map<List<User>, List<GetUserResponse>>(result));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
         }
         
 
@@ -57,19 +79,20 @@ namespace Hostlify.API.Controllers
         [AllowAnonymous]
         [ProducesResponseType(typeof(string), 200)]
         [HttpGet("{id}", Name = "Get")]
-        public async Task<User> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return await _userDomain.GetByUserId(id);
+            try
+            {
+                return Ok(_mapper.Map<User, GetUserResponse>( await _userDomain.GetByUserId(id)));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+
         }
         
-
-        // PUT: api/User/5
-        /*[AllowAnonymous]
-        [HttpPut("{id}")]
-        [ProducesResponseType(typeof(void), 200)]
-        public void Put(int id, [FromBody] string value)
-        {
-        }*/
+        
 
         // DELETE: api/User/5
         [AllowAnonymous]

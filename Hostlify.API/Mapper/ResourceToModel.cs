@@ -8,12 +8,19 @@ public class ResourceToModel:Profile
 {
     public ResourceToModel()
     {
-        CreateMap<PlanResource, Plan>();
         CreateMap<UserResource, User>();
+        CreateMap<GuestUserResource, User>();
+        CreateMap<GetUserResponse, User>();
         CreateMap<LoginResource, User>();
         CreateMap<RoomResource, Room>();
+        CreateMap<GetRoomResponse, Room>();
+        CreateMap<UpdateRoomRegisteredResource, Room>();
+        CreateMap<UpdateRoomRegisteredResource, RoomResource>();
         CreateMap<EditRoomResource, Room>();
         CreateMap<FoodServicesResource, FoodServices>();
+        CreateMap<GetFoodServiceResponse, FoodServices>();
         CreateMap<HistoryResource, History>();
+        CreateMap<getHistoryResponse, History>();
+
     }
 }
