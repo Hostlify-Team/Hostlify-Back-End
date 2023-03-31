@@ -3,9 +3,11 @@ using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Hostlify.API.Controllers
-{
+{   
+    [Filter.Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -19,6 +21,7 @@ namespace Hostlify.API.Controllers
             _mapper = mapper;
         }
         // GET: api/User
+        [AllowAnonymous]
         [HttpPost] 
         [Route("Login")]
         public async Task<IActionResult> Login(LoginResource loginResource)
@@ -29,6 +32,7 @@ namespace Hostlify.API.Controllers
         }   
         
         // GET: api/User
+        [AllowAnonymous]
         [HttpPost]
         [Route("Signup")]
         [ProducesResponseType(typeof(bool), 200)]
@@ -40,6 +44,7 @@ namespace Hostlify.API.Controllers
             return Ok();
         }
         
+        [AllowAnonymous]
         [HttpPost]
         [Route("GuestSignup")]
         [ProducesResponseType(typeof(bool), 200)]
@@ -53,6 +58,7 @@ namespace Hostlify.API.Controllers
         }
         
         // GET: api/User
+        [Filter.Authorize]
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
         public async Task<IActionResult> Get()
@@ -70,6 +76,7 @@ namespace Hostlify.API.Controllers
         
 
         // GET: api/User/5
+        [Filter.Authorize]
         [ProducesResponseType(typeof(string), 200)]
         [HttpGet("{id}", Name = "Get")]
         public async Task<IActionResult> Get(int id)
@@ -88,6 +95,7 @@ namespace Hostlify.API.Controllers
         
 
         // DELETE: api/User/5
+        [Filter.Authorize]
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(void), 200)]
         public async Task<bool> Delete(int id)

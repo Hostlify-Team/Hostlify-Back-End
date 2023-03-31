@@ -4,9 +4,11 @@ using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
 using Microsoft.AspNetCore.Mvc;
+using Hostlify.API.Filter;
 
 namespace Hostlify.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
@@ -20,7 +22,8 @@ namespace Hostlify.API.Controllers
             _historyDomain = historyDomain;
             _mapper = mapper;
         }
-
+        
+        [Authorize]
         [HttpGet("GetAll")]
         public async Task<IActionResult> Get() 
         {
