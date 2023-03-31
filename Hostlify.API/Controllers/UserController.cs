@@ -45,7 +45,6 @@ namespace Hostlify.API.Controllers
         }
         
         [HttpPost]
-        [AllowAnonymous]
         [Route("GuestSignup")]
         [ProducesResponseType(typeof(bool), 200)]
         public async Task<IActionResult> GuestSignup(GuestUserResource guestUserResource)
@@ -59,7 +58,6 @@ namespace Hostlify.API.Controllers
         
         // GET: api/User
         [HttpGet]
-        [AllowAnonymous]
         [ProducesResponseType(typeof(IEnumerable<string>), 200)]
         public async Task<IActionResult> Get()
         {
@@ -76,7 +74,6 @@ namespace Hostlify.API.Controllers
         
 
         // GET: api/User/5
-        [AllowAnonymous]
         [ProducesResponseType(typeof(string), 200)]
         [HttpGet("{id}", Name = "Get")]
         public async Task<IActionResult> Get(int id)

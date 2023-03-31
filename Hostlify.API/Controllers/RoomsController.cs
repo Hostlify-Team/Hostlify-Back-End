@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hostlify.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
@@ -31,7 +32,6 @@ namespace Hostlify.API.Controllers
   
         // GET: api/Rooms
         [HttpGet("GetAll")]
-        [AllowAnonymous]
         public async Task<IActionResult> Get() 
         {
             try
@@ -52,7 +52,6 @@ namespace Hostlify.API.Controllers
         // GET: api/Rooms/5
         [HttpGet]
         [Route("byManagerId")]
-        [AllowAnonymous]
         public  async Task<IActionResult> GetRoomforManagerId(int managerId)
         {
             try
@@ -95,7 +94,6 @@ namespace Hostlify.API.Controllers
 
         // POST: api/Rooms
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult>  Post([FromBody] RoomResource roomInput)
         {
             try
@@ -121,7 +119,6 @@ namespace Hostlify.API.Controllers
 
         // PUT: api/Rooms/5
         [HttpPut("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> PutEmptyRoom(int id, [FromBody] UpdateRoomRegisteredResource roomInput,String cast)
         {
             if (cast == "empty")
@@ -157,7 +154,6 @@ namespace Hostlify.API.Controllers
 
         // DELETE: api/Rooms/5
         [HttpDelete("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Delete(int id)
         {
             try
