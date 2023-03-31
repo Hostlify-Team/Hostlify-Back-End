@@ -1,19 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mime;
-using System.Threading.Tasks;
 using AutoMapper;
 using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hostlify.API.Controllers
 {
-    [Filter.Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
@@ -31,7 +24,6 @@ namespace Hostlify.API.Controllers
       
         [HttpGet]
           [Route ("GetAll")]
-        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
             try
@@ -52,7 +44,6 @@ namespace Hostlify.API.Controllers
 
         [HttpGet]
         [Route("byRoomId")]
-        [AllowAnonymous]
         public  async Task<IActionResult> GetFoodServiceByRoomId(int roomId)
         {
             try
@@ -73,7 +64,6 @@ namespace Hostlify.API.Controllers
    
         [HttpPost] 
         [Route("byResource")]
-        [AllowAnonymous]
         public async Task<IActionResult> Post([FromBody] FoodServicesResource foodServicesInput)
         {
             try
@@ -96,7 +86,6 @@ namespace Hostlify.API.Controllers
         
         // DELETE: api/FoodServices/5                                                                                                                           
         [HttpDelete("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Deletebyid(int id)
         {
             try

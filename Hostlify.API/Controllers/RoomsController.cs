@@ -1,20 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mime;
-using System.Security;
-using System.Threading.Tasks;
 using AutoMapper;
 using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hostlify.API.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
@@ -72,7 +64,6 @@ namespace Hostlify.API.Controllers
         
         [HttpGet]
         [Route("byGuestId")]
-        [AllowAnonymous]
         public  async Task<IActionResult> GetRoomforGuestId(int guestId)
         {
             try

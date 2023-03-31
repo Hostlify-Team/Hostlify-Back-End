@@ -2,12 +2,10 @@ using AutoMapper;
 using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hostlify.API.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -22,7 +20,6 @@ namespace Hostlify.API.Controllers
         }
         // GET: api/User
         [HttpPost] 
-        [AllowAnonymous]
         [Route("Login")]
         public async Task<IActionResult> Login(LoginResource loginResource)
         {
@@ -33,7 +30,6 @@ namespace Hostlify.API.Controllers
         
         // GET: api/User
         [HttpPost]
-        [AllowAnonymous]
         [Route("Signup")]
         [ProducesResponseType(typeof(bool), 200)]
         public async Task<IActionResult> UserSignup(UserResource userResource)
@@ -92,7 +88,6 @@ namespace Hostlify.API.Controllers
         
 
         // DELETE: api/User/5
-        [AllowAnonymous]
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(void), 200)]
         public async Task<bool> Delete(int id)

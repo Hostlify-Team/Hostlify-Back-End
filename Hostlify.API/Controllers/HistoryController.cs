@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mime;
-using System.Threading.Tasks;
+﻿using System.Net.Mime;
 using AutoMapper;
 using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hostlify.API.Controllers
 {
-    [Filter.Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
@@ -29,7 +22,6 @@ namespace Hostlify.API.Controllers
         }
 
         [HttpGet("GetAll")]
-        [AllowAnonymous]
         public async Task<IActionResult> Get() 
         {
             try
@@ -46,7 +38,6 @@ namespace Hostlify.API.Controllers
         
         [HttpGet]
         [Route("byManagerId")]
-        [AllowAnonymous]
         public  async Task<IActionResult> GetHistoryForManagerId(int managerId)
         {
             try
@@ -68,7 +59,6 @@ namespace Hostlify.API.Controllers
         
         [HttpPost] 
         [Route("byResource")]
-        [AllowAnonymous]
         public async Task<IActionResult>  Post([FromBody] HistoryResource historyInput)
         {
             try
@@ -91,7 +81,6 @@ namespace Hostlify.API.Controllers
 
         // DELETE
         [HttpDelete("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Delete(int id)
         {
             try
