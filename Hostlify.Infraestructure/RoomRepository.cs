@@ -31,6 +31,11 @@ public class RoomRepository : IRoomRepository
             .SingleOrDefaultAsync(room => room.GuestId == guestId && room.IsActive==true);
     }
 
+    public async Task<Room> getRoombyRoomName(string roomName)
+    {
+        return await _hostlifyDb.Rooms
+            .SingleOrDefaultAsync(room => room.RoomName == roomName && room.IsActive==true);    }
+
     public async Task<bool> postroom(Room room)
     {
         using (var transaction = await _hostlifyDb.Database.BeginTransactionAsync())
@@ -68,7 +73,7 @@ public class RoomRepository : IRoomRepository
                existingRoom.Description = room.Description;
                existingRoom.GuestId = room.GuestId;
                existingRoom.ManagerId = room.ManagerId;
-               existingRoom.Initialdate = room.Initialdate;
+               existingRoom.InitialDate = room.InitialDate;
                existingRoom.EndDate = room.EndDate;
                existingRoom.Status = room.Status;
                existingRoom.Price = room.Price;

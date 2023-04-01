@@ -45,7 +45,7 @@ public class FoodServicesRepository : IFoodServicesRepository
     public async Task<List<FoodServices>> getFoodServiceByRoomId(int roomid)
     {
         return await _hostlifyDb.FoodServices
-            .Where(foodService => foodService.RoomID == roomid && foodService.IsActive==true).ToListAsync(); 
+            .Where(foodService => foodService.roomId == roomid && foodService.IsActive==true).ToListAsync(); 
     }
     
 
