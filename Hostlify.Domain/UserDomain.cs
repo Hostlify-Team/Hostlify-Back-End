@@ -16,8 +16,8 @@ public class UserDomain:IUserDomain
     public async Task<string> Login(User user)
     {
         var result = await _userRepository.GetByEmail(user.Email);
-
-        if (result.Password == user.Password)
+        
+        if (result.Password == user.Password && result.IsActive)
         {
             return _tokenDomain.GenerateJwt(user.Email);
         }

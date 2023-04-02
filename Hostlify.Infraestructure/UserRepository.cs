@@ -21,7 +21,6 @@ public class UserRepository:IUserRepository
 
     public async Task<bool> Login(User user)
     {
-        
         _hostlifyDb.Users.Add(user);
         await _hostlifyDb.SaveChangesAsync();
         return true;
