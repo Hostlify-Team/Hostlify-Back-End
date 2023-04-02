@@ -4,9 +4,12 @@ using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
 using Microsoft.AspNetCore.Mvc;
+using Hostlify.API.Filter;
+
 
 namespace Hostlify.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
@@ -21,7 +24,7 @@ namespace Hostlify.API.Controllers
             _mapper = mapper;
         }
 
-      
+        [Authorize]
         [HttpGet]
           [Route ("GetAll")]
         public async Task<IActionResult> Get()
@@ -41,7 +44,7 @@ namespace Hostlify.API.Controllers
             }
             
         }
-
+        [Authorize]
         [HttpGet]
         [Route("byRoomId")]
         public  async Task<IActionResult> GetFoodServiceByRoomId(int roomId)
@@ -61,14 +64,14 @@ namespace Hostlify.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
         } 
-   
+        [Authorize]
         [HttpPost] 
         [Route("byResource")]
         public async Task<IActionResult> Post([FromBody] FoodServicesResource foodServicesInput)
         {
             try
             {
-                if (foodServicesInput.Instruction=="none"){foodServicesInput.Instruction = null;}
+                if (foodServicesInput.instruction=="none"){foodServicesInput.instruction = null;}
                 var foodServices = _mapper.Map<FoodServicesResource, FoodServices>(foodServicesInput);
                 var result = await _foodServicesDomain.postfoodservice(foodServices);
                 return StatusCode(StatusCodes.Status201Created, "foodservices created");
@@ -84,7 +87,8 @@ namespace Hostlify.API.Controllers
         }
         
         
-        // DELETE: api/FoodServices/5                                                                                                                           
+        // DELETE: api/FoodServices/5                 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Deletebyid(int id)
         {

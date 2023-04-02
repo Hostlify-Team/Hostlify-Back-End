@@ -26,6 +26,7 @@ namespace Hostlify.API.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login(LoginResource loginResource)
         {
+            //HACER QUE SOLO INICIE SESION PARA LOS IsActive
             var user = _mapper.Map<LoginResource, User>(loginResource);
             var result = await _userDomain.Login(user);
             return Ok(result);
@@ -36,27 +37,14 @@ namespace Hostlify.API.Controllers
         [HttpPost]
         [Route("Signup")]
         [ProducesResponseType(typeof(bool), 200)]
-        public async Task<IActionResult> UserSignup(UserResource userResource)
+        public async Task<IActionResult> Signup(UserResource userResource)
         {
             var user = _mapper.Map<UserResource,User>(userResource);
-            user.Type = "manager";
+            if (userResource.Plan == "none") {user.Plan = null;}
             var result = await _userDomain.Signup(user);
             return Ok();
         }
-        
-        [AllowAnonymous]
-        [HttpPost]
-        [Route("GuestSignup")]
-        [ProducesResponseType(typeof(bool), 200)]
-        public async Task<IActionResult> GuestSignup(GuestUserResource guestUserResource)
-        {
-            var user = _mapper.Map<GuestUserResource,User>(guestUserResource);
-            user.Type = "guest";
-            user.Plan = null;
-            var result = await _userDomain.Signup(user);
-            return Ok();
-        }
-        
+
         // GET: api/User
         [Filter.Authorize]
         [HttpGet]
@@ -92,7 +80,21 @@ namespace Hostlify.API.Controllers
 
         }
         
-        
+        [Filter.Authorize]
+        [ProducesResponseType(typeof(string), 200)]
+        [HttpGet("GetByEmail/{email}", Name = "GetByEmail")]
+        public async Task<IActionResult> Get(string email)
+        {
+            try
+            {
+                return Ok(_mapper.Map<User, GetUserResponse>( await _userDomain.GetByEmail(email)));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+
+        }
 
         // DELETE: api/User/5
         [Filter.Authorize]

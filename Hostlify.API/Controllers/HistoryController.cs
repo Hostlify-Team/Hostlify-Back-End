@@ -38,7 +38,7 @@ namespace Hostlify.API.Controllers
             }
         }
 
-        
+        [Authorize]
         [HttpGet]
         [Route("byManagerId")]
         public  async Task<IActionResult> GetHistoryForManagerId(int managerId)
@@ -60,6 +60,7 @@ namespace Hostlify.API.Controllers
             }
         } 
         
+        [Authorize]
         [HttpPost] 
         [Route("byResource")]
         public async Task<IActionResult>  Post([FromBody] HistoryResource historyInput)
@@ -83,6 +84,7 @@ namespace Hostlify.API.Controllers
         }
 
         // DELETE
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

@@ -10,4 +10,6 @@ public interface IRoomDomain
     Task<bool> postroom(Room room);
     Task<bool> updateroom(int id,Room room);
     Task<bool> deleteroom(int id);
+    Task<Room> getRoombyRoomName(string roomName);
+
 }

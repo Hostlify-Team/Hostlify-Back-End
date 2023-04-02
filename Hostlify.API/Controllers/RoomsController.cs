@@ -4,9 +4,12 @@ using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace Hostlify.API.Controllers
 {
+    [Filter.Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
@@ -23,6 +26,7 @@ namespace Hostlify.API.Controllers
         
   
         // GET: api/Rooms
+        [Filter.Authorize]
         [HttpGet("GetAll")]
         public async Task<IActionResult> Get() 
         {
@@ -42,6 +46,7 @@ namespace Hostlify.API.Controllers
         }
 
         // GET: api/Rooms/5
+        [Filter.Authorize]
         [HttpGet]
         [Route("byManagerId")]
         public  async Task<IActionResult> GetRoomforManagerId(int managerId)
@@ -61,7 +66,7 @@ namespace Hostlify.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
         } 
-        
+        [Filter.Authorize]
         [HttpGet]
         [Route("byGuestId")]
         public  async Task<IActionResult> GetRoomforGuestId(int guestId)
@@ -80,10 +85,28 @@ namespace Hostlify.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
-        }        
+        }     
+        
+        [Filter.Authorize]
+        [HttpGet]
+        [Route("byRoomName")]
+        public  async Task<IActionResult> GetRoomByRoomName(string roomName)
+        {
+            try
+            {
+
+                var result = await _roomDomain.getRoombyRoomName(roomName);
+                return Ok(_mapper.Map<Room,GetRoomResponse>(result));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+        }   
                
 
         // POST: api/Rooms
+        [Filter.Authorize]
         [HttpPost]
         public async Task<IActionResult>  Post([FromBody] RoomResource roomInput)
         {
@@ -109,18 +132,20 @@ namespace Hostlify.API.Controllers
         }
 
         // PUT: api/Rooms/5
+        [Filter.Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmptyRoom(int id, [FromBody] UpdateRoomRegisteredResource roomInput,String cast)
+        public async Task<IActionResult> PutEmptyRoom(int id, [FromBody] UpdateRoomRegisteredResource roomInput)
         {
-            if (cast == "empty")
+            if (roomInput.Status)
             {
                 try
                 {
-                    RoomResource roomResource = new RoomResource();
+                    UpdateRoomEmptyResource roomResource = new UpdateRoomEmptyResource();
                     roomResource.RoomName = roomInput.RoomName;
                     roomResource.ManagerId = roomInput.ManagerId;
                     roomResource.Description = roomInput.Description;
-                    var result = await _roomDomain.updateroom(id, _mapper.Map<RoomResource,Room>(roomResource));
+                    roomResource.Status = true;
+                    var result = await _roomDomain.updateroom(id, _mapper.Map<UpdateRoomEmptyResource,Room>(roomResource));
                     return Ok(result);
                 }
                 catch (Exception exception)
@@ -144,6 +169,7 @@ namespace Hostlify.API.Controllers
         
 
         // DELETE: api/Rooms/5
+        [Filter.Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

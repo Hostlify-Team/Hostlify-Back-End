@@ -41,4 +41,9 @@ public class RoomDomain : IRoomDomain
     {
         return await _RoomRepository.deleteroom(id);
     }
+
+    public async Task<Room> getRoombyRoomName(string roomName)
+    {
+        return await _RoomRepository.getRoombyRoomName(roomName);
+    }
 }

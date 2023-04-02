@@ -6,7 +6,7 @@ public class GetRoomResponse
     public string RoomName { get; set; }
     public int GuestId { get; set; }
     public int ManagerId { get; set; }
-    public string Initialdate { get; set; }
+    public string InitialDate { get; set; }
     public string EndDate { get; set; }
     public bool Status { get; set; }
     public int Price { get; set; }

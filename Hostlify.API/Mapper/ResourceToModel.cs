@@ -15,6 +15,7 @@ public class ResourceToModel:Profile
         CreateMap<RoomResource, Room>();
         CreateMap<GetRoomResponse, Room>();
         CreateMap<UpdateRoomRegisteredResource, Room>();
+        CreateMap<UpdateRoomEmptyResource, Room>();
         CreateMap<UpdateRoomRegisteredResource, RoomResource>();
         CreateMap<EditRoomResource, Room>();
         CreateMap<FoodServicesResource, FoodServices>();
