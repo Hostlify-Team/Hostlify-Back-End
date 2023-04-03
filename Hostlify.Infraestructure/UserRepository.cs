@@ -79,6 +79,6 @@ public class UserRepository:IUserRepository
 
     public async Task<User> GetByEmail(string email)
     {
-        return await _hostlifyDb.Users.SingleOrDefaultAsync(user => user.Email ==  email);
+        return await _hostlifyDb.Users.SingleOrDefaultAsync(user => user.Email ==  email&& user.IsActive==true);
     }
 }
