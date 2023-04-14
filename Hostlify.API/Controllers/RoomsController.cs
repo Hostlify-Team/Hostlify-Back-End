@@ -108,7 +108,30 @@ namespace Hostlify.API.Controllers
         // POST: api/Rooms
         [Filter.Authorize]
         [HttpPost]
-        public async Task<IActionResult>  Post([FromBody] RoomResource roomInput)
+        public async Task<int> Post([FromBody] RoomResource roomInput)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return 0;
+                }
+                var room = _mapper.Map<RoomResource, Room>(roomInput); //Aqui hago la conversion
+                var result = await _roomDomain.postroom(room); //Agrego await para que sea sincrona
+                return result;
+            }
+                                                                                                                
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        
+        
+        // POST: api/Rooms
+        [Filter.Authorize]
+        [HttpPut("register/{id}", Name = "register")]
+        public async Task<IActionResult>  registerGuest([FromBody] RegisterGuestResource roomInput)
         {
             try
             {
@@ -116,18 +139,14 @@ namespace Hostlify.API.Controllers
                 {
                     return BadRequest("error de formato");
                 }
-                var room = _mapper.Map<RoomResource, Room>(roomInput); //Aqui hago la conversion
-                var result = await _roomDomain.postroom(room); //Agrego await para que sea sincrona
-                return StatusCode(StatusCodes.Status201Created, "room created");
+                var room = _mapper.Map<RegisterGuestResource, Room>(roomInput); //Aqui hago la conversion
+                var result = await _roomDomain.registerGuest(room,roomInput.Name,roomInput.Email,roomInput.Password); //Agrego await para que sea sincrona
+                return Ok();
             }
                                                                                                                 
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar: "+ex);
-            }
-            finally
-            {
-                
             }
         }
 
@@ -164,6 +183,22 @@ namespace Hostlify.API.Controllers
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
                 }
+            }
+        }
+        
+        
+        [Filter.Authorize]
+        [HttpPut("evict/{id}", Name = "Evict")]
+        public async Task<IActionResult> EvictGuest(int id)
+        {
+            try
+            {
+                var result = await _roomDomain.evictGuest(id);
+                return Ok(result);
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
         }
         

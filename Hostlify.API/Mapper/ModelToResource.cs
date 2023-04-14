@@ -12,9 +12,11 @@ public class ModelToResource:Profile
         CreateMap<User, GuestUserResource>();
         CreateMap<User, GetUserResponse>();
         CreateMap<User, LoginResource>();
+        CreateMap<User, LoginUserResponse>();
         CreateMap<Room, RoomResource>();
         CreateMap<Room, GetRoomResponse>();
         CreateMap<Room, UpdateRoomRegisteredResource>();
+        CreateMap<Room, RegisterGuestResource>();
         CreateMap<Room, UpdateRoomEmptyResource>();
         CreateMap<RoomResource, UpdateRoomRegisteredResource>();
         CreateMap<Room, EditRoomResource>();

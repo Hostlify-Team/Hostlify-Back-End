@@ -24,12 +24,14 @@ namespace Hostlify.API.Controllers
         [AllowAnonymous]
         [HttpPost] 
         [Route("Login")]
-        public async Task<IActionResult> Login(LoginResource loginResource)
+        public async Task<LoginUserResponse> Login(LoginResource loginResource)
         {
-            //HACER QUE SOLO INICIE SESION PARA LOS IsActive
             var user = _mapper.Map<LoginResource, User>(loginResource);
             var result = await _userDomain.Login(user);
-            return Ok(result);
+            var LoginResult = await _userDomain.GetByEmail(user.Email);
+            var userResponse = _mapper.Map<User, LoginUserResponse>(LoginResult);
+            userResponse.Jwt = result;
+            return userResponse;
         }   
         
         // GET: api/User
@@ -42,7 +44,7 @@ namespace Hostlify.API.Controllers
             var user = _mapper.Map<UserResource,User>(userResource);
             if (userResource.Plan == "none") {user.Plan = null;}
             var result = await _userDomain.Signup(user);
-            return Ok();
+            return Ok(result);
         }
 
         // GET: api/User

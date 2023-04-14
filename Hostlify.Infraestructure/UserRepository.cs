@@ -28,6 +28,13 @@ public class UserRepository:IUserRepository
 
     public async Task<bool> SingUp(User user)
     {
+        User existingUser = new User();
+        existingUser= await _hostlifyDb.Users.SingleOrDefaultAsync(user_ => user_.Email ==  user.Email && user_.IsActive==true);
+        if (existingUser != null)
+        {
+            return false;
+        }
+        
         using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
         {
             try
@@ -45,7 +52,8 @@ public class UserRepository:IUserRepository
                 await transacction.DisposeAsync();
             }
         }
-        return true;    }
+        return true;  
+    }
 
     public async Task<bool> DeleteUser(int id)
     {

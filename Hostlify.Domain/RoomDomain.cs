@@ -27,7 +27,7 @@ public class RoomDomain : IRoomDomain
         return await _RoomRepository.getRoomforGuestId(guestId);
     }
 
-    public async Task<bool> postroom(Room room)
+    public async Task<int> postroom(Room room)
     {
         return await _RoomRepository.postroom(room);
     }
@@ -45,5 +45,15 @@ public class RoomDomain : IRoomDomain
     public async Task<Room> getRoombyRoomName(string roomName)
     {
         return await _RoomRepository.getRoombyRoomName(roomName);
+    }
+
+    public async Task<bool> evictGuest(int id)
+    {
+        return await _RoomRepository.evictGuest(id);
+    }
+
+    public async Task<bool> registerGuest(Room room, string userName, string userEmail, string userPassword)
+    {
+        return await _RoomRepository.registerGuest(room, userName, userEmail, userPassword);
     }
 }
