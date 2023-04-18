@@ -12,6 +12,6 @@ public interface IRoomDomain
     Task<bool> deleteroom(int id);
     Task<Room> getRoombyRoomName(string roomName);
     Task<bool> evictGuest(int id);
-    Task<bool> registerGuest(Room room,string userName,string userEmail,string userPassword);
+    Task<int> registerGuest(Room room,string userName,string userEmail,string userPassword);
 
 }

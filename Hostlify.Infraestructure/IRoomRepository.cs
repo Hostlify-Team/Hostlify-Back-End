@@ -10,5 +10,5 @@ public interface IRoomRepository
     Task<bool> updateroom(int id,Room room);
     Task<bool> deleteroom(int id);
     Task<bool> evictGuest(int id);
-    Task<bool> registerGuest(Room room,string userName,string userEmail,string userPassword);
+    Task<int> registerGuest(Room room,string userName,string userEmail,string userPassword);
 }

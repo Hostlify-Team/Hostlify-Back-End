@@ -52,7 +52,7 @@ public class RoomDomain : IRoomDomain
         return await _RoomRepository.evictGuest(id);
     }
 
-    public async Task<bool> registerGuest(Room room, string userName, string userEmail, string userPassword)
+    public async Task<int> registerGuest(Room room, string userName, string userEmail, string userPassword)
     {
         return await _RoomRepository.registerGuest(room, userName, userEmail, userPassword);
     }

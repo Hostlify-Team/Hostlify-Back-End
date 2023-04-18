@@ -153,7 +153,7 @@ public class RoomRepository : IRoomRepository
         return true;
     }
 
-    public async Task<bool> registerGuest(Room room,string userName,string userEmail,string userPassword)
+    public async Task<int> registerGuest(Room room,string userName,string userEmail,string userPassword)
     {
         User existingUser_ = new User();
         using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
@@ -187,14 +187,13 @@ public class RoomRepository : IRoomRepository
                 _hostlifyDb.History.Update(history);
                 await _hostlifyDb.SaveChangesAsync();
                 await _hostlifyDb.Database.CommitTransactionAsync();
+                return existingUser_.Id;
             }
             catch (Exception ex)
             {
                 await _hostlifyDb.Database.RollbackTransactionAsync();
+                return 0;
             }
         }
-
-        return true;
-
     }
 }

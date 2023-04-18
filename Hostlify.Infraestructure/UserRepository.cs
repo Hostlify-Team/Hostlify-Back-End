@@ -68,15 +68,17 @@ public class UserRepository:IUserRepository
 
                 _hostlifyDb.Users.Update(existingUser);
                 await _hostlifyDb.SaveChangesAsync();
-                _hostlifyDb.Database.CommitTransactionAsync();
+                await _hostlifyDb.Database.CommitTransactionAsync();
+                return true;
             }
             catch (Exception ex)
             {
                 await _hostlifyDb.Database.RollbackTransactionAsync();
+                return false;
             }
         }
 
-        return true;
+       
     }
 
     public async Task< List<User>> GetAllUsers()

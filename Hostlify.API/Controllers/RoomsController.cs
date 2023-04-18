@@ -141,7 +141,11 @@ namespace Hostlify.API.Controllers
                 }
                 var room = _mapper.Map<RegisterGuestResource, Room>(roomInput); //Aqui hago la conversion
                 var result = await _roomDomain.registerGuest(room,roomInput.Name,roomInput.Email,roomInput.Password); //Agrego await para que sea sincrona
-                return Ok();
+                if (result != 0)
+                {
+                    return Ok(result);
+                }
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar: ");
             }
                                                                                                                 
             catch (Exception ex)
