@@ -22,7 +22,7 @@ public class HostlifyDB:DbContext
         if (!optionsBuilder.IsConfigured) //Aqui valido otra vez si mi BD esta configurado, sino lo vuelvo a configurar 5 Y HACEMOS LA MIGRACION 6 NUGET:Entity framework core tools
         {
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));
-            optionsBuilder.UseMySql("server=localhost;user=root;password=123456;database=hostlifydb; ",serverVersion);
+            optionsBuilder.UseMySql("server=mysql://root:eHlVbjpvr5DlT7C6iPqj@containers-us-west-177.railway.app:7476/railway;user=root;password=eHlVbjpvr5DlT7C6iPqj;database=railway; ",serverVersion);
         }
     }
     
