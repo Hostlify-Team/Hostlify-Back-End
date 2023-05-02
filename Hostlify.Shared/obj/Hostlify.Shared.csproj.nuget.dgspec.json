@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {}
+    "d:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {}
   },
   "projects": {
-    "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
+    "d:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
+        "projectUniqueName": "d:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
         "projectName": "Hostlify.Shared",
-        "projectPath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
+        "projectPath": "d:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
         "packagesPath": "C:\\Users\\DIEGO\\.nuget\\packages\\",
-        "outputPath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\obj\\",
+        "outputPath": "d:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

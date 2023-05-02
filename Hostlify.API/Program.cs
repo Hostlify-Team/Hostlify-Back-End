@@ -49,7 +49,7 @@ builder.Services.AddScoped<IHistoryRepository,HistoryRepository>();
 
 
 var connectionString = builder.Configuration.GetConnectionString("HostlifyConnection");
-var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));//VARIA DEACUERDO A LA VERSION
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 33));//VARIA DEACUERDO A LA VERSION
 
 //Conexion a MySQL
 builder.Services.AddDbContext<HostlifyDB>(
