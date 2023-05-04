@@ -35,6 +35,11 @@ public class UserDomain:IUserDomain
         return  await _userRepository.GetByEmail(email);
     }
 
+    public async Task<int> GetRoomsLimitByUserId(int id)
+    {
+        return await _userRepository.GetRoomsLimitByUserId(id);
+    }
+
     public async Task<User> GetByUserId(int id)
     {
         return  await _userRepository.GetByUserId(id);
@@ -48,5 +53,10 @@ public class UserDomain:IUserDomain
     public async Task<List<User>> GetAllUsers()
     {
         return await _userRepository.GetAllUsers();
+    }
+
+    public async Task<bool> PostPersonalPlan(string email, int roomsLimit)
+    {
+        return await _userRepository.PostPersonalPlan(email, roomsLimit);
     }
 }

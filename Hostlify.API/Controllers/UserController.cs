@@ -97,9 +97,36 @@ namespace Hostlify.API.Controllers
             }
 
         }
+        
+        [Filter.Authorize]
+        [ProducesResponseType(typeof(string), 200)]
+        [HttpGet("GetRoomsLimit/{id}", Name = "GetId")]
+        public async Task<IActionResult> GetRoomsLimit(int id)
+        {
+            try
+            {
+                return Ok(await _userDomain.GetRoomsLimitByUserId(id));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+
+        }
+        //[Filter.Authorize]
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("PostRoomsLimit")]
+        [ProducesResponseType(typeof(bool), 200)]
+        public async Task<IActionResult> postRoomlimit(postRoomLimitResource roomLimit)
+        {
+            var result = await _userDomain.PostPersonalPlan(roomLimit.email,roomLimit.roomsLimit);
+            return Ok(result);
+        }
 
         // DELETE: api/User/5
-        [Filter.Authorize]
+        //[Filter.Authorize]
+        [AllowAnonymous]
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(void), 200)]
         public async Task<bool> Delete(int id)

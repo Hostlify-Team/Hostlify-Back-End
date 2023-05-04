@@ -26,6 +26,7 @@ public class ResourceToModel:Profile
         CreateMap<getHistoryResponse, History>();
         CreateMap<PostCleaningServiceResource, CleaningServices>();
         CreateMap<getCleaningServiceResponse, CleaningServices>();
+        CreateMap<postRoomLimitResource, PersonalPlan>();
 
     }
 }
