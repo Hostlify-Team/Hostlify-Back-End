@@ -15,6 +15,8 @@ public class HostlifyDB:DbContext
     public DbSet<Room> Rooms { get; set; }
     public DbSet<History> History { get; set; }
     public DbSet<FoodServices> FoodServices { get; set; }
+    public DbSet<CleaningServices> CleaningServices { get; set; }
+    
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -84,6 +86,12 @@ public class HostlifyDB:DbContext
         builder.Entity<FoodServices>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
         builder.Entity<FoodServices>().Property(p => p.IsActive).HasDefaultValue(true);
 
-
+        builder.Entity<CleaningServices>().ToTable("CleaningServices");
+        builder.Entity<CleaningServices>().HasKey(p => p.id);
+        builder.Entity<CleaningServices>().Property(p => p.id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<CleaningServices>().Property(p => p.roomId).IsRequired();
+        builder.Entity<CleaningServices>().Property(p => p.instruction).HasMaxLength(999);
+        builder.Entity<CleaningServices>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
+        builder.Entity<CleaningServices>().Property(p => p.IsActive).HasDefaultValue(true);
     }
 }

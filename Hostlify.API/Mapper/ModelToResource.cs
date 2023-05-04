@@ -24,6 +24,8 @@ public class ModelToResource:Profile
         CreateMap<History, getHistoryResponse>();
         CreateMap<FoodServices, FoodServicesResource>();
         CreateMap<FoodServices, GetFoodServiceResponse>();
+        CreateMap<CleaningServices, PostCleaningServiceResource>();
+        CreateMap<CleaningServices, getCleaningServiceResponse>();
 
         
     }

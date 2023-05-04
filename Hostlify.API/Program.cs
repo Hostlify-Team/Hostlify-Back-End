@@ -44,6 +44,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IFoodServicesDomain, FoodServicesDomain>();
 builder.Services.AddScoped<IFoodServicesRepository, FoodServicesRepository>();
+builder.Services.AddScoped<ICleaningServicesDomain, CleaningServicesDomain>();
+builder.Services.AddScoped<ICleaningServicesRepository, CleaningServicesRepository>();
 builder.Services.AddScoped<IHistoryDomain, HistoryDomain>();
 builder.Services.AddScoped<IHistoryRepository,HistoryRepository>();
 

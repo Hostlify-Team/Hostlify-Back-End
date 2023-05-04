@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {}
+    "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {}
   },
   "projects": {
-    "d:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
+    "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
         "projectName": "Hostlify.Shared",
-        "projectPath": "d:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
+        "projectPath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\Hostlify.Shared.csproj",
         "packagesPath": "C:\\Users\\DIEGO\\.nuget\\packages\\",
-        "outputPath": "d:\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\obj\\",
+        "outputPath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.Shared\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\DIEGO\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
