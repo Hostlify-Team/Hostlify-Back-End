@@ -44,6 +44,128 @@ public class UserRepository:IUserRepository
 
     }
 
+    public async Task<bool> UpdateRoomsLimitByUserId(int id, string actualPlan, string changedPlan,int newCustomRoomLimit)
+    {
+        using (var transaction = await _hostlifyDb.Database.BeginTransactionAsync())
+        {
+            if (actualPlan == "Custom" && changedPlan=="Custom")
+            {
+                Console.WriteLine(actualPlan+changedPlan);
+                try
+                {
+                    var existingPlan = await _hostlifyDb.PersonalPlans
+                        .FirstOrDefaultAsync(plan => plan.IsActive && plan.managerId == id);
+            
+                    if (existingPlan != null)
+                    {
+                        existingPlan.roomsLimit = newCustomRoomLimit;
+                        _hostlifyDb.PersonalPlans.Update(existingPlan);
+                        await _hostlifyDb.SaveChangesAsync();
+                        await _hostlifyDb.Database.CommitTransactionAsync();
+                        return true; 
+                    }
+                    transaction.Rollback(); 
+                    return false; 
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback(); // Deshacer la transacción en caso de excepción
+                    // Manejo de la excepción (por ejemplo, registro de errores)
+                    throw;
+                }
+            }
+            
+            if (actualPlan == "Custom" && changedPlan != "Custom")
+            {
+                Console.WriteLine(actualPlan+changedPlan);
+                var existingPlan = await _hostlifyDb.PersonalPlans
+                    .FirstOrDefaultAsync(plan => plan.IsActive && plan.managerId == id);
+                var existingUser = await _hostlifyDb.Users.FindAsync(id);
+                
+                if (existingPlan != null && existingUser != null)
+                {
+                    existingPlan.IsActive = false;
+                    _hostlifyDb.PersonalPlans.Update(existingPlan);
+
+                    existingUser.Plan = changedPlan;
+                    _hostlifyDb.Users.Update(existingUser);
+                    
+                    await _hostlifyDb.SaveChangesAsync();
+                    await _hostlifyDb.Database.CommitTransactionAsync();
+                    return true;
+                }
+                transaction.Rollback(); 
+                return false;
+
+            }
+
+            if (actualPlan != "Custom" && changedPlan == "Custom")
+            {
+                try
+                {
+                    Console.WriteLine(actualPlan+changedPlan);
+                    var existingUser = await _hostlifyDb.Users.FindAsync(id);
+                    
+                    var existingPlan = await _hostlifyDb.PersonalPlans
+                        .FirstOrDefaultAsync(plan => plan.IsActive && plan.managerId == id);
+                    if (existingPlan == null)
+                    {
+                        PersonalPlan personalPlan = new PersonalPlan();
+                        personalPlan.managerId = existingUser.Id;
+                        personalPlan.roomsLimit = newCustomRoomLimit;
+                    
+                        if (existingUser != null)
+                        {
+                            existingUser.Plan = changedPlan;
+                            _hostlifyDb.Users.Update(existingUser);
+
+
+                            await _hostlifyDb.PersonalPlans.AddAsync(personalPlan);
+                            await _hostlifyDb.SaveChangesAsync();
+                            await _hostlifyDb.Database.CommitTransactionAsync();
+
+                            return true; 
+                        }
+                    }
+                    transaction.Rollback();
+                    return false; 
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback(); 
+                    throw;
+                }
+            }
+
+            if (actualPlan != "Custom" && changedPlan != "Custom")
+            {
+                Console.WriteLine(actualPlan+changedPlan);
+                try
+                {
+                    var existingUser = await _hostlifyDb.Users.FindAsync(id);
+                    if (existingUser != null)
+                    {
+                        existingUser.Plan = changedPlan;
+                        _hostlifyDb.Users.Update(existingUser);
+                        await _hostlifyDb.SaveChangesAsync();
+                        await _hostlifyDb.Database.CommitTransactionAsync();
+                        return true; 
+                    }
+                    transaction.Rollback();
+                    return false; 
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback(); 
+                    throw;
+                }
+            }
+
+            return false;
+
+        }
+    }
+
     public async Task<bool> Login(User user)
     {
         _hostlifyDb.Users.Add(user);
@@ -94,11 +216,9 @@ public class UserRepository:IUserRepository
                 existingUser.IsActive = false;
                 if (existingUser.Type == "manager" && existingUser.Plan == "Custom")
                 {
-                    Console.Write("Antesssss: "+existingUser.Name);
                     PersonalPlan existingPersonalPlan = new PersonalPlan();
                     existingPersonalPlan= await _hostlifyDb.PersonalPlans.SingleOrDefaultAsync(personalPlan_ =>
                         personalPlan_.managerId == id && personalPlan_.IsActive == true);
-                    Console.Write("WOOWWOOWW: "+existingPersonalPlan.managerId);
                     existingPersonalPlan.IsActive = false;
                     existingPersonalPlan.DateUpdated = DateTime.Now;
                     _hostlifyDb.PersonalPlans.Update(existingPersonalPlan);

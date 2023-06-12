@@ -113,6 +113,24 @@ namespace Hostlify.API.Controllers
             }
 
         }
+
+        //[Filter.Authorize]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(string), 200)]
+        [HttpPut("UpdateRoomsPlan/{id}")]
+        public async Task<IActionResult> UpdateRoomsLimit(int id, [FromBody] UpdateRoomLimitResource updateRoomLimitResource)
+        {
+            try
+            {
+                return Ok(await _userDomain.UpdateRoomsLimitByUserId(id,updateRoomLimitResource.actualPlan,updateRoomLimitResource.changedPlan,updateRoomLimitResource.newCustomRoomLimit));
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+
+        }
+        
         //[Filter.Authorize]
         [AllowAnonymous]
         [HttpPost]

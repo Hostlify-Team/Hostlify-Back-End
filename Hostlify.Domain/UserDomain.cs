@@ -40,6 +40,11 @@ public class UserDomain:IUserDomain
         return await _userRepository.GetRoomsLimitByUserId(id);
     }
 
+    public async Task<bool> UpdateRoomsLimitByUserId(int id, string actualPlan, string changedPlan, int newCustomRoomLimit)
+    {
+        return await _userRepository.UpdateRoomsLimitByUserId(id,actualPlan,changedPlan,newCustomRoomLimit);
+    }
+
     public async Task<User> GetByUserId(int id)
     {
         return  await _userRepository.GetByUserId(id);

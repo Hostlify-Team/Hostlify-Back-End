@@ -8,6 +8,7 @@ public interface IUserDomain
     Task<bool> Signup(User user);
     Task<User> GetByEmail(string email);
     Task<int> GetRoomsLimitByUserId(int id);
+    Task<bool> UpdateRoomsLimitByUserId(int id, string actualPlan, string changedPlan, int newCustomRoomLimit);
     Task<User> GetByUserId(int id);
     Task<bool> DeleteUser(int id);
     Task<List<User>> GetAllUsers();
