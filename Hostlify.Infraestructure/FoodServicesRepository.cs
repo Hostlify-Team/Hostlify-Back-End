@@ -15,7 +15,7 @@ public class FoodServicesRepository : IFoodServicesRepository
 
     public async Task<List<FoodServices>> getAll()
     {
-        return await _hostlifyDb.FoodServices.Where(foodServices=>foodServices.IsActive == true)
+        return await _hostlifyDb.FoodServices.Where(foodServices=>foodServices.IsActive == true&& foodServices.attended==false)
             .ToListAsync();
     }
 

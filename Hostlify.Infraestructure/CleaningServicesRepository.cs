@@ -15,7 +15,7 @@ public class CleaningServicesRepository: ICleaningServicesRepository
 
     public async Task<List<CleaningServices>> getAll()
     {
-        return await _hostlifyDb.CleaningServices.Where(cleaningServices=>cleaningServices.IsActive == true)
+        return await _hostlifyDb.CleaningServices.Where(cleaningServices=>cleaningServices.IsActive == true && cleaningServices.attended==false)
                     .ToListAsync();
     }
 

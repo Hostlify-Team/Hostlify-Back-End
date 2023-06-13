@@ -14,7 +14,7 @@ public class RoomRepository : IRoomRepository
     }
     public async Task<List<Room>>  getAll()
     {
-        return await _hostlifyDb.Rooms.Where(room=>room.IsActive == true)
+        return await _hostlifyDb.Rooms.Where(room=>room.IsActive == true )
            .ToListAsync();
    
     }
