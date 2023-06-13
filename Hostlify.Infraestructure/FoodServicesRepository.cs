@@ -15,7 +15,7 @@ public class FoodServicesRepository : IFoodServicesRepository
 
     public async Task<List<FoodServices>> getAll()
     {
-        return await _hostlifyDb.FoodServices.Where(foodServices=>foodServices.IsActive == true&& foodServices.attended==false)
+        return await _hostlifyDb.FoodServices.Where(foodServices=>foodServices.IsActive == true && foodServices.attended==false)
             .ToListAsync();
     }
 
@@ -42,10 +42,16 @@ public class FoodServicesRepository : IFoodServicesRepository
         return true;
     }
 
-    public async Task<List<FoodServices>> getFoodServiceByRoomId(int roomid)
+    public async Task<List<FoodServices>> getFoodServiceUnAttendedByRoomId(int roomid)
     {
         return await _hostlifyDb.FoodServices
             .Where(foodService => foodService.roomId == roomid && foodService.IsActive==true && foodService.attended==false).ToListAsync(); 
+    }
+    
+    public async Task<List<FoodServices>> getFoodServiceByRoomId(int roomid)
+    {
+        return await _hostlifyDb.FoodServices
+            .Where(foodService => foodService.roomId == roomid && foodService.IsActive==true).ToListAsync(); 
     }
 
     public async Task<List<FoodServices>> getFoodServiceAttendedByRoomId(int roomid)

@@ -38,14 +38,13 @@ public class CleaningServicesRepository: ICleaningServicesRepository
                 await transaction.DisposeAsync();
             }
         }
-
         return true;
     }
 
     public async Task<List<CleaningServices>> getCleaningServiceByRoomId(int roomid)
     {
         return await _hostlifyDb.CleaningServices
-            .Where(cleaningService => cleaningService.roomId == roomid && cleaningService.IsActive==true && cleaningService.attended==false).ToListAsync(); 
+            .Where(cleaningService => cleaningService.roomId == roomid && cleaningService.IsActive==true).ToListAsync(); 
 
     }
 
@@ -53,6 +52,12 @@ public class CleaningServicesRepository: ICleaningServicesRepository
     {
         return await _hostlifyDb.CleaningServices
             .Where(cleaningService => cleaningService.roomId == roomid && cleaningService.IsActive==true&& cleaningService.attended==true).ToListAsync(); 
+    }
+
+    public async Task<List<CleaningServices>> getCleaningServiceUnAttendedByRoomId(int roomid)
+    {
+        return await _hostlifyDb.CleaningServices
+            .Where(cleaningService => cleaningService.roomId == roomid && cleaningService.IsActive==true&& cleaningService.attended==false).ToListAsync(); 
     }
 
     public async Task<bool> deletebyid(int id)

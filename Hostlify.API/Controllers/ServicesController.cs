@@ -46,6 +46,7 @@ namespace Hostlify.API.Controllers
             }
             
         }
+        
         [Authorize]
         [HttpGet]
         [Route ("GetAllCleaningServices")]
@@ -104,6 +105,26 @@ namespace Hostlify.API.Controllers
         } 
         [Authorize]
         [HttpGet]
+        [Route("FoodServiceUnAttendedByRoomId")]
+        public  async Task<IActionResult> GetFoodServiceUnAttendedByRoomId(int roomId)
+        {
+            try
+            {
+                if (roomId == 0)
+                {
+                    return BadRequest("roomId");
+                }
+
+                var result = await _foodServicesDomain.getFoodServiceUnAttendedByRoomId(roomId);
+                return Ok(_mapper.Map<List<FoodServices>, List<GetFoodServiceResponse>>(result));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+        } 
+        [Authorize]
+        [HttpGet]
         [Route("CleaningServicebyRoomId")]
         public  async Task<IActionResult> GetCleaningServiceByRoomId(int roomId)
         {
@@ -141,7 +162,27 @@ namespace Hostlify.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
-        } 
+        }
+        [Authorize]
+        [HttpGet]
+        [Route("CleaningServiceUnAttendedByRoomId")]
+        public  async Task<IActionResult> GetCleaningServiceUnAttendedByRoomId(int roomId)
+        {
+            try
+            {
+                if (roomId == 0)
+                {
+                    return BadRequest("roomId");
+                }
+
+                var result = await _cleaningServicesDomain.getCleaningServiceUnAttendedByRoomId(roomId);
+                return Ok(_mapper.Map<List<CleaningServices>, List<getCleaningServiceResponse>>(result));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+        }
         [Authorize]
         [HttpPost] 
         [Route("FoodServiceByResource")]

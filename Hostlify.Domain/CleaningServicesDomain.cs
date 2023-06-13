@@ -31,6 +31,11 @@ public class CleaningServicesDomain: ICleaningServicesDomain
         return await _cleaningServicesRepository.getCleaningServiceAttendedByRoomId(roomId);
     }
 
+    public async Task<List<CleaningServices>> getCleaningServiceUnAttendedByRoomId(int roomId)
+    {
+        return await _cleaningServicesRepository.getCleaningServiceUnAttendedByRoomId(roomId);
+    }
+
     public async Task<bool> deletebyid(int id)
     {
         return await _cleaningServicesRepository.deletebyid(id);

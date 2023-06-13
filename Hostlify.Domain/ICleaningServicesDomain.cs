@@ -8,6 +8,7 @@ public interface ICleaningServicesDomain
     Task<bool> postCleaningService(CleaningServices cleaningServices);
     Task<List<CleaningServices>>  getCleaningServiceByRoomId(int roomId);
     Task<List<CleaningServices>>  getCleaningServiceAttendedByRoomId(int roomId);
+    Task<List<CleaningServices>>  getCleaningServiceUnAttendedByRoomId(int roomId);
     Task<bool> deletebyid(int id);
     Task<bool> attendByid(int id);
 }

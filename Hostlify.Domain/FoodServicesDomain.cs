@@ -35,6 +35,11 @@ public class FoodServicesDomain :  IFoodServicesDomain
         return await _FoodServicesRepository.getFoodServiceAttendedByRoomId(roomId);
     }
 
+    public async Task<List<FoodServices>> getFoodServiceUnAttendedByRoomId(int roomId)
+    {
+        return await _FoodServicesRepository.getFoodServiceUnAttendedByRoomId(roomId);
+    }
+
     public async Task<bool> deletebyid(int id)
     {
         return await _FoodServicesRepository.deletebyid(id);
