@@ -83,6 +83,7 @@ public class HostlifyDB:DbContext
         builder.Entity<FoodServices>().Property(p => p.drinkQuantity).IsRequired();
         builder.Entity<FoodServices>().Property(p => p.cream).IsRequired();
         builder.Entity<FoodServices>().Property(p => p.creamQuantity).IsRequired();
+        builder.Entity<FoodServices>().Property(p => p.attended).IsRequired().HasDefaultValue(false);
         builder.Entity<FoodServices>().Property(p => p.instruction).HasMaxLength(999);
         builder.Entity<FoodServices>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
         builder.Entity<FoodServices>().Property(p => p.IsActive).HasDefaultValue(true);
@@ -92,6 +93,7 @@ public class HostlifyDB:DbContext
         builder.Entity<CleaningServices>().Property(p => p.id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<CleaningServices>().Property(p => p.roomId).IsRequired();
         builder.Entity<CleaningServices>().Property(p => p.instruction).HasMaxLength(999);
+        builder.Entity<CleaningServices>().Property(p => p.attended).IsRequired().HasDefaultValue(false);
         builder.Entity<CleaningServices>().Property(p => p.DateCreated).HasDefaultValue(DateTime.Now);
         builder.Entity<CleaningServices>().Property(p => p.IsActive).HasDefaultValue(true);
 

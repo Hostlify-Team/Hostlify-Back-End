@@ -5,5 +5,7 @@ public interface ICleaningServicesRepository
     Task<List<CleaningServices>> getAll();
     Task<bool> postCleaningService(CleaningServices cleaningService);
     Task<List<CleaningServices>>  getCleaningServiceByRoomId(int roomid);
+    Task<List<CleaningServices>>  getCleaningServiceAttendedByRoomId(int roomid);
     Task<bool> deletebyid(int id);
+    Task<bool> attendByid(int id);
 }

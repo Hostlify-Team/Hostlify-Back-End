@@ -84,6 +84,26 @@ namespace Hostlify.API.Controllers
         } 
         [Authorize]
         [HttpGet]
+        [Route("FoodServiceAttendedByRoomId")]
+        public  async Task<IActionResult> GetFoodServiceAttendedByRoomId(int roomId)
+        {
+            try
+            {
+                if (roomId == 0)
+                {
+                    return BadRequest("roomId");
+                }
+
+                var result = await _foodServicesDomain.getFoodServiceAttendedByRoomId(roomId);
+                return Ok(_mapper.Map<List<FoodServices>, List<GetFoodServiceResponse>>(result));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+        } 
+        [Authorize]
+        [HttpGet]
         [Route("CleaningServicebyRoomId")]
         public  async Task<IActionResult> GetCleaningServiceByRoomId(int roomId)
         {
@@ -95,6 +115,26 @@ namespace Hostlify.API.Controllers
                 }
 
                 var result = await _cleaningServicesDomain.getCleaningServiceByRoomId(roomId);
+                return Ok(_mapper.Map<List<CleaningServices>, List<getCleaningServiceResponse>>(result));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+        } 
+        [Authorize]
+        [HttpGet]
+        [Route("CleaningServiceAttendedByRoomId")]
+        public  async Task<IActionResult> GetCleaningServiceAttendedByRoomId(int roomId)
+        {
+            try
+            {
+                if (roomId == 0)
+                {
+                    return BadRequest("roomId");
+                }
+
+                var result = await _cleaningServicesDomain.getCleaningServiceAttendedByRoomId(roomId);
                 return Ok(_mapper.Map<List<CleaningServices>, List<getCleaningServiceResponse>>(result));
             }
             catch (Exception ex)
@@ -162,6 +202,23 @@ namespace Hostlify.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
         }
+        
+        // DELETE: api/FoodServices/5                 
+        [Authorize]
+        [HttpDelete("attendFoodService/{id}")]
+        public async Task<IActionResult> AttendFoodServiceByid(int id)
+        {
+            try
+            {
+                var result = await _foodServicesDomain.attendByid(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+        }
+        
         [Authorize]
         [HttpDelete("deleteCleaningService/{id}")]
         public async Task<IActionResult> DeleteCleaningServiceByid(int id)
@@ -169,6 +226,21 @@ namespace Hostlify.API.Controllers
             try
             {
                 var result = await _cleaningServicesDomain.deletebyid(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+        }
+        
+        [Authorize]
+        [HttpDelete("attendCleaningService/{id}")]
+        public async Task<IActionResult> AttendCleaningServiceByid(int id)
+        {
+            try
+            {
+                var result = await _cleaningServicesDomain.attendByid(id);
                 return Ok(result);
             }
             catch (Exception ex)

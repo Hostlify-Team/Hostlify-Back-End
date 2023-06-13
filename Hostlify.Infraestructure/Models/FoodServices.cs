@@ -11,4 +11,5 @@ public class FoodServices:BaseModel
     public string cream { get; set; }
     public int creamQuantity { get; set; }
     public string? instruction { get; set; }
+    public bool attended { get; set; }
 }

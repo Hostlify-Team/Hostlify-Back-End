@@ -26,8 +26,18 @@ public class CleaningServicesDomain: ICleaningServicesDomain
         return await _cleaningServicesRepository.getCleaningServiceByRoomId(roomId);
     }
 
+    public async Task<List<CleaningServices>> getCleaningServiceAttendedByRoomId(int roomId)
+    {
+        return await _cleaningServicesRepository.getCleaningServiceAttendedByRoomId(roomId);
+    }
+
     public async Task<bool> deletebyid(int id)
     {
         return await _cleaningServicesRepository.deletebyid(id);
+    }
+
+    public async Task<bool> attendByid(int id)
+    {
+        return await _cleaningServicesRepository.attendByid(id);
     }
 }

@@ -45,9 +45,15 @@ public class FoodServicesRepository : IFoodServicesRepository
     public async Task<List<FoodServices>> getFoodServiceByRoomId(int roomid)
     {
         return await _hostlifyDb.FoodServices
-            .Where(foodService => foodService.roomId == roomid && foodService.IsActive==true).ToListAsync(); 
+            .Where(foodService => foodService.roomId == roomid && foodService.IsActive==true && foodService.attended==false).ToListAsync(); 
     }
-    
+
+    public async Task<List<FoodServices>> getFoodServiceAttendedByRoomId(int roomid)
+    {
+        return await _hostlifyDb.FoodServices
+            .Where(foodService => foodService.roomId == roomid && foodService.IsActive==true && foodService.attended==true).ToListAsync(); 
+    }
+
 
     public async Task<bool> deletebyid(int id)
     {
@@ -60,7 +66,8 @@ public class FoodServicesRepository : IFoodServicesRepository
                 foodService.DateUpdated = DateTime.Now;
                 _hostlifyDb.FoodServices.Update(foodService);
                 await _hostlifyDb.SaveChangesAsync();
-                _hostlifyDb.Database.CommitTransactionAsync();
+                await _hostlifyDb.Database.CommitTransactionAsync();
+                return true;
             }
             catch (Exception ex)
             {
@@ -68,7 +75,29 @@ public class FoodServicesRepository : IFoodServicesRepository
             }
         }
 
-        return true;
+        return false;
     }
- 
+
+    public async Task<bool> attendByid(int id)
+    {
+        using (var transacction  = await _hostlifyDb.Database.BeginTransactionAsync())
+        {
+            try
+            {
+                var foodService = await _hostlifyDb.FoodServices.FindAsync(id);
+                foodService.attended = true;
+                foodService.DateUpdated = DateTime.Now;
+                _hostlifyDb.FoodServices.Update(foodService);
+                await _hostlifyDb.SaveChangesAsync();
+                await _hostlifyDb.Database.CommitTransactionAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                await _hostlifyDb.Database.RollbackTransactionAsync();
+            }
+        }
+
+        return false;
+    }
 }

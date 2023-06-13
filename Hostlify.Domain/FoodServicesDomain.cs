@@ -6,7 +6,8 @@ public class FoodServicesDomain :  IFoodServicesDomain
 {
 
     private IFoodServicesRepository _FoodServicesRepository;
-    
+    private IFoodServicesDomain _foodServicesDomainImplementation;
+
 
     public FoodServicesDomain(IFoodServicesRepository FoodServicesRepository)
     {
@@ -29,8 +30,18 @@ public class FoodServicesDomain :  IFoodServicesDomain
         return await _FoodServicesRepository.getFoodServiceByRoomId(roomId);
     }
 
+    public async Task<List<FoodServices>> getFoodServiceAttendedByRoomId(int roomId)
+    {
+        return await _FoodServicesRepository.getFoodServiceAttendedByRoomId(roomId);
+    }
+
     public async Task<bool> deletebyid(int id)
     {
         return await _FoodServicesRepository.deletebyid(id);
+    }
+
+    public async Task<bool> attendByid(int id)
+    {
+        return await _FoodServicesRepository.attendByid(id);
     }
 }

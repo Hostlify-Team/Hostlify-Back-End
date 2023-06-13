@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hostlify.Infraestructure.Migrations
 {
     [DbContext(typeof(HostlifyDB))]
-    [Migration("20230330164950_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20230612173152_NewAttendedColumnAdded")]
+    partial class NewAttendedColumnAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,57 +21,91 @@ namespace Hostlify.Infraestructure.Migrations
                 .HasAnnotation("ProductVersion", "6.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Hostlify.Infraestructure.FoodServices", b =>
+            modelBuilder.Entity("Hostlify.Infraestructure.CleaningServices", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Cream")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("CreamQuantity")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2023, 3, 30, 11, 49, 50, 36, DateTimeKind.Local).AddTicks(7409));
+                        .HasDefaultValue(new DateTime(2023, 6, 12, 12, 31, 52, 210, DateTimeKind.Local).AddTicks(1856));
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Dish")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("DishQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Drink")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("DrinkQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Instruction")
-                        .HasMaxLength(999)
-                        .HasColumnType("varchar(999)");
 
                     b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("tinyint(1)")
                         .HasDefaultValue(true);
 
-                    b.Property<int>("ManagerID")
+                    b.Property<bool>("attended")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("instruction")
+                        .HasMaxLength(999)
+                        .HasColumnType("varchar(999)");
+
+                    b.Property<int>("roomId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoomID")
+                    b.HasKey("id");
+
+                    b.ToTable("CleaningServices", (string)null);
+                });
+
+            modelBuilder.Entity("Hostlify.Infraestructure.FoodServices", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("DateCreated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValue(new DateTime(2023, 6, 12, 12, 31, 52, 210, DateTimeKind.Local).AddTicks(1197));
+
+                    b.Property<DateTime?>("DateUpdated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true);
+
+                    b.Property<bool>("attended")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("cream")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("creamQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("dish")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("dishQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("drink")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("drinkQuantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("instruction")
+                        .HasMaxLength(999)
+                        .HasColumnType("varchar(999)");
+
+                    b.Property<int>("roomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
 
                     b.ToTable("FoodServices", (string)null);
                 });
@@ -85,7 +119,7 @@ namespace Hostlify.Infraestructure.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2023, 3, 30, 11, 49, 50, 36, DateTimeKind.Local).AddTicks(6457));
+                        .HasDefaultValue(new DateTime(2023, 6, 12, 12, 31, 52, 210, DateTimeKind.Local).AddTicks(263));
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");
@@ -126,6 +160,36 @@ namespace Hostlify.Infraestructure.Migrations
                     b.ToTable("History", (string)null);
                 });
 
+            modelBuilder.Entity("Hostlify.Infraestructure.PersonalPlan", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreated")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValue(new DateTime(2023, 6, 12, 12, 31, 52, 210, DateTimeKind.Local).AddTicks(2425));
+
+                    b.Property<DateTime?>("DateUpdated")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true);
+
+                    b.Property<int>("managerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("roomsLimit")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("PersonalPlans", (string)null);
+                });
+
             modelBuilder.Entity("Hostlify.Infraestructure.Room", b =>
                 {
                     b.Property<int>("Id")
@@ -135,7 +199,7 @@ namespace Hostlify.Infraestructure.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2023, 3, 30, 11, 49, 50, 36, DateTimeKind.Local).AddTicks(5570));
+                        .HasDefaultValue(new DateTime(2023, 6, 12, 12, 31, 52, 209, DateTimeKind.Local).AddTicks(9492));
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");
@@ -155,7 +219,7 @@ namespace Hostlify.Infraestructure.Migrations
                     b.Property<int?>("GuestId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Initialdate")
+                    b.Property<string>("InitialDate")
                         .HasColumnType("longtext");
 
                     b.Property<bool>("IsActive")
@@ -198,7 +262,7 @@ namespace Hostlify.Infraestructure.Migrations
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime(6)")
-                        .HasDefaultValue(new DateTime(2023, 3, 30, 11, 49, 50, 36, DateTimeKind.Local).AddTicks(3962));
+                        .HasDefaultValue(new DateTime(2023, 6, 12, 12, 31, 52, 209, DateTimeKind.Local).AddTicks(8032));
 
                     b.Property<DateTime?>("DateUpdated")
                         .HasColumnType("datetime(6)");
