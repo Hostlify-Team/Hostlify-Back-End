@@ -60,18 +60,25 @@ public class CleaningServicesRepository: ICleaningServicesRepository
             .Where(cleaningService => cleaningService.roomId == roomid && cleaningService.IsActive==true&& cleaningService.attended==false).ToListAsync(); 
     }
 
-    public async Task<bool> deletebyid(int id)
+    public async Task<bool> deleteAllCleaningServiceByRoomId(int id)
     {
         using (var transacction  = await _hostlifyDb.Database.BeginTransactionAsync())
         {
             try
             {
-                var cleaningService = await _hostlifyDb.CleaningServices.FindAsync(id);
-                cleaningService.IsActive = false;
-                cleaningService.DateUpdated = DateTime.Now;
-                _hostlifyDb.CleaningServices.Update(cleaningService);
+                var cleaningServices = await _hostlifyDb.CleaningServices
+                    .Where(cs => cs.roomId == id && cs.IsActive==true)
+                    .ToListAsync();
+            
+                foreach (var cleaningService in cleaningServices)
+                {
+                    cleaningService.IsActive = false;
+                }
+            
                 await _hostlifyDb.SaveChangesAsync();
-                _hostlifyDb.Database.CommitTransactionAsync();
+                await _hostlifyDb.Database.CommitTransactionAsync();
+            
+                return true;
             }
             catch (Exception ex)
             {
@@ -79,7 +86,7 @@ public class CleaningServicesRepository: ICleaningServicesRepository
             }
         }
 
-        return true;
+        return false;
     }
 
     public async Task<bool> attendByid(int id)

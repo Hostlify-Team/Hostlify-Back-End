@@ -40,9 +40,9 @@ public class FoodServicesDomain :  IFoodServicesDomain
         return await _FoodServicesRepository.getFoodServiceUnAttendedByRoomId(roomId);
     }
 
-    public async Task<bool> deletebyid(int id)
+    public async Task<bool> deleteAllFoodServicesByRoomId(int id)
     {
-        return await _FoodServicesRepository.deletebyid(id);
+        return await _FoodServicesRepository.deleteAllFoodServicesByRoomId(id);
     }
 
     public async Task<bool> attendByid(int id)

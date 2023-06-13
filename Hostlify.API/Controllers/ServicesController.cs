@@ -230,12 +230,12 @@ namespace Hostlify.API.Controllers
         
         // DELETE: api/FoodServices/5                 
         [Authorize]
-        [HttpDelete("deleteFoodService/{id}")]
-        public async Task<IActionResult> DeleteFoodServiceByid(int id)
+        [HttpDelete("deleteAllFoodServicesByRoomId/{id}")]
+        public async Task<IActionResult> DeleteAllFoodServicesByRoomId(int id)
         {
             try
             {
-                var result = await _foodServicesDomain.deletebyid(id);
+                var result = await _foodServicesDomain.deleteAllFoodServicesByRoomId(id);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -261,12 +261,12 @@ namespace Hostlify.API.Controllers
         }
         
         [Authorize]
-        [HttpDelete("deleteCleaningService/{id}")]
-        public async Task<IActionResult> DeleteCleaningServiceByid(int id)
+        [HttpDelete("deleteAllCleaningServiceByRoomId/{id}")]
+        public async Task<IActionResult> DeleteAllCleaningServiceByRoomId(int id)
         {
             try
             {
-                var result = await _cleaningServicesDomain.deletebyid(id);
+                var result = await _cleaningServicesDomain.deleteAllCleaningServiceByRoomId(id);
                 return Ok(result);
             }
             catch (Exception ex)

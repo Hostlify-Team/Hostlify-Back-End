@@ -61,18 +61,22 @@ public class FoodServicesRepository : IFoodServicesRepository
     }
 
 
-    public async Task<bool> deletebyid(int id)
+    public async Task<bool> deleteAllFoodServicesByRoomId(int id)
     {
         using (var transacction  = await _hostlifyDb.Database.BeginTransactionAsync())
         {
             try
             {
-                var foodService = await _hostlifyDb.FoodServices.FindAsync(id);
-                foodService.IsActive = false;
-                foodService.DateUpdated = DateTime.Now;
-                _hostlifyDb.FoodServices.Update(foodService);
+                var foodServices = await _hostlifyDb.FoodServices.Where(fs => fs.roomId == id && fs.IsActive==true).ToListAsync();
+            
+                foreach (var foodService in foodServices)
+                {
+                    foodService.IsActive = false;
+                }
+            
                 await _hostlifyDb.SaveChangesAsync();
                 await _hostlifyDb.Database.CommitTransactionAsync();
+            
                 return true;
             }
             catch (Exception ex)

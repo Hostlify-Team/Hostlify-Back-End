@@ -36,9 +36,9 @@ public class CleaningServicesDomain: ICleaningServicesDomain
         return await _cleaningServicesRepository.getCleaningServiceUnAttendedByRoomId(roomId);
     }
 
-    public async Task<bool> deletebyid(int id)
+    public async Task<bool> deleteAllCleaningServiceByRoomId(int id)
     {
-        return await _cleaningServicesRepository.deletebyid(id);
+        return await _cleaningServicesRepository.deleteAllCleaningServiceByRoomId(id);
     }
 
     public async Task<bool> attendByid(int id)

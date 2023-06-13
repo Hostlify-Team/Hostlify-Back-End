@@ -8,7 +8,7 @@ public interface IFoodServicesRepository
     Task<List<FoodServices>>  getFoodServiceAttendedByRoomId(int roomid);
     Task<List<FoodServices>>  getFoodServiceUnAttendedByRoomId(int roomid);
 
-    Task<bool> deletebyid(int id);
+    Task<bool> deleteAllFoodServicesByRoomId(int id);
     
     Task<bool> attendByid(int id);
 }
