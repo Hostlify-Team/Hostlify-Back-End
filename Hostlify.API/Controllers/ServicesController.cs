@@ -38,11 +38,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
-            }
-            finally
-            {
-            
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
             
         }
@@ -59,7 +62,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
 
         }
@@ -80,7 +90,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         } 
         [Authorize]
@@ -100,7 +117,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         } 
         [Authorize]
@@ -120,7 +144,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         } 
         [Authorize]
@@ -140,7 +171,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         } 
         [Authorize]
@@ -160,7 +198,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         }
         [Authorize]
@@ -180,7 +225,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         }
         [Authorize]
@@ -190,18 +242,21 @@ namespace Hostlify.API.Controllers
         {
             try
             {
-                if (foodServicesInput.instruction=="none"){foodServicesInput.instruction = null;}
+                if (foodServicesInput.instruction=="none"){foodServicesInput.instruction = "";}
                 var foodServices = _mapper.Map<FoodServicesResource, FoodServices>(foodServicesInput);
                 var result = await _foodServicesDomain.postfoodservice(foodServices);
-                return StatusCode(StatusCodes.Status201Created, "foodservices created");
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar: "+ex);
-            }
-            finally
-            {
-            
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         }
         
@@ -215,15 +270,18 @@ namespace Hostlify.API.Controllers
                 if (cleaningServicesInput.instruction=="none"){cleaningServicesInput.instruction = null;}
                 var cleanServices = _mapper.Map<PostCleaningServiceResource, CleaningServices>(cleaningServicesInput);
                 var result = await _cleaningServicesDomain.postCleaningService(cleanServices);
-                return StatusCode(StatusCodes.Status201Created, "foodservices created");
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar: "+ex);
-            }
-            finally
-            {
-            
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         }
         
@@ -240,7 +298,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         }
         
@@ -256,7 +321,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         }
         
@@ -271,7 +343,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         }
         
@@ -286,7 +365,14 @@ namespace Hostlify.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                var errorResponse = new
+                {
+                    Message = "Error al procesar la solicitud",
+                    ExceptionType = ex.GetType().FullName,
+                    ExceptionMessage = ex.Message
+                };
+
+                return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
         }
 

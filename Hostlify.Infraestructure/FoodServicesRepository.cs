@@ -28,18 +28,18 @@ public class FoodServicesRepository : IFoodServicesRepository
                 await _hostlifyDb.FoodServices.AddAsync(foodServices);
                 await _hostlifyDb.SaveChangesAsync();
                 await transaction.CommitAsync();
+                return true;
             }
             catch (Exception ex)
             {
-                transaction.RollbackAsync();
+                await transaction.RollbackAsync();
+                return false;
             }
             finally
             {
                 await transaction.DisposeAsync();
             }
         }
-
-        return true;
     }
 
     public async Task<List<FoodServices>> getFoodServiceUnAttendedByRoomId(int roomid)
@@ -95,7 +95,7 @@ public class FoodServicesRepository : IFoodServicesRepository
             try
             {
                 var foodService = await _hostlifyDb.FoodServices.FindAsync(id);
-                foodService.attended = true;
+                foodService!.attended = true;
                 foodService.DateUpdated = DateTime.Now;
                 _hostlifyDb.FoodServices.Update(foodService);
                 await _hostlifyDb.SaveChangesAsync();

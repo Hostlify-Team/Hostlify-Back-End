@@ -28,17 +28,19 @@ public class CleaningServicesRepository: ICleaningServicesRepository
                 await _hostlifyDb.CleaningServices.AddAsync(cleaningService);
                 await _hostlifyDb.SaveChangesAsync();
                 await transaction.CommitAsync();
+                return true;
             }
             catch (Exception ex)
             {
-                transaction.RollbackAsync();
+                await transaction.RollbackAsync();
+                return false;
             }
             finally
             {
                 await transaction.DisposeAsync();
             }
         }
-        return true;
+        
     }
 
     public async Task<List<CleaningServices>> getCleaningServiceByRoomId(int roomid)
@@ -96,7 +98,7 @@ public class CleaningServicesRepository: ICleaningServicesRepository
             try
             {
                 var cleaningService = await _hostlifyDb.CleaningServices.FindAsync(id);
-                cleaningService.attended = true;
+                cleaningService!.attended = true;
                 cleaningService.DateUpdated = DateTime.Now;
                 _hostlifyDb.CleaningServices.Update(cleaningService);
                 await _hostlifyDb.SaveChangesAsync();

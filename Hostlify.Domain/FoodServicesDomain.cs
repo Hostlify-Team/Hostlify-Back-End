@@ -6,12 +6,12 @@ public class FoodServicesDomain :  IFoodServicesDomain
 {
 
     private IFoodServicesRepository _FoodServicesRepository;
-    private IFoodServicesDomain _foodServicesDomainImplementation;
+    //private IFoodServicesDomain _foodServicesDomainImplementation;
 
 
-    public FoodServicesDomain(IFoodServicesRepository FoodServicesRepository)
+    public FoodServicesDomain(IFoodServicesRepository foodServicesRepository)
     {
-        _FoodServicesRepository = FoodServicesRepository;
+        _FoodServicesRepository = foodServicesRepository;
     }
 
 

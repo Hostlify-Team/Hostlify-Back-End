@@ -824,3 +824,15 @@ D:\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.Identity.We
 D:\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.Identity.Web.Certificateless.dll
 D:\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.Identity.Web.TokenCache.dll
 D:\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.IdentityModel.Validators.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Azure.Core.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Azure.Security.KeyVault.Certificates.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Azure.Security.KeyVault.Secrets.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.Identity.Web.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.Identity.Web.Certificate.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.Identity.Web.Certificateless.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.Identity.Web.TokenCache.dll
+C:\Users\DIEGO\Desktop\Hostlify-Back-End\Hostlify.API\bin\Debug\net6.0\Microsoft.IdentityModel.Validators.dll

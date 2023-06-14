@@ -5,7 +5,6 @@ namespace Hostlify.Domain;
 public class RoomDomain : IRoomDomain
 {
     private IRoomRepository _RoomRepository;
-    //private IRoomDomain _roomDomainImplementation; ESTO ESTA MAL
 
     public RoomDomain(IRoomRepository RoomRepository)
     {
