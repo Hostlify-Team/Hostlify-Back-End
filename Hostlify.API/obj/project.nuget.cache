@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EXDhjHCVHrBiH0pdeFNqSb8CHtVnlktbR9Rk5eSEwFje5kcxAwZix66jcfi3lwpdOi55dIOPsOPzsbaW2sKNtw==",
+  "dgSpecHash": "SStyJzkgKsW037lebBHiaIwWgmTxPxBcfYQqPRoZ2GtuSe+S6TL8fbo+k1NjV8EwmzkfqBSsdi9RMkFgPgoJCg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DIEGO\\Desktop\\Hostlify-Back-End\\Hostlify.API\\Hostlify.API.csproj",
+  "projectFilePath": "D:\\Desktop\\Hostlify-Back-End\\Hostlify.API\\Hostlify.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DIEGO\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\DIEGO\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
