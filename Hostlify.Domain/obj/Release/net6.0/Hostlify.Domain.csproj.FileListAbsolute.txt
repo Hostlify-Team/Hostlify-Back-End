@@ -1,0 +1,17 @@
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\bin\Release\net6.0\Hostlify.Domain.deps.json
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\bin\Release\net6.0\Hostlify.Domain.dll
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\bin\Release\net6.0\Hostlify.Domain.pdb
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\bin\Release\net6.0\Hostlify.Infraestructure.dll
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\bin\Release\net6.0\Hostlify.Shared.dll
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\bin\Release\net6.0\Hostlify.Infraestructure.pdb
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\bin\Release\net6.0\Hostlify.Shared.pdb
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\obj\Release\net6.0\Hostlify.Domain.csproj.AssemblyReference.cache
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\obj\Release\net6.0\Hostlify.Domain.GeneratedMSBuildEditorConfig.editorconfig
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\obj\Release\net6.0\Hostlify.Domain.AssemblyInfoInputs.cache
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\obj\Release\net6.0\Hostlify.Domain.AssemblyInfo.cs
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\obj\Release\net6.0\Hostlify.Domain.csproj.CoreCompileInputs.cache
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\obj\Release\net6.0\Hostlify.Domain.csproj.CopyComplete
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\obj\Release\net6.0\Hostlify.Domain.dll
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\obj\Release\net6.0\refint\Hostlify.Domain.dll
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\obj\Release\net6.0\Hostlify.Domain.pdb
+d:\Desktop\Hostlify-Back-End\Hostlify.Domain\obj\Release\net6.0\ref\Hostlify.Domain.dll

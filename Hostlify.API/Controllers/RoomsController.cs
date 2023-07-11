@@ -1,19 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mime;
-using System.Security;
-using System.Threading.Tasks;
 using AutoMapper;
 using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace Hostlify.API.Controllers
 {
+    [Filter.Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [Produces(MediaTypeNames.Application.Json)]
@@ -30,13 +26,14 @@ namespace Hostlify.API.Controllers
         
   
         // GET: api/Rooms
+        [Filter.Authorize]
         [HttpGet("GetAll")]
         public async Task<IActionResult> Get() 
         {
             try
             {
                 var result = await _roomDomain.getAll();
-                return Ok(result);
+                return Ok(_mapper.Map<List<Room>,List<GetRoomResponse>>(result));
             }
             catch (Exception exception)
             {
@@ -49,6 +46,7 @@ namespace Hostlify.API.Controllers
         }
 
         // GET: api/Rooms/5
+        [Filter.Authorize]
         [HttpGet]
         [Route("byManagerId")]
         public  async Task<IActionResult> GetRoomforManagerId(int managerId)
@@ -61,13 +59,14 @@ namespace Hostlify.API.Controllers
                 }
 
                 var result = await _roomDomain.getRoomforManagerId(managerId);
-                return Ok(result);
+                return Ok(_mapper.Map<List<Room>,List<GetRoomResponse>>(result));
             }
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
         } 
+        [Filter.Authorize]
         [HttpGet]
         [Route("byGuestId")]
         public  async Task<IActionResult> GetRoomforGuestId(int guestId)
@@ -80,19 +79,59 @@ namespace Hostlify.API.Controllers
                 }
 
                 var result = await _roomDomain.getRoomforGuestId(guestId);
-                return Ok(result);
+                return Ok(_mapper.Map<Room,GetRoomResponse>(result));
             }
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
-        }        
+        }     
+        
+        [Filter.Authorize]
+        [HttpGet]
+        [Route("byRoomName")]
+        public  async Task<IActionResult> GetRoomByRoomName(string roomName)
+        {
+            try
+            {
+
+                var result = await _roomDomain.getRoombyRoomName(roomName);
+                return Ok(_mapper.Map<Room,GetRoomResponse>(result));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+            }
+        }   
                
 
         // POST: api/Rooms
+        [Filter.Authorize]
         [HttpPost]
-
-        public async Task<IActionResult>  Post([FromBody] RoomResource roomInput)
+        public async Task<int> Post([FromBody] RoomResource roomInput)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return 0;
+                }
+                var room = _mapper.Map<RoomResource, Room>(roomInput); //Aqui hago la conversion
+                var result = await _roomDomain.postroom(room); //Agrego await para que sea sincrona
+                return result;
+            }
+                                                                                                                
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        
+        
+        // POST: api/Rooms
+        [Filter.Authorize]
+        [HttpPut("register/{id}", Name = "register")]
+        public async Task<IActionResult>  registerGuest([FromBody] RegisterGuestResource roomInput)
         {
             try
             {
@@ -100,41 +139,76 @@ namespace Hostlify.API.Controllers
                 {
                     return BadRequest("error de formato");
                 }
-                var room = _mapper.Map<RoomResource, Room>(roomInput); //Aqui hago la conversion
-                var result = await _roomDomain.postroom(room); //Agrego await para que sea sincrona
-                return StatusCode(StatusCodes.Status201Created, "room created");
+                var room = _mapper.Map<RegisterGuestResource, Room>(roomInput); //Aqui hago la conversion
+                var result = await _roomDomain.registerGuest(room,roomInput.Name,roomInput.Email,roomInput.Password); //Agrego await para que sea sincrona
+                if (result != 0)
+                {
+                    return Ok(result);
+                }
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar: ");
             }
                                                                                                                 
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar: "+ex);
             }
-            finally
-            {
-                
-            }
         }
 
         // PUT: api/Rooms/5
+        [Filter.Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] Room roomInput)
+        public async Task<IActionResult> PutEmptyRoom(int id, [FromBody] UpdateRoomRegisteredResource roomInput)
+        {
+            if (roomInput.Status)
+            {
+                try
+                {
+                    UpdateRoomEmptyResource roomResource = new UpdateRoomEmptyResource();
+                    roomResource.RoomName = roomInput.RoomName;
+                    roomResource.ManagerId = roomInput.ManagerId;
+                    roomResource.Description = roomInput.Description;
+                    roomResource.Status = true;
+                    var result = await _roomDomain.updateroom(id, _mapper.Map<UpdateRoomEmptyResource,Room>(roomResource));
+                    return Ok(result);
+                }
+                catch (Exception exception)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                }
+            }
+            else
+            {
+                try
+                {
+                    var result = await _roomDomain.updateroom(id, _mapper.Map<UpdateRoomRegisteredResource,Room>(roomInput));
+                    return Ok(result);
+                }
+                catch (Exception exception)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
+                }
+            }
+        }
+        
+        
+        [Filter.Authorize]
+        [HttpPut("evict/{id}", Name = "Evict")]
+        public async Task<IActionResult> EvictGuest(int id)
         {
             try
             {
-                var result = await _roomDomain.updateroom(id, roomInput);
+                var result = await _roomDomain.evictGuest(id);
                 return Ok(result);
             }
             catch (Exception exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
-            finally
-            {
-            
-            }
         }
+        
 
         // DELETE: api/Rooms/5
+        [Filter.Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

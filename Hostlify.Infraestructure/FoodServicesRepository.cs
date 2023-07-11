@@ -15,7 +15,7 @@ public class FoodServicesRepository : IFoodServicesRepository
 
     public async Task<List<FoodServices>> getAll()
     {
-        return await _hostlifyDb.FoodServices.Where(foodServices=>foodServices.IsActive == true)
+        return await _hostlifyDb.FoodServices.Where(foodServices=>foodServices.IsActive == true && foodServices.attended==false)
             .ToListAsync();
     }
 
@@ -28,60 +28,79 @@ public class FoodServicesRepository : IFoodServicesRepository
                 await _hostlifyDb.FoodServices.AddAsync(foodServices);
                 await _hostlifyDb.SaveChangesAsync();
                 await transaction.CommitAsync();
+                return true;
             }
             catch (Exception ex)
             {
-                transaction.RollbackAsync();
+                await transaction.RollbackAsync();
+                return false;
             }
             finally
             {
                 await transaction.DisposeAsync();
             }
         }
-
-        return true;
     }
 
-    public async Task<FoodServices> getFoodServiceByRoomId(int roomid)
+    public async Task<List<FoodServices>> getFoodServiceUnAttendedByRoomId(int roomid)
     {
         return await _hostlifyDb.FoodServices
-            .SingleOrDefaultAsync(foodService => foodService.RoomID == roomid); 
+            .Where(foodService => foodService.roomId == roomid && foodService.IsActive==true && foodService.attended==false).ToListAsync(); 
+    }
+    
+    public async Task<List<FoodServices>> getFoodServiceByRoomId(int roomid)
+    {
+        return await _hostlifyDb.FoodServices
+            .Where(foodService => foodService.roomId == roomid && foodService.IsActive==true).ToListAsync(); 
     }
 
-    public async Task<bool> deletebyroomid(int roomid)
+    public async Task<List<FoodServices>> getFoodServiceAttendedByRoomId(int roomid)
+    {
+        return await _hostlifyDb.FoodServices
+            .Where(foodService => foodService.roomId == roomid && foodService.IsActive==true && foodService.attended==true).ToListAsync(); 
+    }
+
+
+    public async Task<bool> deleteAllFoodServicesByRoomId(int id)
     {
         using (var transacction  = await _hostlifyDb.Database.BeginTransactionAsync())
-        { 
+        {
             try
             {
-                var foodService = await _hostlifyDb.FoodServices.SingleOrDefaultAsync(foodService => foodService.RoomID == roomid);
-                foodService.IsActive = false;
-                foodService.DateUpdated = DateTime.Now;
-                _hostlifyDb.FoodServices.Update(foodService);
+                var foodServices = await _hostlifyDb.FoodServices.Where(fs => fs.roomId == id && fs.IsActive==true).ToListAsync();
+            
+                foreach (var foodService in foodServices)
+                {
+                    foodService.IsActive = false;
+                }
+            
                 await _hostlifyDb.SaveChangesAsync();
-                _hostlifyDb.Database.CommitTransactionAsync();
+                await _hostlifyDb.Database.CommitTransactionAsync();
+            
+                return true;
             }
             catch (Exception ex)
             {
                 await _hostlifyDb.Database.RollbackTransactionAsync();
             }
         }
- 
-        return true;
+
+        return false;
     }
 
-    public async Task<bool> deletebyid(int id)
+    public async Task<bool> attendByid(int id)
     {
         using (var transacction  = await _hostlifyDb.Database.BeginTransactionAsync())
         {
             try
             {
                 var foodService = await _hostlifyDb.FoodServices.FindAsync(id);
-                foodService.IsActive = false;
+                foodService!.attended = true;
                 foodService.DateUpdated = DateTime.Now;
                 _hostlifyDb.FoodServices.Update(foodService);
                 await _hostlifyDb.SaveChangesAsync();
-                _hostlifyDb.Database.CommitTransactionAsync();
+                await _hostlifyDb.Database.CommitTransactionAsync();
+                return true;
             }
             catch (Exception ex)
             {
@@ -89,7 +108,6 @@ public class FoodServicesRepository : IFoodServicesRepository
             }
         }
 
-        return true;
+        return false;
     }
- 
 }

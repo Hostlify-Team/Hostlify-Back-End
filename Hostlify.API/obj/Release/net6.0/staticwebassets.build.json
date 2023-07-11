@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "euFeJ+sSQDVdhIKx1Pr5mLMG/6+eBeiGG3JZJl8mQIY=",
+  "Source": "Hostlify.API",
+  "BasePath": "_content/Hostlify.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

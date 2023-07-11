@@ -14,44 +14,52 @@ public class RoomRepository : IRoomRepository
     }
     public async Task<List<Room>>  getAll()
     {
-        return await _hostlifyDb.Rooms.Where(room=>room.IsActive == true)
+        return await _hostlifyDb.Rooms.Where(room=>room.IsActive == true )
            .ToListAsync();
    
     }
 
-    public async Task<Room> getRoomforManagerId(int managerId)
+    public async Task<List<Room>> getRoomforManagerId(int managerId)
     {
         return await _hostlifyDb.Rooms
-            .SingleOrDefaultAsync(room => room.ManagerId == managerId); 
+            .Where(room => room.ManagerId == managerId && room.IsActive==true).ToListAsync(); 
     }
 
     public async Task<Room> getRoomforGuestId(int guestId)
     {
         return await _hostlifyDb.Rooms
-            .SingleOrDefaultAsync(room => room.GuestId == guestId);
+            .SingleOrDefaultAsync(room => room.GuestId == guestId && room.IsActive==true);
     }
 
-    public async Task<bool> postroom(Room room)
+    public async Task<Room> getRoombyRoomName(string roomName)
     {
-        using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
+        return await _hostlifyDb.Rooms
+            .SingleOrDefaultAsync(room => room.RoomName == roomName && room.IsActive==true);    }
+
+    public async Task<int> postroom(Room room)
+    {
+        using (var transaction = await _hostlifyDb.Database.BeginTransactionAsync())
         {
             try
             {
                 await _hostlifyDb.Rooms.AddAsync(room);
                 await _hostlifyDb.SaveChangesAsync();
-                await transacction.CommitAsync();
+                await transaction.CommitAsync();
             }
             catch (Exception ex)
             {
-                await transacction.RollbackAsync();
+                transaction.RollbackAsync();
             }
             finally
             {
-                await transacction.DisposeAsync();
+                await transaction.DisposeAsync();
             }
         }
 
-        return true;
+        Room roomResponse = new Room();
+        roomResponse=await _hostlifyDb.Rooms.SingleOrDefaultAsync(room_ => room_.RoomName ==  room.RoomName && room_.IsActive==true && room_.ManagerId==room.ManagerId);
+
+        return roomResponse.Id;
     }
                
 
@@ -63,15 +71,14 @@ public class RoomRepository : IRoomRepository
             {
                 var existingRoom = await _hostlifyDb.Rooms.FindAsync(id);
                 //Console.WriteLine("ENCONTRE DATO: "+existingRoom.Name);
-
+                
                existingRoom.RoomName = room.RoomName;
                existingRoom.Description = room.Description;
                existingRoom.GuestId = room.GuestId;
                existingRoom.ManagerId = room.ManagerId;
-               existingRoom.Initialdate = room.Initialdate;
+               existingRoom.InitialDate = room.InitialDate;
                existingRoom.EndDate = room.EndDate;
                existingRoom.Status = room.Status;
-               existingRoom.GuestStayComplete = room.GuestStayComplete;
                existingRoom.Price = room.Price;
                existingRoom.Emergency = room.Emergency;
                existingRoom.ServicePending = room.ServicePending;
@@ -111,5 +118,82 @@ public class RoomRepository : IRoomRepository
         }
 
         return true;
+    }
+
+    public async Task<bool> evictGuest(int id)
+    {
+        using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
+        {
+            try
+            {
+                var existingRoom = await _hostlifyDb.Rooms.FindAsync(id);
+                var existingUser = await _hostlifyDb.Users.FindAsync(existingRoom.GuestId);
+
+                existingUser.IsActive = false;
+                existingRoom.GuestId = null;
+                existingRoom.InitialDate = null;
+                existingRoom.EndDate = null;
+                existingRoom.Status = true;
+                existingRoom.Price = null;
+                existingRoom.Emergency = false;
+                existingRoom.ServicePending = false;
+                existingRoom.DateUpdated = DateTime.Now;
+                
+                _hostlifyDb.Users.Update(existingUser);
+                _hostlifyDb.Rooms.Update(existingRoom);
+                await _hostlifyDb.SaveChangesAsync();
+                _hostlifyDb.Database.CommitTransactionAsync();
+            }
+            catch (Exception ex)
+            {
+                await _hostlifyDb.Database.RollbackTransactionAsync();
+            }
+        }
+
+        return true;
+    }
+
+    public async Task<int> registerGuest(Room room,string userName,string userEmail,string userPassword)
+    {
+        User existingUser_ = new User();
+        using (var transacction = await _hostlifyDb.Database.BeginTransactionAsync())
+        {
+            try
+            {
+
+                var existingRoom = await _hostlifyDb.Rooms.FindAsync(room.Id);
+                existingUser_= await _hostlifyDb.Users.SingleOrDefaultAsync(user_ => user_.Email ==  userEmail && user_.IsActive==true);
+                existingRoom.GuestId = existingUser_.Id;
+                existingRoom.InitialDate = room.InitialDate;    
+                existingRoom.EndDate = room.EndDate;
+                existingRoom.Status = false;
+                existingRoom.Price = room.Price;
+                existingRoom.Emergency = false;
+                existingRoom.ServicePending = false;
+                existingRoom.DateUpdated = DateTime.Now;
+
+                History history = new History();
+                history.roomName = existingRoom.RoomName;
+                history.managerId = existingRoom.ManagerId;
+                history.guestName = userName;
+                history.initialDate = room.InitialDate;
+                history.endDate = room.EndDate;
+                history.price = room.Price.GetValueOrDefault();
+                history.description = existingRoom.Description;
+
+
+
+                _hostlifyDb.Rooms.Update(existingRoom);
+                _hostlifyDb.History.Update(history);
+                await _hostlifyDb.SaveChangesAsync();
+                await _hostlifyDb.Database.CommitTransactionAsync();
+                return existingUser_.Id;
+            }
+            catch (Exception ex)
+            {
+                await _hostlifyDb.Database.RollbackTransactionAsync();
+                return 0;
+            }
+        }
     }
 }

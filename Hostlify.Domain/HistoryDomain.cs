@@ -20,7 +20,7 @@ public class HistoryDomain : IHistoryDomain
         return await _HistoryRepository.postHistory(history);
     }
 
-    public async Task<History> getHistoryForManagerId(int managerId)
+    public async Task<List<History>> getHistoryForManagerId(int managerId)
     {
         return await _HistoryRepository.getHistoryForManagerId(managerId);
     }

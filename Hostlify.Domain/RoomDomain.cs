@@ -5,7 +5,6 @@ namespace Hostlify.Domain;
 public class RoomDomain : IRoomDomain
 {
     private IRoomRepository _RoomRepository;
-    //private IRoomDomain _roomDomainImplementation; ESTO ESTA MAL
 
     public RoomDomain(IRoomRepository RoomRepository)
     {
@@ -17,7 +16,7 @@ public class RoomDomain : IRoomDomain
         return await _RoomRepository.getAll();
     }
 
-    public async Task<Room> getRoomforManagerId(int managerId)
+    public async Task<List<Room>> getRoomforManagerId(int managerId)
     {
         return await _RoomRepository.getRoomforManagerId(managerId);
     }
@@ -27,7 +26,7 @@ public class RoomDomain : IRoomDomain
         return await _RoomRepository.getRoomforGuestId(guestId);
     }
 
-    public async Task<bool> postroom(Room room)
+    public async Task<int> postroom(Room room)
     {
         return await _RoomRepository.postroom(room);
     }
@@ -40,5 +39,20 @@ public class RoomDomain : IRoomDomain
     public async Task<bool> deleteroom(int id)
     {
         return await _RoomRepository.deleteroom(id);
+    }
+
+    public async Task<Room> getRoombyRoomName(string roomName)
+    {
+        return await _RoomRepository.getRoombyRoomName(roomName);
+    }
+
+    public async Task<bool> evictGuest(int id)
+    {
+        return await _RoomRepository.evictGuest(id);
+    }
+
+    public async Task<int> registerGuest(Room room, string userName, string userEmail, string userPassword)
+    {
+        return await _RoomRepository.registerGuest(room, userName, userEmail, userPassword);
     }
 }

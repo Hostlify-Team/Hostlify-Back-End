@@ -9,7 +9,7 @@ public interface IHistoryDomain
    
     Task<bool> postHistory(History history);
     
-    Task<History> getHistoryForManagerId(int managerId);
+    Task<List<History>> getHistoryForManagerId(int managerId);
     
     Task<bool> deleteHistory(int id);
 }

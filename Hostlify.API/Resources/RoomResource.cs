@@ -6,7 +6,7 @@ public class RoomResource
 {
     [Microsoft.Build.Framework.Required]
     [MaxLength(15)]                                                                                         
-    public string Name { get; set; }
+    public string RoomName { get; set; }
     [Microsoft.Build.Framework.Required]
     public int ManagerId { get; set; }
     

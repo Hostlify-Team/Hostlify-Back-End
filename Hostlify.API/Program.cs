@@ -7,8 +7,13 @@ using Hostlify.Infraestructure.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
 
 // Add services to the container.
 
@@ -37,21 +42,21 @@ builder.Services.AddSwaggerGen(options=>{
 });
 
 //Dependency injection
-builder.Services.AddScoped<IPlanDomain, PlanDomain>();
 builder.Services.AddScoped<IUserDomain, UserDomain>();
 builder.Services.AddScoped<IRoomDomain, RoomDomain>();
 builder.Services.AddScoped<ITokenDomain, TokenDomain>();
-builder.Services.AddScoped<IPlanRepository, PlanRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
 builder.Services.AddScoped<IFoodServicesDomain, FoodServicesDomain>();
 builder.Services.AddScoped<IFoodServicesRepository, FoodServicesRepository>();
+builder.Services.AddScoped<ICleaningServicesDomain, CleaningServicesDomain>();
+builder.Services.AddScoped<ICleaningServicesRepository, CleaningServicesRepository>();
 builder.Services.AddScoped<IHistoryDomain, HistoryDomain>();
 builder.Services.AddScoped<IHistoryRepository,HistoryRepository>();
 
 
 var connectionString = builder.Configuration.GetConnectionString("HostlifyConnection");
-var serverVersion = new MySqlServerVersion(new Version(8, 0, 31));//VARIA DEACUERDO A LA VERSION
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 33));//VARIA DEACUERDO A LA VERSION
 
 //Conexion a MySQL
 builder.Services.AddDbContext<HostlifyDB>(
@@ -95,6 +100,8 @@ if (app.Environment.IsDevelopment())
 app.UseMiddleware<JwtMiddleware>();
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

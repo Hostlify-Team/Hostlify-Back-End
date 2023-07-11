@@ -16,8 +16,8 @@ public class UserDomain:IUserDomain
     public async Task<string> Login(User user)
     {
         var result = await _userRepository.GetByEmail(user.Email);
-
-        if (result.Password == user.Password)
+        
+        if (result.Password == user.Password && result.IsActive)
         {
             return _tokenDomain.GenerateJwt(user.Email);
         }
@@ -35,6 +35,16 @@ public class UserDomain:IUserDomain
         return  await _userRepository.GetByEmail(email);
     }
 
+    public async Task<int> GetRoomsLimitByUserId(int id)
+    {
+        return await _userRepository.GetRoomsLimitByUserId(id);
+    }
+
+    public async Task<bool> UpdateRoomsLimitByUserId(int id, string actualPlan, string changedPlan, int newCustomRoomLimit)
+    {
+        return await _userRepository.UpdateRoomsLimitByUserId(id,actualPlan,changedPlan,newCustomRoomLimit);
+    }
+
     public async Task<User> GetByUserId(int id)
     {
         return  await _userRepository.GetByUserId(id);
@@ -48,5 +58,10 @@ public class UserDomain:IUserDomain
     public async Task<List<User>> GetAllUsers()
     {
         return await _userRepository.GetAllUsers();
+    }
+
+    public async Task<bool> PostPersonalPlan(string email, int roomsLimit)
+    {
+        return await _userRepository.PostPersonalPlan(email, roomsLimit);
     }
 }

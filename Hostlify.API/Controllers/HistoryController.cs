@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mime;
-using System.Threading.Tasks;
+﻿using System.Net.Mime;
 using AutoMapper;
-using Hostlify.API.Filter;
 using Hostlify.API.Resource;
 using Hostlify.Domain;
 using Hostlify.Infraestructure;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Hostlify.API.Filter;
 
 namespace Hostlify.API.Controllers
 {
@@ -27,26 +22,23 @@ namespace Hostlify.API.Controllers
             _historyDomain = historyDomain;
             _mapper = mapper;
         }
-
+        
+        [Authorize]
         [HttpGet("GetAll")]
         public async Task<IActionResult> Get() 
         {
             try
             {
                 var result = await _historyDomain.getAll();
-                return Ok(_mapper.Map<List<History>, List<HistoryResource>>(result));
+                return Ok(_mapper.Map<List<History>, List<getHistoryResponse>>(result));
             }
             catch (Exception exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error al procesar");
             }
-            finally
-            {
-            
-            }
         }
 
-        
+        [Authorize]
         [HttpGet]
         [Route("byManagerId")]
         public  async Task<IActionResult> GetHistoryForManagerId(int managerId)
@@ -59,7 +51,8 @@ namespace Hostlify.API.Controllers
                 }
 
                 var result = await _historyDomain.getHistoryForManagerId(managerId);
-                return Ok(_mapper.Map<History, HistoryResource>(result));
+                return Ok(_mapper.Map<List<History>, List<getHistoryResponse>>(result));
+
             }
             catch (Exception ex)
             {
@@ -67,6 +60,7 @@ namespace Hostlify.API.Controllers
             }
         } 
         
+        [Authorize]
         [HttpPost] 
         [Route("byResource")]
         public async Task<IActionResult>  Post([FromBody] HistoryResource historyInput)
@@ -90,6 +84,7 @@ namespace Hostlify.API.Controllers
         }
 
         // DELETE
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

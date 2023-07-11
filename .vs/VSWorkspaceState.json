@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Hostlify.API",
+    "\\Hostlify.Infraestructure",
+    "\\Hostlify.Infraestructure\\Context"
   ],
+  "SelectedNode": "\\Hostlify.API",
   "PreviewInSolutionExplorer": false
 }
